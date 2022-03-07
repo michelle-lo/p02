@@ -1,0 +1,4 @@
+HMart's Devlog
+
+michelleL -- 2022-03-06 21:24
+Initialized starting project files (devlog.txt, flag.jpg, etc.)
