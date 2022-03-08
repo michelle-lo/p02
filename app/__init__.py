@@ -23,8 +23,8 @@ def login():
 	Retrieves user login inputs and checks it against the "users" database table.
 	Brings user to home page after successful login.
 	"""
-    if logged_in():
-        return redirect("/")
+    # if logged_in():
+    #     return redirect("/")
 
     if request.method == "GET": #just getting to the page with no inputs
         return render_template("login.html")
@@ -53,8 +53,8 @@ def signup():
 	Checks it against the database to make sure the information is unique.
 	Adds information to the "users" database table.
 	"""
-	if logged_in():
-		return redirect("/")
+	# if logged_in():
+	# 	return redirect("/")
 
 	# Default page
 	if request.method == "GET":

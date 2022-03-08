@@ -69,7 +69,7 @@ def register_user(username, password):
     if row is not None:
         return False
 
-    c.execute("""INSERT INTO users(username,password) VALUES(?, ?)""",(username,password))
+    c.execute("""INSERT INTO users(username, password, balance, total) VALUES(?, ?, ?, ?)""",(username, password, 0.0, 0))
     db.commit()
     db.close()
 
