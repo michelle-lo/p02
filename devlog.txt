@@ -18,3 +18,6 @@ A bare bones flask app in __init__.py!
 
 rachelX -- 2022-03-08 10:29
 Created db.py file to handle the database
+
+rachelX -- 2022-03-08 12:33
+Finished signup and login features
