@@ -19,8 +19,7 @@ Windows: $ ```source ~/tea/Scripts/activate``` <br><br>
 - Install Dependencies <br>
 (tea)$ ```cd p02 ``` <br>
 (tea)$ ```pip install -r requirements.txt``` <br><br> 
-- Download the `keys` directory. Make sure it is in the `app` directory <br><br> 
-- Run the app <br>
+- Run the App <br>
 (tea)$ ```cd app``` <br>
 (tea)$ ```python3 __init__.py``` <br><br>
 - Open the website at http://127.0.0.1:5000/
