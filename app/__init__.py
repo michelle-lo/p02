@@ -19,6 +19,10 @@ def welcome():
 
 @app.route("/login", methods=['GET', 'POST'])
 def login():
+    """
+	Retrieves user login inputs and checks it against the "users" database table.
+	Brings user to home page after successful login.
+	"""
     if logged_in():
         return redirect("/")
 
@@ -32,14 +36,45 @@ def login():
         return render_template("login.html", explain = "Username or Password cannot be blank")
 
     # Verify this user and password exists
-    user_id = database.fetch_user_id(username, password)
+    user_id = db.fetch_user_id(username, password)
     if user_id is None:
         return render_template("login.html", explain = "Username or Password is incorrect")
 
     # Adds user and user id to session if all is well
-    session["user"] = database.fetch_username(user_id)
+    session["user"] = db.fetch_username(user_id)
     session["user_id"] = user_id
     return redirect("/")
+
+
+@app.route("/signup", methods=['GET', 'POST'])
+def signup():
+	"""
+	Retrieves user inputs from signup page.
+	Checks it against the database to make sure the information is unique.
+	Adds information to the "users" database table.
+	"""
+	if logged_in():
+		return redirect("/")
+
+	# Default page
+	if request.method == "GET":
+		return render_template("register.html")
+
+	# Check sign up
+	user = request.form["newusername"]
+	pwd = request.form["newpassword"]
+	if user.strip() == "" or pwd.strip == "":
+		return render_template("register.html", explain="Username or Password cannot be blank")
+
+	# Add user information if passwords match
+	if (request.form["newpassword"] != request.form["newpassword1"]):
+		return render_template("register.html", explain="The passwords do not match")
+
+	register_success = db.register_user(user, pwd) #checks if not successful in the database file
+	if not register_success:
+		return render_template("register.html", explain="Username already exists")
+	else:
+		return redirect("/login")
 
 
 if __name__ == "__main__": #false if this file imported as module
