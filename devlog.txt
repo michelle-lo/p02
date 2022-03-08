@@ -2,3 +2,7 @@ HMart's Devlog
 
 michelleL -- 2022-03-06 21:24
 Initialized starting project files (devlog.txt, flag.jpg, etc.)
+
+Devlog Update:
+* Made some bullet points in the component section (Features, SQL Database) more clear
+* Added credit where credit is due
