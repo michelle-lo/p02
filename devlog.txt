@@ -15,3 +15,6 @@ Initialized starting project files (devlog.txt, flag.jpg, etc.)
 
 michelleL -- 2022-03-08 08:59
 A bare bones flask app in __init__.py!
+
+rachelX -- 2022-03-08 10:29
+Created db.py file to handle the database
