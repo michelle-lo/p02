@@ -1,11 +1,17 @@
-HMart's Devlog
+HMart: Michelle Lo, Annabel Zhang, Rachel Xiao, Tina Nguyen (PHK, Mang, Mooana, Lola)
+SoftDev
+P02: Four Toppings Boba Shop
+2022-03-06
+
+Devlog Updates:
+2022-03-07
+* Made some bullet points in the component section (Features, SQL Database) more clear
+* Added credit where credit is due
+2022-03-08
+* Edited the site map's /about page
 
 michelleL -- 2022-03-06 21:24
 Initialized starting project files (devlog.txt, flag.jpg, etc.)
-
-Devlog Update:
-* Made some bullet points in the component section (Features, SQL Database) more clear
-* Added credit where credit is due
 
 michelleL -- 2022-03-08 08:59
 A bare bones flask app in __init__.py!

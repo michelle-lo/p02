@@ -1,4 +1,4 @@
-# HMart (Michelle Lo, Annabel Zhang, Rachel Xiao, Tina Nguyen)
+# HMart: Michelle Lo, Annabel Zhang, Rachel Xiao, Tina Nguyen (PHK, Mang, Mooana, Lola)
 # SoftDev
 # P02: Four Toppings Boba Shop
 # 2022-03-06
