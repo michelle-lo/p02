@@ -6,3 +6,6 @@ Initialized starting project files (devlog.txt, flag.jpg, etc.)
 Devlog Update:
 * Made some bullet points in the component section (Features, SQL Database) more clear
 * Added credit where credit is due
+
+michelleL -- 2022-03-08 08:59
+A bare bones flask app in __init__.py!
