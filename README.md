@@ -1,4 +1,4 @@
-# P02 by HMart
+# Four Toppings by HMart
 
 ## HMart Employees (Roster)
 * **M**ichelle Lo (PM): shop-front (level management) (frontend + backend)
