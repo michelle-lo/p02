@@ -3,7 +3,7 @@ SoftDev
 P02: Four Toppings Boba Shop
 2022-03-06
 
-Devlog Updates:
+Design Doc Updates:
 2022-03-07
 * Made some bullet points in the component section (Features, SQL Database) more clear
 * Added credit where credit is due
