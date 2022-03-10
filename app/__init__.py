@@ -77,8 +77,26 @@ def signup():
 		return redirect("/login")
 
 @app.route("/game", methods=['GET', 'POST'])
-def game():
-    return render_template("game.html")
+def game(): #redirects user to the chosen area
+    if request.method == "POST":
+        if request.form["stage"] == "Counter":
+            print("Switching to Counter stage...")
+            return redirect("/counter")
+        elif request.form["stage"] == "Shop":
+            print("Switching to Shop stage...")
+            return redirect("/shop")
+        else:
+            return redirect("counter.html") #by default, users head to counter when starting game
+    else:
+        return redirect("/counter")
+
+@app.route("/counter", methods=['GET', 'POST'])
+def counter():
+    return render_template("counter.html") #loads counter page
+
+@app.route("/shop", methods=['GET', 'POST'])
+def shop():
+    return render_template("shop.html") #loads shop page
 
 if __name__ == "__main__": #false if this file imported as module
     #enable debugging, auto-restarting of server when this file is modified
