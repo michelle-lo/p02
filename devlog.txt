@@ -21,3 +21,6 @@ Created db.py file to handle the database
 
 rachelX -- 2022-03-08 12:33
 Finished signup and login features
+
+annabelZ -- 2022-03-09 20:54
+Created a demo of canvas layering in /game (files game.html, static/img, index.js)

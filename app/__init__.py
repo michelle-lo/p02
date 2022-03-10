@@ -76,6 +76,9 @@ def signup():
 	else:
 		return redirect("/login")
 
+@app.route("/game", methods=['GET', 'POST'])
+def game():
+    return render_template("game.html")
 
 if __name__ == "__main__": #false if this file imported as module
     #enable debugging, auto-restarting of server when this file is modified
