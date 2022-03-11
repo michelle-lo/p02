@@ -4,7 +4,7 @@
 # 2022-03-06
 
 from flask import Flask, request, render_template, redirect, session
-import db
+import db, order_db
 
 app = Flask(__name__)
 app.secret_key = "boba"
@@ -86,16 +86,22 @@ def game(): #redirects user to the chosen area
             print("Switching to Shop stage...")
             return redirect("/shop")
         else:
-            return redirect("counter.html") #by default, users head to counter when starting game
+            return redirect("/counter") #by default, users head to counter when starting game
     else:
         return redirect("/counter")
 
 @app.route("/counter", methods=['GET', 'POST'])
 def counter():
-    return render_template("counter.html") #loads counter page
+    if (order_db.order_count() == 0 or order_db.latest_order()[4] == 1): #will create new order if orders is empty OR if last entry is closed
+        success = order_db.create_order()
+    order_print = order_db.print_orders()
+    latest_order = order_db.latest_order()
+    return render_template("counter.html", order=latest_order) #loads counter page
 
 @app.route("/shop", methods=['GET', 'POST'])
 def shop():
+    success = order_db.update_status()
+    order_print = order_db.print_orders()
     return render_template("shop.html") #loads shop page
 
 if __name__ == "__main__": #false if this file imported as module
