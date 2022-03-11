@@ -30,3 +30,6 @@ Created buttons for Counter + Shop that allow user to switch to either area.
 
 michelleL -- 2022-03-11 9:01
 Created orders_db.py that manages orders. If orders is empty, it will create a new order, which will be saved as the current order until it is closed (currently done by going to shop) in which it will generate a new order.
+
+rachelX + tinaN -- 2022-03-11 9:26
+Created login page and redirected to it when opening the website
