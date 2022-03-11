@@ -78,6 +78,8 @@ def signup():
 
 @app.route("/game", methods=['GET', 'POST'])
 def game(): #redirects user to the chosen area
+    if not logged_in():
+        redirect("/login")
     if request.method == "POST":
         if request.form["stage"] == "Counter":
             print("Switching to Counter stage...")
