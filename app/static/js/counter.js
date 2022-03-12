@@ -7,13 +7,27 @@
 // '''access canvas and buttons via DOM'''
 //Different canvas layers
 var c1 = document.getElementById('counter');
-var c2 = document.getElementById('background');
+var c2 = document.getElementById('kitchen');
+var counterB = document.getElementById('countStage');
+var kitchenB = document.getElementById('kitchenStage');
 
 // '''prepare to interact with canvas in 2D'''
 var ctx1 = c1.getContext("2d");
 var ctx2 = c2.getContext("2d");
 
-// creates background images for counter on canvas
+
+var drawCounter = () => {
+  document.getElementById("kitchen").style.visibility = "hidden";
+  document.getElementById("counter").style.visibility = "visible";
+
+};
+
+var drawKitchen = () => {
+  document.getElementById("counter").style.visibility = "hidden";
+  document.getElementById("kitchen").style.visibility = "visible";
+};
+
+// // creates background images for counter on canvas
 let img1 = document.createElement("img");
 img1.src = '../static/img/flower1.png';
 
@@ -27,3 +41,6 @@ img2.src = '../static/img/flower2.png';
 img2.addEventListener("load", () => {
   ctx2.drawImage(img2, c2.clientWidth/2, c2.clientHeight/2)
 });
+
+counterB.addEventListener("click", drawCounter);
+kitchenB.addEventListener("click", drawKitchen);
