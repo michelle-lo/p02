@@ -8,6 +8,7 @@ import sqlite3
 DB_FILE = "orders.db"
 db = sqlite3.connect(DB_FILE)
 cur = db.cursor()
+#creates new tables for each new user
 
 cur.execute("""
     CREATE TABLE IF NOT EXISTS orders(
@@ -31,7 +32,19 @@ def order_count():
     count = (len(c.fetchall()))
     return count
 
-#returns and prints orders onto terminal
+def table_exists():
+    db = sqlite3.connect(DB_FILE)
+    c = db.cursor()
+
+    c.execute("SELECT count(id) FROM orders WHERE id='1'")
+    if (c.fetchone()[0] == 1):
+        print("table exists")
+        return True
+    else:
+        print("table does NOT exist")
+        return False
+
+#returns orders dictionary and prints orders onto terminal
 def print_orders():
     db = sqlite3.connect(DB_FILE)
     c = db.cursor()
@@ -78,17 +91,23 @@ def latest_order(): #use fetch_...
 def update_status():
     db = sqlite3.connect(DB_FILE)
     c = db.cursor()
-    #don't update if table empty
-    latest = latest_order()
-    latest_id = latest[0]
-    query = ("""
-        UPDATE orders
-        SET status = 1
-        WHERE id = ?
-    """)
-    #status should also be open
-    c.execute(query, (latest_id,))
-    db.commit()
-    db.close()
-
-    return True
+    if (table_exists()):
+        latest = latest_order()
+        if (latest[4] == 0): #latest order is open
+            latest_id = latest[0]
+            query = ("""
+                UPDATE orders
+                SET status = 1
+                WHERE id = ?
+            """)
+            c.execute(query, (latest_id,))
+            print("updated latest order")
+            db.commit()
+            db.close()
+            return True
+        else:
+            print("latest order is already closed.")
+            return False
+    else:
+        print("table does not exist. cannot update status")
+        return False

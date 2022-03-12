@@ -85,8 +85,6 @@ def game(): #redirects user to the chosen area
         elif request.form["stage"] == "Shop":
             print("Switching to Shop stage...")
             return redirect("/shop")
-        else:
-            return redirect("/counter") #by default, users head to counter when starting game
     else:
         return redirect("/counter")
 
