@@ -14,7 +14,7 @@ def logged_in():
 
 @app.route("/", methods=['GET', 'POST'])
 def welcome():
-    return "Boba"
+    return redirect("/login")
 
 
 @app.route("/login", methods=['GET', 'POST'])
