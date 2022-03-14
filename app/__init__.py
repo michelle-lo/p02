@@ -76,6 +76,10 @@ def signup():
 	else:
 		return redirect("/login")
 
+@app.route("/about")
+def about():
+    return render_template("about.html")
+
 @app.route("/game", methods=['GET', 'POST'])
 def game(): #redirects user to the chosen area
     if not logged_in():
