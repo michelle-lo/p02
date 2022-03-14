@@ -42,3 +42,6 @@ Finished login and signup page
 
 tinaN -- 2022-03-13 20:36
 Craeted an about page that a user can click on in the login page
+
+michelleL -- 2022-03-14 08:58
+Randomized orders!
