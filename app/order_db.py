@@ -3,7 +3,7 @@
 # P02: Four Toppings Boba Shop
 # 2022-03-06
 
-import sqlite3
+import sqlite3, random
 
 DB_FILE = "orders.db"
 db = sqlite3.connect(DB_FILE)
@@ -62,10 +62,16 @@ def create_order():
     c = db.cursor()
 
     id = order_count() + 1 #first order = 1
-    tea = "green"
-    topping1 = "boba"
-    topping2 = "jelly" #later: test to see if null works
+
+    teas = ["green", "milk", "taro", "oolong"]
+    toppings = ["milk foam", "boba", "grass jelly", "lychee jelly", "red bean"]
+
+    tea = teas[random.randint(0, len(teas) - 1)]
+    topping_list = random.sample(toppings, 2)
+    topping1 = topping_list[0]
+    topping2 = topping_list[1] #later: test to see if null works
     status = 0 #will be open when created
+
     c.execute("""INSERT INTO orders(id, tea, topping1, topping2, status) VALUES(?, ?, ?, ?, ?)""",(id, tea, topping1, topping2, status))
     print("order #" + str(id) + " added")
     db.commit()
