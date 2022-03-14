@@ -48,3 +48,6 @@ Randomized orders!
 
 rachelX -- 2022-03-14 09:11
 Made the signup and login forms cleaner
+
+tinaN -- 2022-03-14  09:00
+Centered the text in the about page and edited+uploaded design doc
