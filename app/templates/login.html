@@ -30,21 +30,15 @@ P02: Four Toppings Boba Shop
 
     <div class="container d-flex justify-content-center mx-auto align-items-center">
       <form method="POST" action="/login">
-        <div class="row g-3 align-items-center">
-          <div class="col-auto">
-            <label for="inputUsername" class="col-form-label">Username:</label>
-          </div>
-          <div class="col-auto">
-            <input type="text" name="username" id="inputUsername" class="form-control" aria-describedby="usernameHelpInline">
-          </div>
+        <div class="align-items-center form-floating">
+          <input name="username" class="form-control" type="username" id="floatingInput exampleInputUsername1" placeholder="i can be BIIIG" required>
+          <label for="floatingInput exampleInputUsername1" class="col-form-label">Username</label>
         </div>
         <br>
-        <div class="row g-3 align-items-center">
-          <div class="col-auto">
-            <label for="inputPassword6" class="col-form-label">Password:</label>
-          </div>
-          <div class="col-auto">
-            <input type="password" name="password" id="inputPassword6" class="form-control" aria-describedby="passwordHelpInline">
+        <div class="align-items-center form-floating">
+          <div class="align-items-center form-floating">
+            <input name="password" class="form-control" type="password" id="floatingInput exampleInputPassword1" placeholder="i can be BIIIG" required>
+            <label for="floatingInput exampleInputPassword1">Password</label>
           </div>
         </div>
         <br>

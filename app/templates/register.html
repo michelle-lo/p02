@@ -25,30 +25,22 @@ P02: Four Toppings Boba Shop
 
     <div class="container d-flex justify-content-center mx-auto align-items-center">
       <form method="POST" action="/signup">
-        <div class="row g-3 align-items-center">
-          <div class="col-auto">
-            <label for="inputUsername" class="col-form-label">Username:</label>
-          </div>
-          <div class="col-auto">
-            <input type="text" name="newusername" id="inputUsername" class="form-control" aria-describedby="usernameHelpInline">
+        <div class="align-items-center form-floating">
+          <input name="newusername" class="form-control" type="username" id="floatingInput exampleInputUsername1" placeholder="i can be BIIIG" required>
+          <label for="floatingInput exampleInputUsername1" class="col-form-label">Username</label>
+        </div>
+        <br>
+        <div class="align-items-center form-floating">
+          <div class="align-items-center form-floating">
+            <input name="newpassword" class="form-control" type="password" id="floatingInput exampleInputPassword1" placeholder="i can be BIIIG" required>
+            <label for="floatingInput exampleInputPassword1">Password</label>
           </div>
         </div>
         <br>
-        <div class="row g-3 align-items-center">
-          <div class="col-auto">
-            <label for="inputPassword6" class="col-form-label">Password:</label>
-          </div>
-          <div class="col-auto">
-            <input type="password" name="newpassword" id="inputPassword6" class="form-control" aria-describedby="passwordHelpInline">
-          </div>
-        </div>
-        <br>
-        <div class="row g-3 align-items-center">
-          <div class="col-auto">
-            <label for="inputPassword6" class="col-form-label">Confirm Password:</label>
-          </div>
-          <div class="col-auto">
-            <input type="password" name="newpassword1" id="inputPassword6" class="form-control" aria-describedby="passwordHelpInline">
+        <div class="align-items-center form-floating">
+          <div class="align-items-center form-floating">
+            <input name="newpassword1" class="form-control" type="password" id="floatingInput exampleInputPassword1" placeholder="i can be BIIIG" required>
+            <label for="floatingInput exampleInputPassword1">Confirm Password</label>
           </div>
         </div>
         <br>
@@ -56,6 +48,8 @@ P02: Four Toppings Boba Shop
           <div class="form-group">
             <input type="submit" value="Register"></input>
           </div>
+          <br>
+          <footer style="color: red">{{explain}}</footer>
         </center>
       </form>
     </div>
