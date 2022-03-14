@@ -28,10 +28,10 @@ Created a demo of canvas layering in /game (files game.html, static/img, index.j
 michelleL -- 2022-03-10 17:35
 Created buttons for Counter + Shop that allow user to switch to either area.
 
-michelleL -- 2022-03-11 9:01
+michelleL -- 2022-03-11 09:01
 Created orders_db.py that manages orders. If orders is empty, it will create a new order, which will be saved as the current order until it is closed (currently done by going to shop) in which it will generate a new order.
 
-rachelX + tinaN -- 2022-03-11 9:26
+rachelX + tinaN -- 2022-03-11 09:26
 Created login page and redirected to it when opening the website
 
 michelleL -- 2022-03-12 11:25
@@ -45,3 +45,6 @@ Craeted an about page that a user can click on in the login page
 
 michelleL -- 2022-03-14 08:58
 Randomized orders!
+
+rachelX -- 2022-03-14 09:11
+Made the signup and login forms cleaner
