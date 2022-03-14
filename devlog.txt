@@ -39,3 +39,6 @@ update_status will now only close an order when orders table exists and latest o
 
 rachelX -- 2022-03-13 15:37
 Finished login and signup page
+
+tinaN -- 2022-03-13 20:36
+Craeted an about page that a user can click on in the login page
