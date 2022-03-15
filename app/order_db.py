@@ -18,8 +18,8 @@ def create_table():
             tea TEXT,
             topping1 TEXT,
             topping2 TEXT,
-            status INTEGER)""") #0 for open, 1 for closed
-
+            price FLOAT,
+            status INTEGER)""") #status: 0 for open, 1 for closed
     db.commit()
     db.close()
     return True
@@ -65,11 +65,12 @@ def print_orders():
 def create_order():
     db = sqlite3.connect(DB_FILE)
     c = db.cursor()
+    create_table() #create table if it doesn't already exist
 
     id = order_count() + 1 #first order = 1
 
     teas = ["green", "milk", "taro", "oolong"]
-    toppings = ["milk foam", "boba", "grass jelly", "lychee jelly", "red bean"]
+    toppings = ["milk foam", "boba", "grass jelly", "lychee jelly", "red bean", 'null']
 
     tea = teas[random.randint(0, len(teas) - 1)]
     topping_list = random.sample(toppings, 2)
@@ -77,7 +78,16 @@ def create_order():
     topping2 = topping_list[1] #later: test to see if null works
     status = 0 #will be open when created
 
-    c.execute("""INSERT INTO orders(id, tea, topping1, topping2, status) VALUES(?, ?, ?, ?, ?)""",(id, tea, topping1, topping2, status))
+    add_on = 0
+    if (topping1 == 'null' or topping2 == 'null'): #minimum of 1 topping
+        add_on += 0.25
+    else:
+        add_on += 0.50
+
+    price = (3 + add_on)
+
+
+    c.execute("""INSERT INTO orders(id, tea, topping1, topping2, price, status) VALUES(?, ?, ?, ?, ?, ?)""",(id, tea, topping1, topping2, price, status))
     print("order #" + str(id) + " added")
     db.commit()
     db.close()
@@ -103,7 +113,7 @@ def update_status():
     c = db.cursor()
     if (table_exists()):
         latest = latest_order()
-        if (latest[4] == 0): #latest order is open
+        if (latest[5] == 0): #latest order is open
             latest_id = latest[0]
             query = ("""
                 UPDATE orders
@@ -122,13 +132,16 @@ def update_status():
         print("table does not exist. cannot update status")
         return False
 
+def fetch_price():
+    latest = latest_order()
+    return latest[4]
+
 #after a user logs out, the table is reset. a new table is created when a user logs in/signs up
 #future notes: save button to save balance before logging out
 def reset_data():
     #stuff that game must save before logging out
     open("orders.db", "w").close()
     create_table()
-    print_orders()
     return True
 
 '''

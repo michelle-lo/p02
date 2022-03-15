@@ -10,45 +10,46 @@ app = Flask(__name__)
 app.secret_key = "boba"
 
 def logged_in():
-    """
+	"""
 	Returns True if the user is in session.
 	"""
-    return "user" in session
+	return "user" in session
 
 @app.route("/", methods=['GET', 'POST'])
 def welcome():
-    if logged_in():
-        return redirect("/counter")
-    return redirect("/login")
+	if logged_in():
+		return redirect("/counter")
+	return redirect("/login")
 
 
 @app.route("/login", methods=['GET', 'POST'])
 def login():
-    """
+	"""
 	Retrieves user login inputs and checks it against the "users" database table.
 	Brings user to home page after successful login.
 	"""
-    # if logged_in():
-    #     return redirect("/")
+	# if logged_in():
+	#     return redirect("/")
 
-    if request.method == "GET": #just getting to the page with no inputs
-        return render_template("login.html")
+	if request.method == "GET": #just getting to the page with no inputs
+		return render_template("login.html")
 
-    username = request.form["username"]
-    password = request.form["password"]
+	username = request.form["username"]
+	password = request.form["password"]
 
-    if username.strip() == "" or password.strip() == "":
-        return render_template("login.html", explain="Username or Password cannot be blank")
+	if username.strip() == "" or password.strip() == "":
+		return render_template("login.html", explain="Username or Password cannot be blank")
 
-    # Verify this user and password exists
-    user_id = db.fetch_user_id(username, password)
-    if user_id is None:
-        return render_template("login.html", explain="Username or Password is incorrect")
+	# Verify this user and password exists
+	user_id = db.fetch_user_id(username, password)
+	if user_id is None:
+		return render_template("login.html", explain="Username or Password is incorrect")
 
-    # Adds user and user id to session if all is well
-    session["user"] = db.fetch_username(user_id)
-    session["user_id"] = user_id
-    return redirect("/")
+	# Adds user and user id to session if all is well
+	session["user"] = db.fetch_username(user_id)
+	session["user_id"] = user_id
+	success = order_db.create_table() #create or recreate orders table for users
+	return redirect("/")
 
 
 @app.route("/logout")
@@ -57,6 +58,7 @@ def logout():
 	Removes user from session.
 	"""
 	if logged_in():
+		success = order_db.reset_data() #resets orders table everytime user logs out
 		session.pop("user")
 		session.pop("user_id")
 	return redirect("/login")
@@ -94,37 +96,37 @@ def signup():
 
 @app.route("/about")
 def about():
-    return render_template("about.html")
+	return render_template("about.html")
 
 @app.route("/game", methods=['GET', 'POST'])
 def game(): #redirects user to the chosen area
-    if not logged_in():
-        redirect("/login")
-    if request.method == "POST":
-        if request.form["stage"] == "Counter":
-            print("Switching to Counter stage...")
-            return redirect("/counter")
-        elif request.form["stage"] == "Shop":
-            print("Switching to Shop stage...")
-            return redirect("/shop")
-    else:
-        return redirect("/counter")
+	if not logged_in():
+		redirect("/login")
+	if request.method == "POST":
+		if request.form["stage"] == "Counter":
+			print("Switching to Counter stage...")
+			return redirect("/counter")
+		elif request.form["stage"] == "Shop":
+			print("Switching to Shop stage...")
+			return redirect("/shop")
+	else:
+		return redirect("/counter")
 
 @app.route("/counter", methods=['GET', 'POST'])
 def counter():
-    if (order_db.order_count() == 0 or order_db.latest_order()[4] == 1): #will create new order if orders is empty OR if last entry is closed
-        success = order_db.create_order()
-    order_print = order_db.print_orders()
-    latest_order = order_db.latest_order()
-    return render_template("counter.html", order=latest_order) #loads counter page
+	if (not order_db.table_exists() or order_db.latest_order()[5] == 1): #will create new order if orders is empty OR if last entry is closed
+		success = order_db.create_order()
+	order_print = order_db.print_orders() #for debugging
+	latest_order = order_db.latest_order()
+	return render_template("counter.html", order=latest_order) #loads counter page
 
 @app.route("/shop", methods=['GET', 'POST'])
 def shop():
-    success = order_db.update_status()
-    order_print = order_db.print_orders()
-    return render_template("shop.html") #loads shop page
+	success = order_db.update_status()
+	order_print = order_db.print_orders()
+	return render_template("shop.html") #loads shop page
 
 if __name__ == "__main__": #false if this file imported as module
-    #enable debugging, auto-restarting of server when this file is modified
-    app.debug = True
-    app.run()
+	#enable debugging, auto-restarting of server when this file is modified
+	app.debug = True
+	app.run()
