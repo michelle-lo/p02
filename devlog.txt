@@ -57,3 +57,7 @@ Added logout feature
 
 annabelZ -- 2022-03-15 09:15
 Added inventory/shop database table
+
+michelleL -- 2022-03-15 14:46
+Added price column to orders database.
+
