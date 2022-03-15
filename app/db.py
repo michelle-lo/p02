@@ -74,3 +74,36 @@ def register_user(username, password):
     db.close()
 
     return True
+
+def createInventory():
+    db = sqlite3.connect(DB_FILE)
+    c = db.cursor()
+    tea_price = 3.00
+    topp_price = 0.50
+    starter_amt = 5
+    #teas
+    c.execute("""CREATE TABLE IF NOT EXISTS
+                inventory(item TEXT, inventory INTEGER, price FLOAT)""")
+    c.execute("""INSERT INTO inventory(item, inventory, price)
+                VALUES(?, ?, ?)""", ("green", starter_amt, tea_price))
+    c.execute("""INSERT INTO inventory(item, inventory, price)
+                VALUES(?, ?, ?)""", ("milk", starter_amt, tea_price))
+    c.execute("""INSERT INTO inventory(item, inventory, price)
+                VALUES(?, ?, ?)""", ("taro", starter_amt, tea_price))
+    c.execute("""INSERT INTO inventory(item, inventory, price)
+                VALUES(?, ?, ?)""", ("oolong", starter_amt, tea_price))
+    c.execute("""INSERT INTO inventory(item, inventory, price)
+                VALUES(?, ?, ?)""", ("milk", starter_amt, tea_price))
+    #toppings
+    c.execute("""INSERT INTO inventory(item, inventory, price)
+                VALUES(?, ?, ?)""", ("milk foam", starter_amt, topp_price))
+    c.execute("""INSERT INTO inventory(item, inventory, price)
+                VALUES(?, ?, ?)""", ("boba", starter_amt, topp_price))
+    c.execute("""INSERT INTO inventory(item, inventory, price)
+                VALUES(?, ?, ?)""", ("grass jelly", starter_amt, topp_price))
+    c.execute("""INSERT INTO inventory(item, inventory, price)
+                VALUES(?, ?, ?)""", ("lychee jelly", starter_amt, topp_price))
+    c.execute("""INSERT INTO inventory(item, inventory, price)
+                VALUES(?, ?, ?)""", ("red bean", starter_amt, topp_price))
+
+createInventory()
