@@ -10,6 +10,9 @@ app = Flask(__name__)
 app.secret_key = "boba"
 
 def logged_in():
+    """
+	Returns True if the user is in session.
+	"""
     return "user" in session
 
 @app.route("/", methods=['GET', 'POST'])
@@ -46,6 +49,17 @@ def login():
     session["user"] = db.fetch_username(user_id)
     session["user_id"] = user_id
     return redirect("/")
+
+
+@app.route("/logout")
+def logout():
+	"""
+	Removes user from session.
+	"""
+	if logged_in():
+		session.pop("user")
+		session.pop("user_id")
+	return redirect("/login")
 
 
 @app.route("/signup", methods=['GET', 'POST'])
