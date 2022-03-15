@@ -6,20 +6,23 @@
 import sqlite3, random
 
 DB_FILE = "orders.db"
-db = sqlite3.connect(DB_FILE)
-cur = db.cursor()
-#creates new tables for each new user
 
-cur.execute("""
-    CREATE TABLE IF NOT EXISTS orders(
-        id INTEGER PRIMARY KEY,
-        tea TEXT,
-        topping1 TEXT,
-        topping2 TEXT,
-        status INTEGER)""") #0 for open, 1 for closed
+def create_table():
+    db = sqlite3.connect(DB_FILE)
+    cur = db.cursor()
+    #creates new tables for each new user
 
-db.commit()
-db.close()
+    cur.execute("""
+        CREATE TABLE IF NOT EXISTS orders(
+            id INTEGER PRIMARY KEY,
+            tea TEXT,
+            topping1 TEXT,
+            topping2 TEXT,
+            status INTEGER)""") #0 for open, 1 for closed
+
+    db.commit()
+    db.close()
+    return True
 
 #add reset table function?
 
@@ -56,6 +59,8 @@ def print_orders():
     print(result)
     return result
 
+#3 dollars
+#50 cents per topping
 #creates order!
 def create_order():
     db = sqlite3.connect(DB_FILE)
@@ -80,10 +85,9 @@ def create_order():
     return True
 
 #fetches the latest entry
-def latest_order(): #use fetch_...
+def latest_order():
     db = sqlite3.connect(DB_FILE)
     c = db.cursor()
-    #account for when there is no latest order, maybe make a is table empty method
     c.execute("""
         SELECT *
         FROM orders
@@ -93,7 +97,7 @@ def latest_order(): #use fetch_...
     latest_order = c.fetchone()
     return latest_order
 
-#updates the latest entry (which is )
+#updates the latest entry
 def update_status():
     db = sqlite3.connect(DB_FILE)
     c = db.cursor()
@@ -117,3 +121,19 @@ def update_status():
     else:
         print("table does not exist. cannot update status")
         return False
+
+#after a user logs out, the table is reset. a new table is created when a user logs in/signs up
+#future notes: save button to save balance before logging out
+def reset_data():
+    #stuff that game must save before logging out
+    open("orders.db", "w").close()
+    create_table()
+    print_orders()
+    return True
+
+'''
+future additions:
+[] sell button in counter to sell drink
+[] price column
+[] balance updates with each sale
+'''
