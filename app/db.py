@@ -70,15 +70,15 @@ def register_user(username, password):
         return False
 
     c.execute("""INSERT INTO users(username, password, balance, total) VALUES(?, ?, ?, ?)""",(username, password, 0.0, 0))
-    createInventory()
+    createInventory(username, c)
     db.commit()
     db.close()
 
     return True
 
-def createInventory(username):
-    db = sqlite3.connect(DB_FILE)
-    c = db.cursor()
+def createInventory(username, c):
+    # db = sqlite3.connect(DB_FILE)
+    # c = db.cursor()
     tea_price = 3.00
     topp_price = 0.50
     starter_amt = 5
@@ -86,25 +86,25 @@ def createInventory(username):
     c.execute("""CREATE TABLE IF NOT EXISTS
                 inventory(user TEXT, item TEXT, inventory INTEGER, price FLOAT)""")
     c.execute("""INSERT INTO inventory(user, item, inventory, price)
-                VALUES(?, ?, ?)""", (username, "green", starter_amt, tea_price))
+                VALUES(?, ?, ?, ?)""", (username, "green", starter_amt, tea_price))
     c.execute("""INSERT INTO inventory(user, item, inventory, price)
-                VALUES(?, ?, ?)""", (username, "milk", starter_amt, tea_price))
+                VALUES(?, ?, ?, ?)""", (username, "milk", starter_amt, tea_price))
     c.execute("""INSERT INTO inventory(user, item, inventory, price)
-                VALUES(?, ?, ?)""", (username, "taro", starter_amt, tea_price))
+                VALUES(?, ?, ?, ?)""", (username, "taro", starter_amt, tea_price))
     c.execute("""INSERT INTO inventory(user, item, inventory, price)
-                VALUES(?, ?, ?)""", (username, "oolong", starter_amt, tea_price))
+                VALUES(?, ?, ?, ?)""", (username, "oolong", starter_amt, tea_price))
     c.execute("""INSERT INTO inventory(user, item, inventory, price)
-                VALUES(?, ?, ?)""", (username, "milk", starter_amt, tea_price))
+                VALUES(?, ?, ?, ?)""", (username, "milk", starter_amt, tea_price))
     #toppings
     c.execute("""INSERT INTO inventory(user, item, inventory, price)
-                VALUES(?, ?, ?)""", (username, "milk foam", starter_amt, topp_price))
+                VALUES(?, ?, ?, ?)""", (username, "milk foam", starter_amt, topp_price))
     c.execute("""INSERT INTO inventory(user, item, inventory, price)
-                VALUES(?, ?, ?)""", (username, "boba", starter_amt, topp_price))
+                VALUES(?, ?, ?, ?)""", (username, "boba", starter_amt, topp_price))
     c.execute("""INSERT INTO inventory(user, item, inventory, price)
-                VALUES(?, ?, ?)""", (username, "grass jelly", starter_amt, topp_price))
+                VALUES(?, ?, ?, ?)""", (username, "grass jelly", starter_amt, topp_price))
     c.execute("""INSERT INTO inventory(user, item, inventory, price)
-                VALUES(?, ?, ?)""", (username, "lychee jelly", starter_amt, topp_price))
+                VALUES(?, ?, ?, ?)""", (username, "lychee jelly", starter_amt, topp_price))
     c.execute("""INSERT INTO inventory(user, item, inventory, price)
-                VALUES(?, ?, ?)""", (username, "red bean", starter_amt, topp_price))
+                VALUES(?, ?, ?, ?)""", (username, "red bean", starter_amt, topp_price))
 
-createInventory()
+# createInventory()
