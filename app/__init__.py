@@ -94,9 +94,16 @@ def signup():
 	else:
 		return redirect("/login")
 
+
+@app.route("/profile")
+def profile():
+	return render_template("profile.html")
+
+
 @app.route("/about")
 def about():
 	return render_template("about.html")
+
 
 @app.route("/game", methods=['GET', 'POST'])
 def game(): #redirects user to the chosen area
@@ -112,6 +119,7 @@ def game(): #redirects user to the chosen area
 	else:
 		return redirect("/counter")
 
+
 @app.route("/counter", methods=['GET', 'POST'])
 def counter():
 	if (not order_db.table_exists() or order_db.latest_order()[5] == 1): #will create new order if orders is empty OR if last entry is closed
@@ -120,11 +128,13 @@ def counter():
 	latest_order = order_db.latest_order()
 	return render_template("counter.html", order=latest_order) #loads counter page
 
+
 @app.route("/shop", methods=['GET', 'POST'])
 def shop():
 	success = order_db.update_status()
 	order_print = order_db.print_orders()
 	return render_template("shop.html") #loads shop page
+
 
 if __name__ == "__main__": #false if this file imported as module
 	#enable debugging, auto-restarting of server when this file is modified
