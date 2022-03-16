@@ -11,15 +11,15 @@ Welcome to Four Toppings, a virtual boba tea shop to quench your boba cravings :
 
 ## Launch Codes
 - Install virtual environment <br>
-$ ```python3 -m venv ~/tea``` <br>
-Linux: $ ```source ~/tea/bin/activate``` <br>
-Windows: $ ```source ~/tea/Scripts/activate``` <br><br>
+```$ python3 -m venv ~/tea``` <br>
+Linux: ```$ source ~/tea/bin/activate``` <br>
+Windows: ```$ source ~/tea/Scripts/activate``` <br><br>
 - Clone the Repository <br>
-(tea)$ ```git clone https://github.com/michelle-lo/p02.git ``` <br><br>
+```(tea)$ git clone https://github.com/michelle-lo/p02.git ``` <br><br>
 - Install Dependencies <br>
-(tea)$ ```cd p02 ``` <br>
-(tea)$ ```pip install -r requirements.txt``` <br><br> 
+```(tea)$ cd p02 ``` <br>
+```(tea)$ pip install -r requirements.txt``` <br><br> 
 - Run the App <br>
-(tea)$ ```cd app``` <br>
-(tea)$ ```python3 __init__.py``` <br><br>
+```(tea)$ cd app``` <br>
+```(tea)$ python3 __init__.py``` <br><br>
 - Open the website at http://127.0.0.1:5000/
