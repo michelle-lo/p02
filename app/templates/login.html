@@ -16,45 +16,48 @@ P02: Four Toppings Boba Shop
     <title>Login</title>
   </head>
 
-  <body>
-    <center>
-      <h1>
-        Welcome to<br>
-        Four Toppings!
-      </h1>
-      <footer>
-        Sponsored by HMART
-      </footer>
-    </center>
-    <br>
+  <body id="loginPage">
+    <div class="row align-items-start">
+      <center class="col">
+        <img style="height: 40rem; object-fit: contain;" src="https://i.postimg.cc/8zgwm7Cq/flag.png">
+      </center>
 
-    <div class="container d-flex justify-content-center mx-auto align-items-center">
-      <form method="POST" action="/login">
-        <div class="align-items-center form-floating">
-          <input name="username" class="form-control" type="username" id="floatingInput exampleInputUsername1" placeholder="i can be BIIIG" required>
-          <label for="floatingInput exampleInputUsername1" class="col-form-label">Username</label>
+      <div class="col">
+        <div class="container d-flex justify-content-center mx-auto align-items-center">
+            <div class="card login-card">
+              <div class="card-body">
+                <center>
+                  <h2 class="card-title"> Welcome to Four Toppings! </h2>
+                  <footer> Sponsored by HMART </footer>
+                </center>
+
+                <form method="POST" action="/login">
+                  <br>
+                  <div class="form-floating form-group mb-4 align-items-center">
+                    <input name="username" class="form-control" type="username" id="floatingInput exampleInputUsername1" placeholder="i can be BIIIG" required>
+                    <label for="floatingInput exampleInputUsername1" class="col-form-label">Username</label>
+                  </div>
+
+                  <div class="form-floating form-group mb-4 align-items-center">
+                    <input name="password" class="form-control" type="password" id="floatingInput exampleInputPassword1" placeholder="i can be BIIIG" required>
+                    <label for="floatingInput exampleInputPassword1">Password</label>
+                  </div>
+                  <center>
+                    <div class="form-group">
+                      <input type="submit" value="Login" class="btn"></input>
+                    </div>
+                  </center>
+                </form>
+                <br>
+                <center>
+                  <a href="/about">About the Game</a><br>
+                  <a href="/signup">Create New Account</a>
+                </center>
+              </div> <!-- card body -->
+            </div> <!-- card div -->
+          </div> <!-- container div -->
         </div>
-        <br>
-        <div class="align-items-center form-floating">
-          <div class="align-items-center form-floating">
-            <input name="password" class="form-control" type="password" id="floatingInput exampleInputPassword1" placeholder="i can be BIIIG" required>
-            <label for="floatingInput exampleInputPassword1">Password</label>
-          </div>
-        </div>
-        <br>
-        <center>
-          <div class="form-group">
-            <input type="submit" value="Login"></input>
-          </div>
-          <br>
-          <footer style="color: red">{{explain}}</footer>
-        </center>
-      </form>
-    </div>
-    <br>
-    <center>
-      <a href="/about">About the Game</a><br>
-      <a href="/signup">Create New Account</a>
-    </center>
+      </div>
+
   </body>
 </html>
