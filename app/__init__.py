@@ -97,7 +97,9 @@ def signup():
 
 @app.route("/profile")
 def profile():
-	return render_template("profile.html")
+	balance = db.fetch_balance(session["user_id"])
+	drinks = db.fetch_drinks(session["user_id"])
+	return render_template("profile.html", drinks=drinks, balance=balance)
 
 
 @app.route("/about")

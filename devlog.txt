@@ -70,3 +70,6 @@ Edited createInventory to make new table on registering a new user
 
 annabelZ -- 2022-03-17 09:15
 Added in cup canvas; kitchen is ready to start!
+
+rachelX -- 2022-03-17 09:26
+More edits to profile page

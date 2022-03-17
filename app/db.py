@@ -15,7 +15,7 @@ cur.execute("""
         username TEXT,
         password TEXT,
         balance FLOAT,
-        total INTEGER)""")
+        total INTEGER)""") #total drinks
 
 db.commit()
 db.close()
@@ -57,6 +57,30 @@ def fetch_username(user_id):
 
     db.close()
     return username
+
+
+def fetch_balance(user_id):
+    db = sqlite3.connect(DB_FILE)
+    db.row_factory = lambda curr, row: row[0]
+    c = db.cursor()
+
+    c.execute("SELECT balance FROM users WHERE id = ?", (user_id,))
+    balance = c.fetchone()
+
+    db.close()
+    return balance
+
+
+def fetch_drinks(user_id):
+    db = sqlite3.connect(DB_FILE)
+    db.row_factory = lambda curr, row: row[0]
+    c = db.cursor()
+
+    c.execute("SELECT total FROM users WHERE id = ?", (user_id,))
+    drinks = c.fetchone()
+
+    db.close()
+    return drinks
 
 
 def register_user(username, password):
