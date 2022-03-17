@@ -29,12 +29,13 @@ P02: Four Toppings Boba Shop
     <form method="POST" action="/counter">
       <input type="submit" id="sellBtn" value="Sell"></input>
     </form>
-    
+
     <p>{{order}}</p>
 
     <div>
-      <canvas width="500" height="500" id="counter"></canvas>
-      <canvas width="500" height="500" id="kitchen"></canvas>
+      <canvas width="960" height="540" id="counter"></canvas>
+      <canvas width="960" height="540" id="kitchen"></canvas>
+      <canvas width="960" height="540" id="drink"></canvas>
     </div>
 
 
@@ -43,8 +44,9 @@ P02: Four Toppings Boba Shop
 
   <style>
     canvas { position: absolute; border: 1px solid black }
+    #drink { z-index: 3; }
     #counter { z-index: 2; }
-    #background { z-index:1; }
+    #kitchen { z-index: 1; }
 
   </style>
 
