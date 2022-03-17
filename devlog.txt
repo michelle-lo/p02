@@ -63,3 +63,6 @@ Added price column to orders database.
 
 rachelX -- 2022-03-16 11:47
 Finished login page and started profile page
+
+annabelZ -- 2022-03-16 22:54
+Added in canvas backgrounds into static/img folder
