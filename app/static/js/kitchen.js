@@ -22,7 +22,7 @@ var ctx3 = c3.getContext("2d");
 
 var drawCounter = () => {
   document.getElementById("kitchen").style.visibility = "hidden";
-  document.getElementById("counter").style.visibility = "visible"; 
+  document.getElementById("counter").style.visibility = "visible";
 
 };
 
@@ -56,6 +56,12 @@ img2.addEventListener("load", () => {
 
 let img3 = document.createElement("img");
 img3.src = '../static/assets/tea_milk.png';
+//
+function drawMilkTea(){
+//   // img3.addEventListener("load", () => {
+     ctx3.drawImage(img3, 0, 0);
+}
 
 counterB.addEventListener("click", drawCounter);
 kitchenB.addEventListener("click", drawKitchen);
+milkTea.addEventListener("click", drawMilkTea);
