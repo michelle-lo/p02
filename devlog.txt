@@ -73,3 +73,6 @@ Added in cup canvas; kitchen is ready to start!
 
 rachelX -- 2022-03-17 09:26
 More edits to profile page
+
+rachelX -- 2022-03-18 09:23
+Added navigation bar and designed register page
