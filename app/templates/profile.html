@@ -17,6 +17,25 @@ P02: Four Toppings Boba Shop
   </head>
 
   <body>
+    <!-- Navigation Bar -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <div class="container-fluid">
+        <a href="/" class="navbar-brand"><img style="height: 4rem;" src="https://i.postimg.cc/x1Tdz9YZ/flag-removebg-preview.png"></a>
+        <!--Navigation Bar content -->
+        <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarCollapse">
+          <div class="navbar-nav">
+            <a href="/users" class="nav-item nav-link" style="font-size: 1.3rem">Users</a>
+          </div>
+          <div class="navbar-nav ms-auto">
+            <a href="/logout" class="nav-item nav-link" style="font-size: 1.3rem">Logout</a>
+          </div>
+        </div>
+      </div>
+    </nav>
+
     <center>
       {{username}}'s Profile
     </center>

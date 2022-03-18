@@ -97,6 +97,8 @@ def signup():
 
 @app.route("/profile")
 def profile():
+	if not logged_in():
+		return redirect("/login")
 	balance = db.fetch_balance(session["user_id"])
 	drinks = db.fetch_drinks(session["user_id"])
 	return render_template("profile.html", drinks=drinks, balance=balance)

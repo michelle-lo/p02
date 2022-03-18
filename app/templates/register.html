@@ -16,15 +16,19 @@ P02: Four Toppings Boba Shop
     <title>Signup</title>
   </head>
 
-  <body>
-    <center>
-      <h1>
+  <body class="page">
+    <center style="padding-top: 30px;">
+      <div style="display: inline;">
+        <img src="https://i.postimg.cc/x1Tdz9YZ/flag-removebg-preview.png" style="height: 100px; margin-top: -10px;">
+      </div>
+      <h1 style="display: inline; white-space: nowrap;">
         Register
       </h1>
+    </center>
     <br>
 
     <div class="container d-flex justify-content-center mx-auto align-items-center">
-      <form method="POST" action="/signup">
+      <form method="POST" action="/signup" style="width: 300px;">
         <div class="align-items-center form-floating">
           <input name="newusername" class="form-control" type="username" id="floatingInput exampleInputUsername1" placeholder="i can be BIIIG" required>
           <label for="floatingInput exampleInputUsername1" class="col-form-label">Username</label>
@@ -54,7 +58,6 @@ P02: Four Toppings Boba Shop
       </form>
     </div>
 
-    <br>
     <center>
       <a href="login">Login</a>
     </center>
