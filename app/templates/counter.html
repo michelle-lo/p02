@@ -16,7 +16,6 @@ P02: Four Toppings Boba Shop
       <!-- Button Nav -->
       <form method="POST" action="/game">
         <input type="submit" id="counterStage" name="stage" value="Counter"></input>
-        <input type="submit" id="kitStage" name="stage" value="Kitchen"></input>
         <input type="submit" id="shopStage" name="stage" value="Shop"></input>
       </form>
     </div>
@@ -39,13 +38,26 @@ P02: Four Toppings Boba Shop
       <canvas width="960" height="540" id="drink"></canvas>
     </div>
 
+  <div style = "z-index: 4; position:absolute; left:500px; top:550px; height:200px; width:50%; opacity:0.3">
+    <button onclick="milkTea()">+ milktea</button>
+  </div>
+  <div style = "z-index: 4; position:absolute; left:600px; top:550px; height:200px; width:50%; opacity:0.3">
+    <button onclick="greenTea()">+ greentea</button>
+  </div>
 
   </body>
 
+  <!-- <script>
+    function milkTea(){
+      img3.addEventListener("load", () => {
+        ctx2.drawImage(img3, 0, 0)
+      });
+    }
+  </script> -->
 
   <style>
-    canvas { position: absolute; border: 1px solid black }
-    #drink { z-index: 3; }
+    canvas { position: absolute; border: 1px solid black; top:50%; left:50%; transform:translate(-50%,-50%) }
+    #drink { z-index: 5; }
     #counter { z-index: 2; }
     #kitchen { z-index: 1; }
 

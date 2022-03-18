@@ -11,7 +11,7 @@ var c2 = document.getElementById('kitchen');
 var c3 = document.getElementById('drink');
 var counterB = document.getElementById('countStage');
 var kitchenB = document.getElementById('kitchenStage');
-
+var milkTea = document.getElementById('milkTea')
 // '''prepare to interact with canvas in 2D'''
 var ctx1 = c1.getContext("2d");
 var ctx2 = c2.getContext("2d");
@@ -52,6 +52,9 @@ img2.src = '../static/img/kitchen_canvas.png';
 img2.addEventListener("load", () => {
   ctx2.drawImage(img2, 0, 0)
 });
+
+let img3 = document.createElement("img");
+img3.src = '../static/assets/tea_milk.png';
 
 counterB.addEventListener("click", drawCounter);
 kitchenB.addEventListener("click", drawKitchen);
