@@ -115,6 +115,9 @@ def game(): #redirects user to the chosen area
 		if request.form["stage"] == "Counter":
 			print("Switching to Counter stage...")
 			return redirect("/counter")
+		elif request.form["stage"] == "Kitchen":
+			print("Switching to Kitchen stage...")
+			return redirect("/kitchen")
 		elif request.form["stage"] == "Shop":
 			print("Switching to Shop stage...")
 			return redirect("/shop")
@@ -136,6 +139,10 @@ def shop():
 	success = order_db.update_status()
 	order_print = order_db.print_orders()
 	return render_template("shop.html") #loads shop page
+
+@app.route("/kitchen", methods=['GET', 'POST'])
+def kitchen():
+	return render_template("kitchen.html")
 
 
 if __name__ == "__main__": #false if this file imported as module
