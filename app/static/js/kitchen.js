@@ -10,9 +10,15 @@
 var c1 = document.getElementById('counter');
 var c2 = document.getElementById('kitchen');
 var c3 = document.getElementById('drink');
+
 var counterB = document.getElementById('countStage');
 var kitchenB = document.getElementById('kitchenStage');
+
 var milkTea = document.getElementById('milkTea')
+var greenTea = document.getElementById('greenTea')
+var taroTea = document.getElementById('taroTea')
+var oolongTea = document.getElementById('oolongTea')
+
 // '''prepare to interact with canvas in 2D'''
 var ctx1 = c1.getContext("2d");
 var ctx2 = c2.getContext("2d");
@@ -61,6 +67,30 @@ function drawMilkTea(){
 //   // img3.addEventListener("load", () => {
      ctx3.drawImage(img3, 0, 0);
 }
+
+let img4 = document.createElement("img");
+img4.src = '../static/assets/tea_green.png';
+
+function drawGreenTea(){
+    ctx3.drawImage(img4, 0, 0);
+}
+
+let img5 = document.createElement("img");
+img5.src = '../static/assets/tea_taro.png';
+
+function drawTaroTea(){
+    ctx.drawImage(img5, 0, 0);
+}
+
+let img6 = document.createElement("img");
+img6.src =  '../static/assets/tea_oolong.png';
+
+function drawOolongTea(){
+    ctx.drawImage(img6, 0, 0);
+}
+
+ 
+
 
 counterB.addEventListener("click", drawCounter);
 kitchenB.addEventListener("click", drawKitchen);
