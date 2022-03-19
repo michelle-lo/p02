@@ -14,10 +14,15 @@ var c3 = document.getElementById('drink');
 var counterB = document.getElementById('countStage');
 var kitchenB = document.getElementById('kitchenStage');
 
+// tea variables
 var milkTea = document.getElementById('milkTea')
 var greenTea = document.getElementById('greenTea')
 var taroTea = document.getElementById('taroTea')
 var oolongTea = document.getElementById('oolongTea')
+
+// topping variables
+
+var lycheeJelly =  document.getElementById('lycheeJelly')
 
 // '''prepare to interact with canvas in 2D'''
 var ctx1 = c1.getContext("2d");
@@ -79,17 +84,23 @@ let img5 = document.createElement("img");
 img5.src = '../static/assets/tea_taro.png';
 
 function drawTaroTea(){
-    ctx.drawImage(img5, 0, 0);
+    ctx3.drawImage(img5, 0, 0);
 }
 
 let img6 = document.createElement("img");
 img6.src =  '../static/assets/tea_oolong.png';
 
 function drawOolongTea(){
-    ctx.drawImage(img6, 0, 0);
+    ctx3.drawImage(img6, 0, 0);
 }
 
- 
+let img7 = document.createElement("img");
+img7.src = '../static/assets/topping_lychee.png'
+
+function drawLycheeJelly(){
+    ctx3.drawImage(img7, 0, 0);
+}
+
 
 
 counterB.addEventListener("click", drawCounter);
