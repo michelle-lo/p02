@@ -23,6 +23,8 @@ var oolongTea = document.getElementById('oolongTea')
 // topping variables
 
 var lycheeJelly =  document.getElementById('lycheeJelly')
+var tapioca = document.getElementById('tapioca')
+var redBean = document.getElementById('redBean')
 
 // '''prepare to interact with canvas in 2D'''
 var ctx1 = c1.getContext("2d");
@@ -101,6 +103,19 @@ function drawLycheeJelly(){
     ctx3.drawImage(img7, 0, 0);
 }
 
+let img8 = document.createElement("img");
+img8.src = '../static/assets/topping_tapioca.png'
+
+function drawTapioca(){
+    ctx3.drawImage(img8, 0, 0);
+}
+
+let img9 = document.createElement("redBean");
+img9.src = '../static/assets/topping_redbean.png'
+
+function drawRedBean(){
+    ctx3.drawImage(img9, 0, 0)
+}
 
 
 counterB.addEventListener("click", drawCounter);
