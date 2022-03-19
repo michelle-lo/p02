@@ -83,7 +83,10 @@ Added navigation bar and designed register page
 tinaN  -- 2022-03-18 12:34 
 Fixed button positioning relative to the viewing window (using vh and vw) and added green tea and oolong tea buttons
 
-tinaN -- 2022-03-18 16:48
+tinaN -- 2022-03-19 16:48
 Added all possible tea and topping buttons to kitchen
+
+tinaN -- 2022-03-19 18:12
+Made buttons invisible, created a dictionary for the drink, added a button for restarting the drink. red bean button won't work :(
 
 
