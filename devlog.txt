@@ -82,3 +82,6 @@ Added navigation bar and designed register page
 
 tinaN  -- 2022-03-18 12:34 
 Fixed button positioning relative to the viewing window (using vh and vw) and added green tea and oolong tea buttons
+
+tinaN -- 2022-03-18 16:48
+Added all possible tea and topping buttons to kitchen
