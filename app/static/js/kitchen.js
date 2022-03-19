@@ -26,6 +26,9 @@ var lycheeJelly =  document.getElementById('lycheeJelly')
 var tapioca = document.getElementById('tapioca')
 var redBean = document.getElementById('redBean')
 
+// drink variable
+var drink = {};
+
 // '''prepare to interact with canvas in 2D'''
 var ctx1 = c1.getContext("2d");
 var ctx2 = c2.getContext("2d");
@@ -73,6 +76,7 @@ img3.src = '../static/assets/tea_milk.png';
 function drawMilkTea(){
 //   // img3.addEventListener("load", () => {
      ctx3.drawImage(img3, 0, 0);
+     drink["tea"] = "milk";
 }
 
 let img4 = document.createElement("img");
@@ -80,6 +84,7 @@ img4.src = '../static/assets/tea_green.png';
 
 function drawGreenTea(){
     ctx3.drawImage(img4, 0, 0);
+    drink["tea"] = "green";
 }
 
 let img5 = document.createElement("img");
@@ -87,6 +92,7 @@ img5.src = '../static/assets/tea_taro.png';
 
 function drawTaroTea(){
     ctx3.drawImage(img5, 0, 0);
+    drink["tea"] = "taro";
 }
 
 let img6 = document.createElement("img");
@@ -94,13 +100,17 @@ img6.src =  '../static/assets/tea_oolong.png';
 
 function drawOolongTea(){
     ctx3.drawImage(img6, 0, 0);
+    drink["tea"] = "oolong";
 }
+
+// topping functions
 
 let img7 = document.createElement("img");
 img7.src = '../static/assets/topping_lychee.png'
 
 function drawLycheeJelly(){
     ctx3.drawImage(img7, 0, 0);
+    drink["topping"] = "lychee"
 }
 
 let img8 = document.createElement("img");
@@ -108,6 +118,7 @@ img8.src = '../static/assets/topping_tapioca.png'
 
 function drawTapioca(){
     ctx3.drawImage(img8, 0, 0);
+    drink["topping"] = "tapioca";
 }
 
 let img9 = document.createElement("redBean");
@@ -115,8 +126,12 @@ img9.src = '../static/assets/topping_redbean.png'
 
 function drawRedBean(){
     ctx3.drawImage(img9, 0, 0)
+    drink["topping"] = "redBean";
 }
 
+function clearDrink(){
+
+}
 
 counterB.addEventListener("click", drawCounter);
 kitchenB.addEventListener("click", drawKitchen);
