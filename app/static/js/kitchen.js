@@ -121,7 +121,7 @@ function drawTapioca(){
     drink["topping"] = "tapioca";
 }
 
-let img9 = document.createElement("redBean");
+let img9 = document.createElement("img");
 img9.src = '../static/assets/topping_redbean.png'
 
 function drawRedBean(){
