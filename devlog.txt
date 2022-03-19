@@ -71,8 +71,14 @@ Edited createInventory to make new table on registering a new user
 annabelZ -- 2022-03-17 09:15
 Added in cup canvas; kitchen is ready to start!
 
+tinaN -- 2022-03-17 16:43
+Added semi-transparent buttons to the kitchen canvas
+
 rachelX -- 2022-03-17 09:26
 More edits to profile page
 
 rachelX -- 2022-03-18 09:23
 Added navigation bar and designed register page
+
+tinaN  -- 2022-03-18 12:34 
+Fixed button positioning relative to the viewing window (using vh and vw) and added green tea and oolong tea buttons
