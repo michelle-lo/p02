@@ -3,7 +3,7 @@
 # P02: Four Toppings Boba Shop
 # 2022-03-06
 
-from flask import Flask, request, render_template, redirect, session
+from flask import Flask, request, render_template, redirect, session, jsonify
 import db, order_db
 
 app = Flask(__name__)
@@ -146,6 +146,14 @@ def shop():
 @app.route("/kitchen", methods=['GET', 'POST'])
 def kitchen():
 	return render_template("kitchen.html")
+
+@app.route("/process", methods=['GET', 'POST'])
+def process_sale():
+	print("Hello, does this work")
+	success = order_db.update_status()
+	order_print = order_db.print_orders()
+	return jsonify({"balance" : 200})
+
 
 
 if __name__ == "__main__": #false if this file imported as module

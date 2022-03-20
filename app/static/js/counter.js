@@ -30,6 +30,19 @@ var drawDrinkOn = () => {
   // document.getElementById("counter").style.visibility = "visible";
 };
 
+//jquery for updating balance with sell button
+$(function() {
+  $('a#sellBtn').bind('click', function() {
+    $.getJSON('/process', function(data) { //send data back to python file
+      //do nothing
+    })
+    .done(function(data){
+        $("#balance").text(data.balance); //updates balance div element with the data sent from init file
+    });
+    return false;
+  });
+});
+
 // // creates background images for counter on canvas
 let img0 = document.createElement("img");
 img0.src = '../static/assets/cup.png';
@@ -45,16 +58,7 @@ img1.src = '../static/img/counter_canvas.png';
 img1.addEventListener("load", () => {
   ctx1.drawImage(img1, 0, 0)
 });
-//
-// let img2 = document.createElement("img");
-// img2.src = '../static/img/kitchen_canvas.png';
-//
-// img2.addEventListener("load", () => {
-//   ctx2.drawImage(img2, 0, 0)
-// });
-//
-// let img3 = document.createElement("img");
-// img3.src = '../static/assets/tea_milk.png';
+
 
 drinkOn.addEventListener("click", drawDrinkOn);
 drinkOff.addEventListener("click", drawDrinkOff);
