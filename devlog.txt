@@ -93,4 +93,4 @@ annabelZ -- 2022-03-19 :18
 Separated shop and inventory values into different tables, uploaded the rest of the toppings, and fixed red bean button
 
 annabelZ -- 2022-03-19 21:32
-Styled the profile page with a bbt background, colored nav bar, and boxed text
+Styled the profile page with a bbt background, colored nav bar, and boxed text; added nav bar to all pages
