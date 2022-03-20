@@ -111,6 +111,17 @@ def update_balance(user_id, amount):
     db.close()
     return True
 
+def update_drinks(user_id):
+    db = sqlite3.connect(DB_FILE)
+    c = db.cursor()
+
+    new_drinks = fetch_drinks(user_id) + 1
+    c.execute("UPDATE users SET total = ? WHERE id = ?", (new_drinks, user_id,))
+
+    db.commit()
+    db.close()
+    return True
+
 tea_list = ["milk", "green", "taro", "oolong"]
 topping_list = ["milk foam", "tapioca", "grass jelly", "lychee jelly", "red bean"]
 

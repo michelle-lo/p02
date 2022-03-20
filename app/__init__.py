@@ -131,17 +131,14 @@ def game(): #redirects user to the chosen area
 
 @app.route("/counter", methods=['GET', 'POST'])
 def counter():
-	# if (not order_db.table_exists() or order_db.latest_order()[5] == 1): #will create new order if orders is empty OR if last entry is closed
-	# 	success = order_db.create_order()
 	order_print = order_db.print_orders() #for debugging
 	latest_order = order_db.latest_order()
-	return render_template("counter.html") #loads counter page
+	current_balance = db.fetch_balance(session["user_id"])
+	return render_template("counter.html", current_balance=current_balance, current_order=latest_order) #loads counter page
 
 
 @app.route("/shop", methods=['GET', 'POST'])
 def shop():
-	success = order_db.update_status()
-	order_print = order_db.print_orders()
 	return render_template("shop.html") #loads shop page
 
 @app.route("/kitchen", methods=['GET', 'POST'])
@@ -155,10 +152,13 @@ def process_sale():
 	balance_updated = db.update_balance(session["user_id"], new_amount)
 	print("balance: " + str(db.fetch_balance(session["user_id"])))
 
+	#updating sales database and creates new order
 	success = order_db.update_status()
+	drinks_update = db.update_drinks(session["user_id"])
 	if (order_db.latest_order()[5] == 1):
 		create_order = order_db.create_order()
 
+	#sending data to counter.js
 	new_balance = db.fetch_balance(session["user_id"])
 	latest_order = order_db.latest_order()
 	json = jsonify({

@@ -100,3 +100,6 @@ Implemented some jquery code in order to update the balance element on the page 
 
 michelleL -- 2022-03-20 03:04
 User balance is now updated after each sale. Order and balance number now update without refreshing.
+
+michelleL -- 2022-03-20 12:25
+User drink total will now increment by one once a sale is made. Counter page will now display current order and balance at all times.

@@ -25,7 +25,7 @@ var drawDrinkOn = () => {
   document.getElementById("drink").style.visibility = "visible";
 };
 
-//jquery for updating balance with sell button
+//jquery for updating balance and order with sell button
 $(function() {
   $('a#sellBtn').bind('click', function() {
     $.getJSON('/process', function(data) { //send data back to python file

@@ -80,9 +80,9 @@ def create_order():
 
     add_on = 0
     if (topping1 == 'null' or topping2 == 'null'): #minimum of 1 topping
-        add_on += 0.25
-    else:
         add_on += 0.50
+    else:
+        add_on += 1.00
 
     price = (3 + add_on)
 
