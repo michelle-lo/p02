@@ -80,7 +80,7 @@ More edits to profile page
 rachelX -- 2022-03-18 09:23
 Added navigation bar and designed register page
 
-tinaN  -- 2022-03-18 12:34 
+tinaN  -- 2022-03-18 12:34
 Fixed button positioning relative to the viewing window (using vh and vw) and added green tea and oolong tea buttons
 
 tinaN -- 2022-03-19 16:48
@@ -89,4 +89,8 @@ Added all possible tea and topping buttons to kitchen
 tinaN -- 2022-03-19 18:12
 Made buttons invisible, created a dictionary for the drink, added a button for restarting the drink. red bean button won't work :(
 
+annabelZ -- 2022-03-19 :18
+Separated shop and inventory values into different tables, uploaded the rest of the toppings, and fixed red bean button
 
+annabelZ -- 2022-03-19 21:32
+Styled the profile page with a bbt background, colored nav bar, and boxed text
