@@ -49,6 +49,7 @@ def login():
 	session["user"] = db.fetch_username(user_id)
 	session["user_id"] = user_id
 	success = order_db.create_table() #create or recreate orders table for users
+	create_order = order_db.create_order() #create the first order
 	return redirect("/")
 
 
@@ -130,11 +131,11 @@ def game(): #redirects user to the chosen area
 
 @app.route("/counter", methods=['GET', 'POST'])
 def counter():
-	if (not order_db.table_exists() or order_db.latest_order()[5] == 1): #will create new order if orders is empty OR if last entry is closed
-		success = order_db.create_order()
+	# if (not order_db.table_exists() or order_db.latest_order()[5] == 1): #will create new order if orders is empty OR if last entry is closed
+	# 	success = order_db.create_order()
 	order_print = order_db.print_orders() #for debugging
 	latest_order = order_db.latest_order()
-	return render_template("counter.html", order=latest_order) #loads counter page
+	return render_template("counter.html") #loads counter page
 
 
 @app.route("/shop", methods=['GET', 'POST'])
@@ -149,12 +150,23 @@ def kitchen():
 
 @app.route("/process", methods=['GET', 'POST'])
 def process_sale():
-	print("Hello, does this work")
+	#updating balance
+	new_amount = order_db.fetch_price() #fetches price of latest drink (if not already closed)
+	balance_updated = db.update_balance(session["user_id"], new_amount)
+	print("balance: " + str(db.fetch_balance(session["user_id"])))
+
 	success = order_db.update_status()
+	if (order_db.latest_order()[5] == 1):
+		create_order = order_db.create_order()
+
+	new_balance = db.fetch_balance(session["user_id"])
+	latest_order = order_db.latest_order()
+	json = jsonify({
+		"balance" : new_balance,
+		"order" : latest_order
+	})
 	order_print = order_db.print_orders()
-	return jsonify({"balance" : 200})
-
-
+	return json
 
 if __name__ == "__main__": #false if this file imported as module
 	#enable debugging, auto-restarting of server when this file is modified

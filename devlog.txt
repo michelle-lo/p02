@@ -96,4 +96,7 @@ annabelZ -- 2022-03-19 21:32
 Styled the profile page with a bbt background, colored nav bar, and boxed text; added nav bar to all pages
 
 michelleL -- 2022-03-20 01:23 (haha)
-Implemented some jquery/ajax code in order to update the balance element on the page without refreshing.
+Implemented some jquery code in order to update the balance element on the page without refreshing.
+
+michelleL -- 2022-03-20 03:04
+User balance is now updated after each sale. Order and balance number now update without refreshing.

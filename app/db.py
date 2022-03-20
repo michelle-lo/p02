@@ -100,6 +100,17 @@ def register_user(username, password):
 
     return True
 
+def update_balance(user_id, amount):
+    db = sqlite3.connect(DB_FILE)
+    c = db.cursor()
+
+    new_balance = fetch_balance(user_id) + amount
+    c.execute("UPDATE users SET balance = ? WHERE id = ?", (new_balance, user_id,))
+
+    db.commit()
+    db.close()
+    return True
+
 tea_list = ["milk", "green", "taro", "oolong"]
 topping_list = ["milk foam", "tapioca", "grass jelly", "lychee jelly", "red bean"]
 

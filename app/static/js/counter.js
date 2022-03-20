@@ -15,19 +15,14 @@ var drinkOffB = document.getElementById('drinkOff');
 // '''prepare to interact with canvas in 2D'''
 var ctx1 = c1.getContext("2d");
 var ctx2 = c2.getContext("2d");
-// var ctx3 = c3.getContext("2d");
-
-
 
 var drawDrinkOff = () => {
   document.getElementById("drink").style.visibility = "hidden";
-  // document.getElementById("counter").style.visibility = "visible";
 
 };
 
 var drawDrinkOn = () => {
   document.getElementById("drink").style.visibility = "visible";
-  // document.getElementById("counter").style.visibility = "visible";
 };
 
 //jquery for updating balance with sell button
@@ -38,6 +33,7 @@ $(function() {
     })
     .done(function(data){
         $("#balance").text(data.balance); //updates balance div element with the data sent from init file
+        $("#order").text(data.order);
     });
     return false;
   });

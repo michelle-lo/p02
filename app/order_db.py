@@ -133,8 +133,11 @@ def update_status():
         return False
 
 def fetch_price():
-    latest = latest_order()
-    return latest[4]
+    if (not table_exists or latest_order()[5] == 1):
+        return 0
+    else:
+        latest = latest_order()
+        return latest[4]
 
 #after a user logs out, the table is reset. a new table is created when a user logs in/signs up
 #future notes: save button to save balance before logging out
