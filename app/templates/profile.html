@@ -17,6 +17,7 @@ P02: Four Toppings Boba Shop
   </head>
 
   <body>
+    <!-- <div class="navbar"> -->
     <!-- Navigation Bar -->
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
       <div class="container-fluid">
@@ -27,19 +28,24 @@ P02: Four Toppings Boba Shop
         </button>
         <div class="collapse navbar-collapse" id="navbarCollapse">
           <div class="navbar-nav">
-            <a href="/users" class="nav-item nav-link" style="font-size: 1.3rem">Users</a>
+            <a href="/users" class="nav-item nav-link">Users</a>
           </div>
           <div class="navbar-nav ms-auto">
-            <a href="/logout" class="nav-item nav-link" style="font-size: 1.3rem">Logout</a>
+            <a href="/logout" class="nav-item nav-link">Logout</a>
           </div>
         </div>
       </div>
     </nav>
-
+    <!-- </div> -->
+<br>
     <center>
+      <div class="user-title">
       {{username}}'s Profile
+      </div>
     </center>
-    <div class="container" style="margin: 50px;">
+
+    <div class="container" style="margin: 50px;border-radius: 25px;
+    background-color: white;">
       <div class="row">
         <center class="col">
           Drinks Made:<br>
@@ -47,12 +53,12 @@ P02: Four Toppings Boba Shop
         </center>
         <center class="col">
           Balance:<br>
-          <img src="https://i.postimg.cc/vBnwy6st/image.jpg" style="height: 100px; margin-right: 50px;">{{balance}}
+          <img src="https://i.postimg.cc/vBnwy6st/image.jpg" style="height: 100px; margin-right: 50px;">${{balance}}
         </center>
       </div>
     </div>
     <center>
-      <button class="btn"><a href="/counter">Play</a></button>
+      <button class="btn btn-info"><a href="/counter">Play</a></button>
     </center>
   </body>
 </html>

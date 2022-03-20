@@ -6,4 +6,37 @@ P02: Four Toppings Boba Shop
 
 body {
   font-size: 45px;
+  background-image: url(../img/bbt_bkgd.png);
+  background-repeat: repeat-tile;
+}
+
+.navbar-light .navbar-nav .nav-link {
+    color: black;
+    text-decoration: underline;
+    font-size: 1.3rem;
+    font-weight: bold;
+}
+
+.bg-light{
+  background-color:#c6ecff !important
+}
+
+a{
+  color: black;
+}
+
+html{
+  background-image: url(../img/bbt_bkgd.png);
+  background-repeat: repeat-tile;
+}
+
+.user-title {
+  border-radius: 25px;
+  background-color: white;
+  width: 20vw;
+  height: 10vh;
+}
+
+.col{
+  height: 25vh;
 }
