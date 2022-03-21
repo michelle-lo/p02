@@ -38,25 +38,28 @@ P02: Four Toppings Boba Shop
 
 
     <div>
+      <center>
       <!-- Button Nav -->
-      <form method="POST" action="/game">
-        <input type="submit" id="counterStage" name="stage" value="Counter"></input>
-        <input type="submit" id="kitStage" name="stage" value="Kitchen"></input>
-        <input type="submit" id="shopStage" name="stage" value="Shop"></input>
-      </form>
+        <form method="POST" action="/game">
+          <input type="submit" id="counterStage" name="stage" value="Counter"></input>
+          <input type="submit" id="kitStage" name="stage" value="Kitchen"></input>
+          <input type="submit" id="shopStage" name="stage" value="Shop"></input>
+        </form>
+      </center>
     </div>
-    <a href="/logout" class="nav-item nav-link" style = "font-size: 1.3rem">Logout</a><br>
 
-    <!-- Different pages can have different buttons -->
-    <button id="countStage">Counter</button>
-    <button id="kitchenStage">Kitchen</button>
 
-    <div>
+    <div style="padding-bottom: 550px;">
       <canvas width="960" height="540" id="counter"></canvas>
       <canvas width="960" height="540" id="kitchen"></canvas>
       <canvas width="960" height="540" id="drink"></canvas>
     </div>
 
+    <center>
+      <!-- Different pages can have different buttons -->
+      <button id="countStage">Counter</button>
+      <button id="kitchenStage">Kitchen</button>
+    </center>
 <!-- tea buttons -->
   <div style = "z-index: 5; position:absolute; left: 21vw; top: 62vh; opacity:0">
     <button onclick="drawMilkTea()" id = "milkTea">+ milktea</button>

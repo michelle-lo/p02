@@ -115,3 +115,6 @@ Bug-fixed customer slideeee so that customer properly moves when sell button is 
 
 michelleL -- 2022-03-21 17:35
 Fixed bug that prevented image3 from customer slideee from appearing properly on the first load.
+
+michelleL -- 2022-03-21 18:37
+Edited kitchen and counter html

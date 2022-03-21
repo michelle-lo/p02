@@ -39,7 +39,7 @@ $(function() {
       //do nothing
     })
     .done(function(data){
-        $("#balance").text(data.balance); //updates balance div element with the data sent from init file
+        $("#balance").text("Balance: " + data.balance); //updates balance div element with the data sent from init file
         $("#order").text(data.order);
     });
     return false;

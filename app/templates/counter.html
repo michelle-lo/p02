@@ -50,17 +50,16 @@ P02: Four Toppings Boba Shop
       </div>
     </nav>
 
-    <div>
-      <p><b>Balance</b></p>
-      <div id="balance">{{current_balance}}</div>
-      <div id="order">{{current_order}}</div>
 
+    <div>
+      <center>
       <!-- Button Nav -->
-      <form method="POST" action="/game">
-        <input type="submit" id="counterStage" name="stage" value="Counter"></input>
-        <input type="submit" id="kitStage" name="stage" value="Kitchen"></input>
-        <input type="submit" id="shopStage" name="stage" value="Shop"></input>
-      </form>
+        <form method="POST" action="/game">
+          <input type="submit" id="counterStage" name="stage" value="Counter"></input>
+          <input type="submit" id="kitStage" name="stage" value="Kitchen"></input>
+          <input type="submit" id="shopStage" name="stage" value="Shop"></input>
+        </form>
+      </center>
     </div>
 
     <div style="padding-bottom: 550px;">
@@ -68,15 +67,19 @@ P02: Four Toppings Boba Shop
       <canvas width="960" height="540" id="customer"></canvas>
       <canvas width="960" height="540" id="counter"></canvas>
       <canvas width="960" height="540" id="drink"></canvas>
+      <canvas width="960" height="540" id="drink"></canvas>
     </div>
+    
     <center>
       <!-- Different pages can have different buttons -->
-      <button id="drinkOn">Drink On</button>
-      <button id="drinkOff">Drink Off</button>
+      <div>
+        <p id="balance">Balance: {{current_balance}}</p>
+        <p id="order">{{current_order}}</p>
+      </div>
 
-      <form>
+        <button id="drinkOn">Drink On</button>
+        <button id="drinkOff">Drink Off</button>
         <a href=# id=sellBtn><button>Sell</button></a>
-      </form>
     </center>
 
   </body>
