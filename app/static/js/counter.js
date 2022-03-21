@@ -79,12 +79,14 @@ var clear = (e) => {
     ctx3.clearRect(0, 0, c3.clientWidth, c3.clientHeight);
 };
 
+// 256 is the height of image 3
+console.log(c3.height);
 img3.addEventListener("load", () => {
-  ctx3.drawImage(img3, c3.width / 2 - img3.width / 2, (c3.height / 2) - (img3.height / 2) + 10)
+  ctx3.drawImage(img3, c3.width / 2 - img3.width / 2, c3.height / 2 - (256 / 2) + 10)
 });
 
 var dx = 0;
-var dy = c3.height / 2 - img3.height / 2 + 10;
+var dy = c3.height / 2 - (256 / 2) + 10;
 xVel = 5;
 
 var customerSlide = () => {
@@ -102,7 +104,6 @@ var customerSlide = () => {
   }
 
 }
-
 
 drinkOn.addEventListener("click", drawDrinkOn);
 drinkOff.addEventListener("click", drawDrinkOff);

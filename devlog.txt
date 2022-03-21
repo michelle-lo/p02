@@ -109,3 +109,6 @@ Added customer slideeeeee to counter.js.
 
 michelleL -- 2022-03-21 09:23
 Bug-fixed customer slideeee so that customer properly moves when sell button is pressed.
+
+michelleL -- 2022-03-21 17:35
+Fixed bug that prevented image3 from customer slideee from appearing properly on the first load.
