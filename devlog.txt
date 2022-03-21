@@ -104,6 +104,9 @@ User balance is now updated after each sale. Order and balance number now update
 michelleL -- 2022-03-20 12:25
 User drink total will now increment by one once a sale is made. Counter page will now display current order and balance at all times.
 
+annabelZ -- 2022-03-20 18:14
+Fixed kitchen buttons and added foreground/bkgd image
+
 michelleL -- 2022-03-21 09:03
 Added customer slideeeeee to counter.js.
 
