@@ -52,6 +52,7 @@ P02: Four Toppings Boba Shop
     <form>
       <a href=# id=sellBtn><button>Sell</button></a>
     </form>
+
     <p><b>Balance</b></p>
     <div id="balance">{{current_balance}}</div>
 
@@ -59,6 +60,7 @@ P02: Four Toppings Boba Shop
 
     <div>
       <canvas width="960" height="540" id="counter"></canvas>
+      <canvas width="960" height="540" id="customer"></canvas>
       <canvas width="960" height="540" id="drink"></canvas>
     </div>
 
@@ -68,7 +70,8 @@ P02: Four Toppings Boba Shop
 
   <style>
     canvas { position: absolute; border: 1px solid black; top:50%; left:50%; transform:translate(-50%,-50%) }
-    #drink { z-index: 2; }
+    #drink { z-index: 3; }
+    #customer { z-index: 2; }
     #counter { z-index: 1; }
 
   </style>

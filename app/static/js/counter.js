@@ -7,15 +7,19 @@
 // '''access canvas and buttons via DOM'''
 //Different canvas layers
 var c1 = document.getElementById('counter');
-// var c2 = document.getElementById('kitchen');
 var c2 = document.getElementById('drink');
+var c3 = document.getElementById('customer');
+var requestID;
 var drinkOnB = document.getElementById('drinkOn');
 var drinkOffB = document.getElementById('drinkOff');
-// var milkTea = document.getElementById('milkTea')
+var sellBtn = document.getElementById('sellBtn');
+
 // '''prepare to interact with canvas in 2D'''
 var ctx1 = c1.getContext("2d");
 var ctx2 = c2.getContext("2d");
+var ctx3 = c3.getContext("2d");
 
+// drink visiblility
 var drawDrinkOff = () => {
   document.getElementById("drink").style.visibility = "hidden";
 
@@ -39,7 +43,7 @@ $(function() {
   });
 });
 
-// // creates background images for counter on canvas
+// creates background images for counter on canvas
 let img0 = document.createElement("img");
 img0.src = '../static/assets/cup.png';
 
@@ -55,6 +59,37 @@ img1.addEventListener("load", () => {
   ctx1.drawImage(img1, 0, 0)
 });
 
+//customer slideeeeee
+let img3 = document.createElement("img");
+img3.src = '../static/assets/customer0.png';
+
+var clear = (e) => {
+    ctx3.clearRect(0, 0, c3.clientWidth, c3.clientHeight);
+};
+
+img3.addEventListener("load", () => {
+  ctx3.drawImage(img3, c3.width / 2 - img3.width / 2, (c3.height / 2) - (img3.height / 2) + 10)
+});
+
+var dx = 0;
+var dy = c3.height / 2 - img3.height / 2 + 10;
+xVel = 5;
+
+var customerSlide = () => {
+  if (dx <= c3.width / 2 - img3.width / 2) {
+    window.cancelAnimationFrame(requestID);
+    requestID = window.cancelAnimationFrame(requestID);
+    clear();
+    ctx3.beginPath();
+    ctx3.drawImage(img3, dx, dy);
+    dx += xVel;
+    if (dx <= c3.width / 2 - img3.width / 2) {
+      requestID = window.requestAnimationFrame(customerSlide);
+    }
+  }
+}
+
 
 drinkOn.addEventListener("click", drawDrinkOn);
 drinkOff.addEventListener("click", drawDrinkOff);
+sellBtn.addEventListener("click", customerSlide);
