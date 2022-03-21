@@ -39,20 +39,29 @@ P02: Four Toppings Boba Shop
         </button>
         <div class="collapse navbar-collapse" id="navbarCollapse">
           <div class="navbar-nav">
-            <a href class="nav-item nav-link">Four Toppings</a>
+            <a href class="nav-item nav-link" style="font-weight: bold;">Four Toppings</a>
           </div>
           <div class="navbar-nav ms-auto">
+            <a href="/profile" class="nav-item nav-link">Profile</a>
+            <a href="/about" class="nav-item nav-link">Help</a>
             <a href="/logout" class="nav-item nav-link">Logout</a>
           </div>
         </div>
       </div>
     </nav>
 
-    <center>
+    <div>
       <p><b>Balance</b></p>
       <div id="balance">{{current_balance}}</div>
       <div id="order">{{current_order}}</div>
-    </center>
+
+      <!-- Button Nav -->
+      <form method="POST" action="/game">
+        <input type="submit" id="counterStage" name="stage" value="Counter"></input>
+        <input type="submit" id="kitStage" name="stage" value="Kitchen"></input>
+        <input type="submit" id="shopStage" name="stage" value="Shop"></input>
+      </form>
+    </div>
 
     <div style="padding-bottom: 550px;">
       <canvas width="960" height="540" id="counterbkg"></canvas>
@@ -61,12 +70,6 @@ P02: Four Toppings Boba Shop
       <canvas width="960" height="540" id="drink"></canvas>
     </div>
     <center>
-      <!-- Button Nav -->
-      <form method="POST" action="/game">
-        <input type="submit" id="counterStage" name="stage" value="Counter"></input>
-        <input type="submit" id="kitStage" name="stage" value="Kitchen"></input>
-        <input type="submit" id="shopStage" name="stage" value="Shop"></input>
-      </form>
       <!-- Different pages can have different buttons -->
       <button id="drinkOn">Drink On</button>
       <button id="drinkOff">Drink Off</button>
