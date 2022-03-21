@@ -106,3 +106,6 @@ User drink total will now increment by one once a sale is made. Counter page wil
 
 michelleL -- 2022-03-21 09:03
 Added customer slideeeeee to counter.js.
+
+michelleL -- 2022-03-21 09:23
+Bug-fixed customer slideeee so that customer properly moves when sell button is pressed.

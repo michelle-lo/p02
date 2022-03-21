@@ -59,8 +59,9 @@ P02: Four Toppings Boba Shop
     <div id="order">{{current_order}}</div>
 
     <div>
-      <canvas width="960" height="540" id="counter"></canvas>
+      <canvas width="960" height="540" id="counterbkg"></canvas>
       <canvas width="960" height="540" id="customer"></canvas>
+      <canvas width="960" height="540" id="counter"></canvas>
       <canvas width="960" height="540" id="drink"></canvas>
     </div>
 
@@ -70,9 +71,10 @@ P02: Four Toppings Boba Shop
 
   <style>
     canvas { position: absolute; border: 1px solid black; top:50%; left:50%; transform:translate(-50%,-50%) }
-    #drink { z-index: 3; }
+    #drink { z-index: 4; }
+    #counter { z-index: 3; }
     #customer { z-index: 2; }
-    #counter { z-index: 1; }
+    #counterbkg { z-index: 1; }
 
   </style>
 

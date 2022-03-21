@@ -6,9 +6,11 @@
 //script for counter stage
 // '''access canvas and buttons via DOM'''
 //Different canvas layers
-var c1 = document.getElementById('counter');
+var c1 = document.getElementById('counterbkg');
 var c2 = document.getElementById('drink');
 var c3 = document.getElementById('customer');
+var c4 = document.getElementById('counter');
+
 var requestID;
 var drinkOnB = document.getElementById('drinkOn');
 var drinkOffB = document.getElementById('drinkOff');
@@ -18,6 +20,7 @@ var sellBtn = document.getElementById('sellBtn');
 var ctx1 = c1.getContext("2d");
 var ctx2 = c2.getContext("2d");
 var ctx3 = c3.getContext("2d");
+var ctx4 = c4.getContext("2d");
 
 // drink visiblility
 var drawDrinkOff = () => {
@@ -43,7 +46,7 @@ $(function() {
   });
 });
 
-// creates background images for counter on canvas
+// cup
 let img0 = document.createElement("img");
 img0.src = '../static/assets/cup.png';
 
@@ -51,7 +54,7 @@ img0.addEventListener("load", () => {
   ctx2.drawImage(img0, 0, 0)
 });
 
-
+//counter background
 let img1 = document.createElement("img");
 img1.src = '../static/img/counter_canvas.png';
 
@@ -59,10 +62,19 @@ img1.addEventListener("load", () => {
   ctx1.drawImage(img1, 0, 0)
 });
 
-//customer slideeeeee
+//counter foreground
+let img4 = document.createElement("img");
+img4.src = '../static/img/counter_foreground.png';
+
+img4.addEventListener("load", () => {
+  ctx4.drawImage(img4, 0, 0)
+});
+
+//customer
 let img3 = document.createElement("img");
 img3.src = '../static/assets/customer0.png';
 
+//customer slideeeeee
 var clear = (e) => {
     ctx3.clearRect(0, 0, c3.clientWidth, c3.clientHeight);
 };
@@ -76,17 +88,19 @@ var dy = c3.height / 2 - img3.height / 2 + 10;
 xVel = 5;
 
 var customerSlide = () => {
-  if (dx <= c3.width / 2 - img3.width / 2) {
-    window.cancelAnimationFrame(requestID);
-    requestID = window.cancelAnimationFrame(requestID);
-    clear();
-    ctx3.beginPath();
-    ctx3.drawImage(img3, dx, dy);
-    dx += xVel;
-    if (dx <= c3.width / 2 - img3.width / 2) {
-      requestID = window.requestAnimationFrame(customerSlide);
-    }
+  if (dx >= c3.width / 2 - img3.width / 2) {
+    dx = 0;
   }
+  window.cancelAnimationFrame(requestID);
+  requestID = window.cancelAnimationFrame(requestID);
+  clear();
+  ctx3.beginPath();
+  ctx3.drawImage(img3, dx, dy);
+  dx += xVel;
+  if (dx <= c3.width / 2 - img3.width / 2) {
+    requestID = window.requestAnimationFrame(customerSlide);
+  }
+
 }
 
 
