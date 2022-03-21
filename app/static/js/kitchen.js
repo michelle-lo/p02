@@ -133,6 +133,19 @@ function clearDrink(){
 
 }
 
+// testing
+// var draw = () => {
+//
+//   var mouseX = e.offsetX
+//   var mouseY = e.offsetY
+//   console.log("mouseclick registered at ", mouseX, mouseY);
+//
+//   if (mouseY >= 300 && mouseY <= 336 && mouseX <= 130 && mouseX >= 50) {
+//     drawTaroTea;
+// }}
+
+
+c.addeventlistener("click", draw)
 counterB.addEventListener("click", drawCounter);
 kitchenB.addEventListener("click", drawKitchen);
 milkTea.addEventListener("click", drawMilkTea);
