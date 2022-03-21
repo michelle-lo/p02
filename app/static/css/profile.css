@@ -16,7 +16,7 @@ body {
 }
 
 .bg-light{
-  background-color:#c6ecff !important
+  background-color: #c6ecff !important
 }
 
 a {
@@ -29,12 +29,17 @@ html {
 }
 
 .user-title {
+  margin-top: 40px;
   border-radius: 25px;
   background-color: white;
   width: 20vw;
   height: 10vh;
 }
 
-.col{
+.col {
   height: 25vh;
+}
+
+button a:hover {
+  color: gray;
 }

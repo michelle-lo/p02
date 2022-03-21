@@ -6,15 +6,13 @@ P02: Four Toppings Boba Shop
 
 .navbar-light .navbar-nav .nav-link {
   color: black;
-  text-decoration: underline;
   font-size: 1.3rem;
-  font-weight: bold;
 }
 
 .bg-light{
   background-color:#c6ecff !important
 }
 
-body{
+body {
   background-color: #ede2d4;
 }

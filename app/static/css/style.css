@@ -24,3 +24,12 @@ P02: Four Toppings Boba Shop
   top: 50%;
   -ms-transform: translateY(-50%);
 }
+
+.bg-light{
+  background-color:#c6ecff !important
+}
+
+.navbar-light .navbar-nav .nav-link {
+  color: black;
+  font-size: 1.3rem;
+}
