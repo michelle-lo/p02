@@ -12,6 +12,20 @@ P02: Four Toppings Boba Shop
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <link rel="stylesheet" href="../static/css/game.css">
     <title>Counter</title>
+
+    <style>
+      canvas {
+        border: 1px solid black;
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%,-50%);
+      }
+      #drink { z-index: 4; }
+      #counter { z-index: 3; }
+      #customer { z-index: 2; }
+      #counterbkg { z-index: 1; }
+    </style>
   </head>
 
   <body>
@@ -34,51 +48,37 @@ P02: Four Toppings Boba Shop
       </div>
     </nav>
 
+    <center>
+      <p><b>Balance</b></p>
+      <div id="balance">{{current_balance}}</div>
+      <div id="order">{{current_order}}</div>
+    </center>
 
-    <div>
+    <div style="padding-bottom: 550px;">
+      <canvas width="960" height="540" id="counterbkg"></canvas>
+      <canvas width="960" height="540" id="customer"></canvas>
+      <canvas width="960" height="540" id="counter"></canvas>
+      <canvas width="960" height="540" id="drink"></canvas>
+    </div>
+    <center>
       <!-- Button Nav -->
       <form method="POST" action="/game">
         <input type="submit" id="counterStage" name="stage" value="Counter"></input>
         <input type="submit" id="kitStage" name="stage" value="Kitchen"></input>
         <input type="submit" id="shopStage" name="stage" value="Shop"></input>
       </form>
-    </div>
-    <a href="/logout" class="nav-item nav-link" style = "font-size: 1.3rem">Logout</a><br>
+      <!-- Different pages can have different buttons -->
+      <button id="drinkOn">Drink On</button>
+      <button id="drinkOff">Drink Off</button>
 
-    <!-- Different pages can have different buttons -->
-    <button id="drinkOn">Drink On</button>
-    <button id="drinkOff">Drink Off</button>
-
-    <form>
-      <a href=# id=sellBtn><button>Sell</button></a>
-    </form>
-
-    <p><b>Balance</b></p>
-    <div id="balance">{{current_balance}}</div>
-
-    <div id="order">{{current_order}}</div>
-
-    <div>
-      <canvas width="960" height="540" id="counterbkg"></canvas>
-      <canvas width="960" height="540" id="customer"></canvas>
-      <canvas width="960" height="540" id="counter"></canvas>
-      <canvas width="960" height="540" id="drink"></canvas>
-    </div>
-
+      <form>
+        <a href=# id=sellBtn><button>Sell</button></a>
+      </form>
+    </center>
 
   </body>
 
-
-  <style>
-    canvas { position: absolute; border: 1px solid black; top:50%; left:50%; transform:translate(-50%,-50%) }
-    #drink { z-index: 4; }
-    #counter { z-index: 3; }
-    #customer { z-index: 2; }
-    #counterbkg { z-index: 1; }
-
-  </style>
-
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-  <Script src="../static/js/counter.js"></script>
+  <script src="../static/js/counter.js"></script>
 
 </html>

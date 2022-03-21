@@ -12,20 +12,18 @@ body {
 
 .navbar-light .navbar-nav .nav-link {
     color: black;
-    text-decoration: underline;
     font-size: 1.3rem;
-    font-weight: bold;
 }
 
 .bg-light{
   background-color:#c6ecff !important
 }
 
-a{
+a {
   color: black;
 }
 
-html{
+html {
   background-image: url(../img/bbt_bkgd.png);
   background-repeat: repeat-tile;
 }

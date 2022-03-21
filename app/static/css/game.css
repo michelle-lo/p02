@@ -5,10 +5,10 @@ P02: Four Toppings Boba Shop
 2022-03-08 */
 
 .navbar-light .navbar-nav .nav-link {
-    color: black;
-    text-decoration: underline;
-    font-size: 1.3rem;
-    font-weight: bold;
+  color: black;
+  text-decoration: underline;
+  font-size: 1.3rem;
+  font-weight: bold;
 }
 
 .bg-light{

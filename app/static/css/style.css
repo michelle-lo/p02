@@ -8,14 +8,6 @@ P02: Four Toppings Boba Shop
   background-color: #c6ecff;
 }
 
-.loginPic {
-  margin: 0;
-  position: absolute;
-  top: 50%;
-  -ms-transform: translateY(-50%);
-  transform: translateY(-50%);
-}
-
 .card {
   padding: 15px;
   width: 500px !important;
@@ -25,4 +17,10 @@ P02: Four Toppings Boba Shop
   top: 50%;
   -ms-transform: translateY(-50%);
   transform: translateY(-50%);
+}
+
+.loginPic {
+  margin: 0;
+  top: 50%;
+  -ms-transform: translateY(-50%);
 }
