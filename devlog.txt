@@ -127,3 +127,6 @@ Added taro on-click instead of a button (since the buttons get displaced due to 
 
 michelleL -- 2022-03-22 09:24
 New customers added (thank you jQuery) and order updates on canvas.
+
+rachelX -- 2022-03-22 12:16
+Created fetch inventory method
