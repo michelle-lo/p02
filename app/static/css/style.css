@@ -19,12 +19,6 @@ P02: Four Toppings Boba Shop
   transform: translateY(-50%);
 }
 
-.loginPic {
-  margin: 0;
-  top: 50%;
-  -ms-transform: translateY(-50%);
-}
-
 .bg-light{
   background-color:#c6ecff !important
 }
