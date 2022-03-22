@@ -7,12 +7,12 @@
 // '''access canvas and buttons via DOM'''
 //Different canvas layers
 
-var c1 = document.getElementById('counter');
+// var c1 = document.getElementById('counter');
 var c2 = document.getElementById('kitchen');
 var c3 = document.getElementById('drink');
 
-var counterB = document.getElementById('countStage');
-var kitchenB = document.getElementById('kitchenStage');
+// var counterB = document.getElementById('countStage');
+// var kitchenB = document.getElementById('kitchenStage');
 
 // tea variables
 var milkTea = document.getElementById('milkTea')
@@ -30,22 +30,22 @@ var redBean = document.getElementById('redBean')
 var drink = {};
 
 // '''prepare to interact with canvas in 2D'''
-var ctx1 = c1.getContext("2d");
+// var ctx1 = c1.getContext("2d");
 var ctx2 = c2.getContext("2d");
 var ctx3 = c3.getContext("2d");
 
 
 
-var drawCounter = () => {
-  document.getElementById("kitchen").style.visibility = "hidden";
-  document.getElementById("counter").style.visibility = "visible";
-
-};
-
-var drawKitchen = () => {
-  document.getElementById("counter").style.visibility = "hidden";
-  document.getElementById("kitchen").style.visibility = "visible";
-};
+// var drawCounter = () => {
+//   document.getElementById("kitchen").style.visibility = "hidden";
+//   document.getElementById("counter").style.visibility = "visible";
+//
+// };
+//
+// var drawKitchen = () => {
+//   document.getElementById("counter").style.visibility = "hidden";
+//   document.getElementById("kitchen").style.visibility = "visible";
+// };
 
 // // creates background images for counter on canvas
 let img0 = document.createElement("img");
@@ -56,12 +56,12 @@ img0.addEventListener("load", () => {
 });
 
 
-let img1 = document.createElement("img");
-img1.src = '../static/img/counter_canvas.png';
-
-img1.addEventListener("load", () => {
-  ctx1.drawImage(img1, 0, 0)
-});
+// let img1 = document.createElement("img");
+// img1.src = '../static/img/counter_canvas.png';
+//
+// img1.addEventListener("load", () => {
+//   ctx1.drawImage(img1, 0, 0)
+// });
 
 let img2 = document.createElement("img");
 img2.src = '../static/img/kitchen_canvas.png';
@@ -134,18 +134,18 @@ function clearDrink(){
 }
 
 // testing
-// var draw = () => {
-//
-//   var mouseX = e.offsetX
-//   var mouseY = e.offsetY
-//   console.log("mouseclick registered at ", mouseX, mouseY);
-//
-//   if (mouseY >= 300 && mouseY <= 336 && mouseX <= 130 && mouseX >= 50) {
-//     drawTaroTea;
-// }}
+var draw = (e) => {
+
+  var mouseX = e.offsetX
+  var mouseY = e.offsetY
+  console.log("mouseclick registered at ", mouseX, mouseY);
+
+  if (mouseY >= 300 && mouseY <= 336 && mouseX <= 130 && mouseX >= 50) {
+    drawTaroTea();
+}}
 
 
-// c.addeventlistener("click", draw)
-counterB.addEventListener("click", drawCounter);
-kitchenB.addEventListener("click", drawKitchen);
-milkTea.addEventListener("click", drawMilkTea);
+c3.addEventListener("click", draw)
+// counterB.addEventListener("click", drawCounter);
+// kitchenB.addEventListener("click", drawKitchen);
+// milkTea.addEventListener("click", drawMilkTea);
