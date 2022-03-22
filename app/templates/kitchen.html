@@ -13,7 +13,7 @@ P02: Four Toppings Boba Shop
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <link rel="stylesheet" href="../static/css/game.css">
 
-    <title>Kitchen</title>
+    <title>4T | Kitchen</title>
   </head>
 
   <body>
@@ -43,7 +43,7 @@ P02: Four Toppings Boba Shop
       <center>
       <!-- Button Nav -->
         <form method="POST" action="/game">
-          <input type="submit" id="counterStage" name="stage" value="Counter"></input>
+          <!-- <input type="submit" id="counterStage" name="stage" value="Counter"></input> -->
           <input type="submit" id="kitStage" name="stage" value="Kitchen"></input>
           <input type="submit" id="shopStage" name="stage" value="Shop"></input>
         </form>
@@ -52,18 +52,18 @@ P02: Four Toppings Boba Shop
 
 
     <div style="padding-bottom: 550px;">
-      <canvas width="960" height="540" id="counter"></canvas>
+      <!-- <canvas width="960" height="540" id="counter"></canvas> -->
       <canvas width="960" height="540" id="kitchen"></canvas>
       <canvas width="960" height="540" id="drink"></canvas>
     </div>
 
     <center>
       <!-- Different pages can have different buttons -->
-      <button id="countStage">Counter</button>
+      <!-- <button id="countStage">Counter</button> -->
       <button id="kitchenStage">Kitchen</button>
     </center>
 <!-- tea buttons -->
-  <div style = "z-index: 5; position:absolute; left: 21vw; top: 62vh; opacity:0">
+  <!-- <div style = "z-index: 5; position:absolute; left: 21vw; top: 62vh; opacity:0">
     <button onclick="drawMilkTea()" id = "milkTea">+ milktea</button>
   </div>
 
@@ -77,10 +77,10 @@ P02: Four Toppings Boba Shop
 
   <div style = "z-index: 5; position:absolute; left: 28vw; top: 56vh; opacity:0">
     <button onclick="drawOolongTea()" id = "oolongTea">+ oolong</button>
-  </div>
+  </div> -->
 
 <!-- topping buttons -->
-  <div style = "z-index: 6; position:absolute; left: 41vw; top: 46vh; opacity:0">
+  <!-- <div style = "z-index: 6; position:absolute; left: 41vw; top: 46vh; opacity:0">
     <button onclick="drawLycheeJelly()" id = "lycheeJelly">+ lychee</button>
   </div>
 
@@ -94,23 +94,17 @@ P02: Four Toppings Boba Shop
 
   <div style = "z-index: 6; position:absolute; left: 73vw; top: 76vh;">
     <button onclick="clearDrink()" class="btn btn-danger" id = "clearDrink">Restart Drink</button>
-  </div>
+  </div> -->
 
 
   </body>
 
-  <!-- <script>
-    function milkTea(){
-      img3.addEventListener("load", () => {
-        ctx2.drawImage(img3, 0, 0)
-      });
-    }
-  </script> -->
+
 
   <style>
     canvas { position: absolute; border: 1px solid black; top:50%; left:50%; transform:translate(-50%,-50%) }
     #drink { z-index: 4; }
-    #counter { z-index: 2; }
+    /* #counter { z-index: 2; } */
     #kitchen { z-index: 1; }
 
   </style>
