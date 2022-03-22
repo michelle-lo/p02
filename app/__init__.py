@@ -136,6 +136,15 @@ def counter():
 	current_balance = db.fetch_balance(session["user_id"])
 	return render_template("counter.html", current_balance=current_balance, current_order=latest_order) #loads counter page
 
+@app.route("/counter_load", methods=['GET', 'POST'])
+def display_order():
+	latest_order = order_db.latest_order()
+	new_customer = order_db.fetch_customer()
+	json = jsonify({
+		"order" : latest_order,
+		"customer" : new_customer
+	})
+	return json
 
 @app.route("/shop", methods=['GET', 'POST'])
 def shop():
@@ -155,15 +164,17 @@ def process_sale():
 	#updating sales database and creates new order
 	success = order_db.update_status()
 	drinks_update = db.update_drinks(session["user_id"])
-	if (order_db.latest_order()[5] == 1):
+	if (order_db.latest_order()[6] == 1):
 		create_order = order_db.create_order()
 
 	#sending data to counter.js
 	new_balance = db.fetch_balance(session["user_id"])
 	latest_order = order_db.latest_order()
+	new_customer = order_db.fetch_customer()
 	json = jsonify({
 		"balance" : new_balance,
-		"order" : latest_order
+		"order" : latest_order,
+		"customer" : new_customer
 	})
 	order_print = order_db.print_orders()
 	return json
