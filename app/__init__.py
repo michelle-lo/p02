@@ -9,16 +9,16 @@ import db, order_db
 app = Flask(__name__)
 app.secret_key = "boba"
 
+
 def logged_in():
 	"""
 	Returns True if the user is in session.
 	"""
 	return "user" in session
 
+
 @app.route("/", methods=['GET', 'POST'])
 def welcome():
-	if logged_in():
-		return redirect("/counter")
 	return redirect("/login")
 
 
@@ -28,8 +28,8 @@ def login():
 	Retrieves user login inputs and checks it against the "users" database table.
 	Brings user to home page after successful login.
 	"""
-	# if logged_in():
-	#     return redirect("/")
+	if logged_in():
+	    return redirect("/counter")
 
 	if request.method == "GET": #just getting to the page with no inputs
 		return render_template("login.html")
@@ -50,7 +50,7 @@ def login():
 	session["user_id"] = user_id
 	success = order_db.create_table() #create or recreate orders table for users
 	create_order = order_db.create_order() #create the first order
-	return redirect("/")
+	return redirect("/counter")
 
 
 @app.route("/logout")
@@ -72,8 +72,8 @@ def signup():
 	Checks it against the database to make sure the information is unique.
 	Adds information to the "users" database table.
 	"""
-	# if logged_in():
-	# 	return redirect("/")
+	if logged_in():
+		return redirect("/counter")
 
 	# Default page
 	if request.method == "GET":
@@ -108,13 +108,13 @@ def profile():
 
 @app.route("/about")
 def about():
+	if not logged_in():
+		return redirect("/login")
 	return render_template("about.html")
 
 
 @app.route("/game", methods=['GET', 'POST'])
 def game(): #redirects user to the chosen area
-	# if not logged_in():
-	# 	redirect("/login")
 	if request.method == "POST":
 		if request.form["stage"] == "Counter":
 			print("Switching to Counter stage...")
@@ -131,6 +131,8 @@ def game(): #redirects user to the chosen area
 
 @app.route("/counter", methods=['GET', 'POST'])
 def counter():
+	if not logged_in():
+		return redirect("/login")
 	order_print = order_db.print_orders() #for debugging
 	latest_order = order_db.latest_order()
 	current_balance = db.fetch_balance(session["user_id"])
@@ -150,9 +152,11 @@ def display_order():
 def shop():
 	return render_template("shop.html") #loads shop page
 
+
 @app.route("/kitchen", methods=['GET', 'POST'])
 def kitchen():
 	return render_template("kitchen.html")
+
 
 @app.route("/process", methods=['GET', 'POST'])
 def process_sale():
@@ -178,6 +182,7 @@ def process_sale():
 	})
 	order_print = order_db.print_orders()
 	return json
+
 
 if __name__ == "__main__": #false if this file imported as module
 	#enable debugging, auto-restarting of server when this file is modified
