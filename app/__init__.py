@@ -48,8 +48,6 @@ def login():
 	# Adds user and user id to session if all is well
 	session["user"] = db.fetch_username(user_id)
 	session["user_id"] = user_id
-	success = order_db.create_table() #create or recreate orders table for users
-	create_order = order_db.create_order() #create the first order
 	return redirect("/counter")
 
 
@@ -134,9 +132,15 @@ def counter():
 	if not logged_in():
 		return redirect("/login")
 	order_print = order_db.print_orders() #for debugging
+
+	#create order table --> originally in /login
+	order_db.create_table() #create or recreate orders table for users
+	create_order = order_db.create_order() #create the first order
+
 	latest_order = order_db.latest_order()
 	current_balance = db.fetch_balance(session["user_id"])
 	return render_template("counter.html", current_balance=current_balance, current_order=latest_order) #loads counter page
+
 
 @app.route("/counter_load", methods=['GET', 'POST'])
 def display_order():
@@ -148,9 +152,11 @@ def display_order():
 	})
 	return json
 
+
 @app.route("/shop", methods=['GET', 'POST'])
 def shop():
-	return render_template("shop.html") #loads shop page
+	#print(db.fetch_inventory(session["user"]))
+	return render_template("shop.html", inv=db.fetch_inventory(session["user"]))
 
 
 @app.route("/kitchen", methods=['GET', 'POST'])

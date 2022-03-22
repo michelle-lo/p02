@@ -124,6 +124,7 @@ def update_drinks(user_id):
     db.close()
     return True
 
+
 tea_list = ["milk", "green", "taro", "oolong"]
 topping_list = ["milk foam", "tapioca", "grass jelly", "lychee jelly", "red bean"]
 
@@ -167,9 +168,12 @@ def fetch_inventory(username):
 
     inventory_data = c.fetchall()
 
-    inv = {}
+    inv = []
     for item, inventory in inventory_data:
-        inv[item] = inventory
+        thing = {}
+        thing["item"] = item
+        thing["inventory"] = inventory
+        inv.append(thing)
 
     db.close()
     return inv

@@ -37,17 +37,21 @@ P02: Four Toppings Boba Shop
       </div>
     </nav>
 
-    <div>
-      <!-- Button Nav -->
-      <form method="POST" action="/game">
-        <input type="submit" id="counterStage" name="stage" value="Counter"></input>
-        <input type="submit" id="kitStage" name="stage" value="Kitchen"></input>
-        <input type="submit" id="shopStage" name="stage" value="Shop"></input>
-      </form>
-    </div>
-    <a href="/logout" class="nav-item nav-link" style = "font-size: 1.3rem">Logout</a><br>
+    <center class="container" style="padding: 30px;">
+      <div class="row">
+        <div class="col">
+          <h1>Inventory</h1>
+          {% for thing in inv %}
+            <p>{{thing.item}}<br>
+            {{thing.inventory}}</p>
+          {% endfor %}
+        </div>
+        <div class="col">
+          <h1>Shop</h1>
+        </div>
+      </div>
+    </center>
 
-    <canvas width="500" height="500" id="canvas"></canvas>
   </body>
 
   <style>
@@ -55,6 +59,6 @@ P02: Four Toppings Boba Shop
 
   </style>
 
-  <Script src="../static/js/shop.js"></script>
+  <script src="../static/js/shop.js"></script>
 
 </html>
