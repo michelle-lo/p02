@@ -145,7 +145,7 @@ function clearDrink(){
 // }}
 
 
-c.addeventlistener("click", draw)
+// c.addeventlistener("click", draw)
 counterB.addEventListener("click", drawCounter);
 kitchenB.addEventListener("click", drawKitchen);
 milkTea.addEventListener("click", drawMilkTea);
