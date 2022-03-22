@@ -133,3 +133,6 @@ Created fetch inventory method
 
 rachelX -- 2022-03-22 12:39
 Inventory is displayed on the shop page. Modified fetch inventory method. Found some weird bug with customer columns.
+
+rachelX -- 2022-03-22 16:27
+Added tables for inventory and shop. Started working on buttons to buy items.

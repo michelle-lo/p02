@@ -37,17 +37,62 @@ P02: Four Toppings Boba Shop
       </div>
     </nav>
 
+    <div>
+      <center>
+      <!-- Button Nav -->
+        <form method="POST" action="/game">
+          <input type="submit" id="counterStage" name="stage" value="Counter"></input>
+          <input type="submit" id="kitStage" name="stage" value="Kitchen"></input>
+          <input type="submit" id="shopStage" name="stage" value="Shop"></input>
+        </form>
+      </center>
+    </div>
+
     <center class="container" style="padding: 30px;">
       <div class="row">
         <div class="col">
           <h1>Inventory</h1>
-          {% for thing in inv %}
-            <p>{{thing.item}}<br>
-            {{thing.inventory}}</p>
-          {% endfor %}
+          <table class="table table-bordered table-hover table-striped" style="border-color: black;">
+            <thead>
+              <tr>
+                <th scope="col">Item</th>
+                <th scope="col">Amount</th>
+              </tr>
+            </thead>
+            <tbody>
+              {% for thing in inv %}
+                <tr>
+                  <td>{{thing.item}}</td>
+                  <td>{{thing.inventory}}</td>
+                </tr>
+              {% endfor %}
+            </tbody>
+          </table>
         </div>
         <div class="col">
           <h1>Shop</h1>
+          <table class="table table-bordered table-hover table-striped" style="border-color: black;">
+            <thead>
+              <tr>
+                <th scope="col">Item</th>
+                <th scope="col">Price</th>
+              </tr>
+            </thead>
+            <tbody>
+              {% for thing in inv %}
+                <tr>
+                  <td>{{thing.item}}</td>
+                  <td>
+                    <div class="input-group">
+                      <form method="POST" action="/shop">
+                        <input name={{thing.item}} type="submit" value="${{thing.price}}" class="btn btn-secondary"></input>
+                      </form>
+                    </div>
+                  </td>
+                </tr>
+              {% endfor %}
+            </tbody>
+          </table>
         </div>
       </div>
     </center>

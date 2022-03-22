@@ -126,7 +126,8 @@ def update_drinks(user_id):
 
 
 tea_list = ["milk", "green", "taro", "oolong"]
-topping_list = ["milk foam", "tapioca", "grass jelly", "lychee jelly", "red bean"]
+topping_list = ["tapioca", "grass jelly", "lychee jelly", "red bean", "milk foam"]
+#TODO: List for image pictures and price
 
 
 def createShop():
