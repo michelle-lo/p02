@@ -100,6 +100,7 @@ def register_user(username, password):
 
     return True
 
+
 def update_balance(user_id, amount):
     db = sqlite3.connect(DB_FILE)
     c = db.cursor()
@@ -110,6 +111,7 @@ def update_balance(user_id, amount):
     db.commit()
     db.close()
     return True
+
 
 def update_drinks(user_id):
     db = sqlite3.connect(DB_FILE)
@@ -125,6 +127,7 @@ def update_drinks(user_id):
 tea_list = ["milk", "green", "taro", "oolong"]
 topping_list = ["milk foam", "tapioca", "grass jelly", "lychee jelly", "red bean"]
 
+
 def createShop():
     db = sqlite3.connect(DB_FILE)
     c = db.cursor()
@@ -138,6 +141,7 @@ def createShop():
         c.execute("INSERT INTO shop (item TEXT, price FLOAT) VALUES(?, ?)", (tea_list[i], tea_price))
     for i in range(5):
         c.execute("INSERT INTO shop (item TEXT, price FLOAT) VALUES(?, ?)", (topping_list[i], topping_price))
+
 
 def createInventory(username, c):
     # db = sqlite3.connect(DB_FILE)
@@ -153,4 +157,20 @@ def createInventory(username, c):
     for i in range(5):
         c.execute("INSERT INTO " + uName + " (item, inventory) VALUES(?, ?)", (topping_list[i], starter_amt))
 
-# createInventory()
+
+def fetch_inventory(username):
+    db = sqlite3.connect(DB_FILE)
+    c = db.cursor()
+
+    user_inventory = username + "inv"
+    c.execute("SELECT * FROM " + user_inventory)
+
+    inventory_data = c.fetchall()
+
+    inv = {}
+    for item, inventory in inventory_data:
+        inv[item] = inventory
+
+    db.close()
+    return inv
+#print(fetch_inventory("r"))
