@@ -11,8 +11,8 @@
 var c2 = document.getElementById('kitchen');
 var c3 = document.getElementById('drink');
 
-var counterB = document.getElementById('countStage');
-var kitchenB = document.getElementById('kitchenStage');
+// var counterB = document.getElementById('countStage');
+// var kitchenB = document.getElementById('kitchenStage');
 
 // tea variables
 var milkTea = document.getElementById('milkTea')
