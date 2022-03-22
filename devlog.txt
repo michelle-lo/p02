@@ -130,3 +130,6 @@ New customers added (thank you jQuery) and order updates on canvas.
 
 rachelX -- 2022-03-22 12:16
 Created fetch inventory method
+
+rachelX -- 2022-03-22 12:39
+Inventory is displayed on the shop page. Modified fetch inventory method. Found some weird bug with customer columns.
