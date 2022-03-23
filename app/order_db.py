@@ -24,8 +24,7 @@ def create_table():
     db.commit()
     db.close()
     return True
-
-#add reset table function?
+create_table()
 
 #returns the number of orders in database
 def order_count():

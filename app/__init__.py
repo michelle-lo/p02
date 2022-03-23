@@ -49,7 +49,7 @@ def login():
 	session["user"] = db.fetch_username(user_id)
 	session["user_id"] = user_id
 	#create order table --> originally in /login
-	order_db.create_table() #create or recreate orders table for users
+	#order_db.create_table() #create or recreate orders table for users
 	create_order = order_db.create_order() #create the first order
 	return redirect("/counter")
 

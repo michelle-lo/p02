@@ -43,7 +43,6 @@ def fetch_user_id(username, password):
     user_id = c.fetchone() #user_id will be None if no matches were found
 
     db.close()
-
     return user_id
 
 
@@ -125,7 +124,7 @@ def update_drinks(user_id):
     return True
 
 
-tea_list = ["milk", "green", "taro", "oolong"]
+tea_list = ["milk tea", "green tea", "taro", "oolong tea"]
 topping_list = ["tapioca", "grass jelly", "lychee jelly", "red bean", "milk foam"]
 #TODO: List for image pictures and price
 
@@ -143,21 +142,19 @@ def createShop():
         c.execute("INSERT INTO shop (item TEXT, price FLOAT) VALUES(?, ?)", (tea_list[i], tea_price))
     for i in range(5):
         c.execute("INSERT INTO shop (item TEXT, price FLOAT) VALUES(?, ?)", (topping_list[i], topping_price))
+    db.commit()
+    db.close()
 
 
 def createInventory(username, c):
-    # db = sqlite3.connect(DB_FILE)
-    # c = db.cursor()
-    # if 'username' in session:
     uName = username + "inv"
     starter_amt = 5
     #teas
-    c.execute("CREATE TABLE IF NOT EXISTS " + uName
-                + " (item TEXT, inventory INTEGER)")
+    c.execute("CREATE TABLE IF NOT EXISTS " + uName + "(item TEXT, inventory INTEGER)")
     for i in range(4):
-        c.execute("INSERT INTO " + uName + " (item, inventory) VALUES(?, ?)", (tea_list[i], starter_amt))
+        c.execute("INSERT INTO " + uName + "(item, inventory) VALUES(?, ?)", (tea_list[i], starter_amt))
     for i in range(5):
-        c.execute("INSERT INTO " + uName + " (item, inventory) VALUES(?, ?)", (topping_list[i], starter_amt))
+        c.execute("INSERT INTO " + uName + "(item, inventory) VALUES(?, ?)", (topping_list[i], starter_amt))
 
 
 def fetch_inventory(username):
