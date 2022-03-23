@@ -15,19 +15,20 @@ var c3 = document.getElementById('drink');
 // var kitchenB = document.getElementById('kitchenStage');
 
 // tea variables
-var milkTea = document.getElementById('milkTea')
-var greenTea = document.getElementById('greenTea')
-var taroTea = document.getElementById('taroTea')
-var oolongTea = document.getElementById('oolongTea')
+  // var milkTea = document.getElementById('milkTea')
+  // var greenTea = document.getElementById('greenTea')
+  // var taroTea = document.getElementById('taroTea')
+  // var oolongTea = document.getElementById('oolongTea')
 
 // topping variables
-
-var lycheeJelly =  document.getElementById('lycheeJelly')
-var tapioca = document.getElementById('tapioca')
-var redBean = document.getElementById('redBean')
+  // var lycheeJelly =  document.getElementById('lycheeJelly')
+  // var tapioca = document.getElementById('tapioca')
+  // var redBean = document.getElementById('redBean')
 
 // drink variable
-var drink = {};
+var drink = {tea:null, topp1:null, topp2:null};
+var teaSet = false;
+var toppSet = 0;
 
 // '''prepare to interact with canvas in 2D'''
 // var ctx1 = c1.getContext("2d");
@@ -70,13 +71,19 @@ img2.addEventListener("load", () => {
   ctx2.drawImage(img2, 0, 0)
 });
 
+function addTea(teatype){
+  if (drink["tea"] === null){
+    drink["tea"] = teatype;}
+}
+
+
 let img3 = document.createElement("img");
 img3.src = '../static/assets/tea_milk.png';
-//
+
 function drawMilkTea(){
 //   // img3.addEventListener("load", () => {
      ctx3.drawImage(img3, 0, 0);
-     drink["tea"] = "milk";
+     addTea("milk");
 }
 
 let img4 = document.createElement("img");
@@ -84,7 +91,8 @@ img4.src = '../static/assets/tea_green.png';
 
 function drawGreenTea(){
     ctx3.drawImage(img4, 0, 0);
-    drink["tea"] = "green";
+    addTea("green");
+    // console.log(Object.values(drink));
 }
 
 let img5 = document.createElement("img");
@@ -92,7 +100,7 @@ img5.src = '../static/assets/tea_taro.png';
 
 function drawTaroTea(){
     ctx3.drawImage(img5, 0, 0);
-    drink["tea"] = "taro";
+    addTea("taro");
 }
 
 let img6 = document.createElement("img");
@@ -100,17 +108,24 @@ img6.src =  '../static/assets/tea_oolong.png';
 
 function drawOolongTea(){
     ctx3.drawImage(img6, 0, 0);
-    drink["tea"] = "oolong";
+    addTea("oolong");
 }
 
 // topping functions
+
+function addTopp(topping){
+  if (drink["topp1"] === null){
+    drink["topp1"] = topping;}
+  else{
+    drink["topp2"] = topping}
+}
 
 let img7 = document.createElement("img");
 img7.src = '../static/assets/topping_lychee.png'
 
 function drawLycheeJelly(){
     ctx3.drawImage(img7, 0, 0);
-    drink["topping"] = "lychee"
+    addTopp("lychee");
 }
 
 let img8 = document.createElement("img");
@@ -118,15 +133,31 @@ img8.src = '../static/assets/topping_tapioca.png'
 
 function drawTapioca(){
     ctx3.drawImage(img8, 0, 0);
-    drink["topping"] = "tapioca";
+    addTopp("tapioca");
 }
 
 let img9 = document.createElement("img");
 img9.src = '../static/assets/topping_redbean.png'
 
 function drawRedBean(){
-    ctx3.drawImage(img9, 0, 0)
-    drink["topping"] = "redBean";
+    ctx3.drawImage(img9, 0, 0);
+    addTopp("redBean");
+}
+
+let img10 = document.createElement("img");
+img10.src = '../static/assets/topping_milkfoam.png'
+
+function drawMilkFoam(){
+    ctx3.drawImage(img10, 0, 0);
+    addTopp("milkFoam");
+}
+
+let img11 = document.createElement("img");
+img11.src = '../static/assets/topping_grassjelly.png'
+
+function drawGrassJelly(){
+    ctx3.drawImage(img11, 0, 0);
+    addTopp("grassJelly");
 }
 
 function clearDrink(){
@@ -134,15 +165,80 @@ function clearDrink(){
 }
 
 // testing
+
 var draw = (e) => {
 
   var mouseX = e.offsetX
   var mouseY = e.offsetY
   console.log("mouseclick registered at ", mouseX, mouseY);
 
-  if (mouseY >= 300 && mouseY <= 336 && mouseX <= 130 && mouseX >= 50) {
-    drawTaroTea();
-}}
+  // teass
+  if (teaSet === false) {
+    if (mouseY <= 390 && mouseY >= 350 && mouseX <= 120 && mouseX >= 40){
+      drawMilkTea();
+      teaSet = true;
+    }
+    else if (mouseY <= 390 && mouseY >= 350 && mouseX <= 215 && mouseX >= 140){
+      drawGreenTea();
+      teaSet = true;
+    }
+    else if (mouseY >= 300 && mouseY <= 340 && mouseX <= 130 && mouseX >= 50){
+      drawTaroTea();
+      teaSet = true;
+    }
+    else if (mouseY >= 300 && mouseY <= 340 && mouseX <= 225 && mouseX >= 150){
+      drawOolongTea();
+      teaSet = true;
+    }
+
+  }
+  else if (teaSet === true) {
+    // stops alert from showing if you click outside hitbox
+    if ((mouseY <= 390 && mouseY >= 350 && mouseX <= 120 && mouseX >= 40) ||
+        (mouseY <= 390 && mouseY >= 350 && mouseX <= 215 && mouseX >= 140) ||
+        (mouseY >= 300 && mouseY <= 340 && mouseX <= 130 && mouseX >= 50) ||
+        (mouseY >= 300 && mouseY <= 340 && mouseX <= 225 && mouseX >= 150))
+    alert("You have already chosen a tea type! \nRestart your drink to choose a different tea.")
+  }
+  console.log(Object.values(drink));
+
+
+  // toppingss
+  if (toppSet === 0 || toppSet === 1){
+    if (mouseY <= 285 && mouseY >= 200 && mouseX <= 280 && mouseX >= 210){
+      drawMilkFoam();
+      toppSet += 1;
+    }
+    else if (mouseY <= 270 && mouseY >= 230 && mouseX <= 440 && mouseX >= 340){
+      drawLycheeJelly();
+      toppSet += 1;
+    }
+    else if (mouseY <= 330 && mouseY >= 290 && mouseX <= 415 && mouseX >= 315){
+      drawGrassJelly();
+      toppSet += 1;
+    }
+    else if (mouseY <= 390 && mouseY >= 355 && mouseX <= 390 && mouseX >= 290){
+      drawTapioca();
+      toppSet += 1;
+    }
+    else if (mouseY <= 270 && mouseY >= 230 && mouseX <= 585 && mouseX >= 485){
+      drawRedBean();
+      toppSet += 1;
+    }
+  }
+  else if (toppSet === 2){
+    if ((mouseY <= 285 && mouseY >= 200 && mouseX <= 280 && mouseX >= 210) ||
+        (mouseY <= 270 && mouseY >= 230 && mouseX <= 440 && mouseX >= 340) ||
+        (mouseY <= 330 && mouseY >= 290 && mouseX <= 415 && mouseX >= 315) ||
+        (mouseY <= 390 && mouseY >= 355 && mouseX <= 390 && mouseX >= 290) ||
+        (mouseY <= 270 && mouseY >= 230 && mouseX <= 585 && mouseX >= 485))
+      alert("You have already chosen two toppings! \nRestart your drink to choose a different combination of toppings.")
+  }
+
+
+
+}
+
 
 
 c3.addEventListener("click", draw)
