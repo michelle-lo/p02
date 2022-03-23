@@ -69,7 +69,7 @@ def create_order():
 
     id = order_count() + 1 #first order = 1
 
-    teas = ["green", "milk", "taro", "oolong"]
+    teas = ["green tea", "milk tea", "taro", "oolong tea"]
     toppings = ["milk foam", "boba", "grass jelly", "lychee jelly", "red bean", 'null']
     customers = ["customer0", "customer1", "customer2"]
 

@@ -51,7 +51,7 @@ def login():
 	#create order table --> originally in /login
 	#order_db.create_table() #create or recreate orders table for users
 	create_order = order_db.create_order() #create the first order
-	return redirect("/counter")
+	return redirect("/profile")
 
 
 @app.route("/logout")
@@ -155,11 +155,11 @@ def display_order():
 @app.route("/shop", methods=['GET', 'POST'])
 def shop():
 	#print(db.fetch_inventory(session["user"]))
+	current_balance = db.fetch_balance(session["user_id"])
 	if request.method == "GET":
-		return render_template("shop.html", inv=db.fetch_inventory(session["user"]))
+		return render_template("shop.html", inv=db.fetch_inventory(session["user"]), balance=current_balance)
 	elif request.method == "POST":
-		current_balance = db.fetch_balance(session["user_id"])
-		return render_template("shop.html", inv=db.fetch_inventory(session["user"]))
+		return render_template("shop.html", inv=db.fetch_inventory(session["user"]), balance=current_balance)
 
 
 @app.route("/kitchen", methods=['GET', 'POST'])
