@@ -111,6 +111,7 @@ function drawOolongTea(){
     addTea("oolong");
 }
 
+
 // topping functions
 
 function addTopp(topping){
@@ -161,7 +162,11 @@ function drawGrassJelly(){
 }
 
 function clearDrink(){
-
+  //  ctx3.clearRect(0, 0, ctx3.width, ctx3.height);
+    ctx3.drawImage(img0, 0, 0)
+    drink["topp1"] = null;
+    drink["topp2"] = null;
+    drink["tea"] = null;
 }
 
 // testing
@@ -234,7 +239,6 @@ var draw = (e) => {
         (mouseY <= 270 && mouseY >= 230 && mouseX <= 585 && mouseX >= 485))
       alert("You have already chosen two toppings! \nRestart your drink to choose a different combination of toppings.")
   }
-
 
 
 }
