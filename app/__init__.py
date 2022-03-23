@@ -5,6 +5,7 @@
 
 from flask import Flask, request, render_template, redirect, session, jsonify
 import db, order_db
+import json
 
 app = Flask(__name__)
 app.secret_key = "boba"
@@ -166,6 +167,13 @@ def shop():
 def kitchen():
 	return render_template("kitchen.html")
 
+@app.route("/save_drink", methods=['POST'])
+def save_drink():
+	# EDIT
+	if request.method == "POST":
+		drink_order = request.get_json(force=True)
+		print(drink_order)
+		return "hello"
 
 @app.route("/process", methods=['GET', 'POST'])
 def process_sale():

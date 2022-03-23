@@ -139,3 +139,6 @@ Added tables for inventory and shop. Started working on buttons to buy items.
 
 annabelZ -- 2022-03-22 20:19
 All teas and toppings are now canvas-clickable in the kitchen, button displacement has been removed completely, and no more than 1 tea and 2 toppings can be chosen at one time.
+
+michelleL -- 2022-03-23 18:30
+Save button for kitchen -- init file can receive the order details upon clicking the save button! Improved customer1 cropping.
