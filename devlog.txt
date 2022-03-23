@@ -142,3 +142,9 @@ All teas and toppings are now canvas-clickable in the kitchen, button displaceme
 
 michelleL -- 2022-03-23 18:30
 Save button for kitchen -- init file can receive the order details upon clicking the save button! Improved customer1 cropping.
+
+annabelZ -- 2022-03-23 19:07
+Restart button now works, and toppings cannot be chosen if there is not a tea chosen yet
+
+michelleL -- 2022-03-23 19:54
+Save function improved, will not load save onto kitchen when the page is reloaded.
