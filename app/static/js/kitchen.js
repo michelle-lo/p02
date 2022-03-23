@@ -160,6 +160,24 @@ $(function() {
   });
 });
 
+$(document).ready(function(data) {
+  $.getJSON('/load_kit_save', function(data) { //send data back to python file
+    //do nothing
+  })
+  .done(function(data){
+    // console.log(data.tea);
+    tea = data.tea;
+    topp1 = data.topp1;
+    topp2 = data.topp2;
+    console.log(tea);
+    console.log(topp1);
+    console.log(topp2);
+
+  });
+  return false;
+});
+
+
 // testing
 
 var draw = (e) => {

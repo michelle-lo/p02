@@ -10,6 +10,8 @@ import json
 app = Flask(__name__)
 app.secret_key = "boba"
 
+saved_drink = {"tea":"null", "topp1":"null", "topp2":"null"}
+
 
 def logged_in():
 	"""
@@ -169,11 +171,29 @@ def kitchen():
 
 @app.route("/save_drink", methods=['POST'])
 def save_drink():
-	# EDIT
 	if request.method == "POST":
 		drink_order = request.get_json(force=True)
-		print(drink_order)
+		print(drink_order["tea"])
+		saved_drink["tea"] = drink_order["tea"]
+		saved_drink["topp1"] = drink_order["topp1"]
+		saved_drink["topp2"] = drink_order["topp2"]
+		# print(drink_order)
+		# print("tea: " + saved_drink["tea"])
+		# print("topp1: " + saved_drink["topp1"])
+		# print("topp2: " + saved_drink["topp2"])
 		return "hello"
+
+@app.route("/load_kit_save", methods=['GET', 'POST'])
+def load_save():
+	print("tea: " + saved_drink["tea"])
+	print("topp1: " + saved_drink["topp1"])
+	print("topp2: " + saved_drink["topp2"])
+	json = jsonify({
+		"tea" : saved_drink["tea"],
+		"topp1" : saved_drink["topp1"],
+		"topp2" : saved_drink["topp2"],
+	})
+	return json
 
 @app.route("/process", methods=['GET', 'POST'])
 def process_sale():
