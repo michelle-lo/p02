@@ -128,11 +128,11 @@ function drawGrassJelly(){
 }
 
 function clearDrink(){
-  //  ctx3.clearRect(0, 0, ctx3.width, ctx3.height);
+    ctx3.clearRect(0, 0, c3.width, c3.height);
     ctx3.drawImage(img0, 0, 0)
-    drink["topp1"] = null;
-    drink["topp2"] = null;
-    drink["tea"] = null;
+    drink = {tea:null, topp1:null, topp2:null};
+    teaSet = false;
+    toppSet = 0;
 }
 
 //jquery and ajax for saving drink
