@@ -185,9 +185,6 @@ def save_drink():
 
 @app.route("/load_kit_save", methods=['GET', 'POST'])
 def load_save():
-	print("tea: " + saved_drink["tea"])
-	print("topp1: " + saved_drink["topp1"])
-	print("topp2: " + saved_drink["topp2"])
 	json = jsonify({
 		"tea" : saved_drink["tea"],
 		"topp1" : saved_drink["topp1"],

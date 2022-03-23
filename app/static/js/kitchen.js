@@ -173,9 +173,49 @@ $(document).ready(function(data) {
     console.log(topp1);
     console.log(topp2);
 
+    load_save(tea, topp1, topp2);
+
+
   });
   return false;
 });
+
+var load_save = (tea, topp1, topp2) => {
+  if (tea === "taro") {
+    drawTaroTea();
+  } else if (tea === "milk") {
+    drawMilkTea();
+  } else if (tea === "oolong") {
+    drawOolongTea();
+  } else if (tea === "green") {
+    drawGreenTea();
+  }
+
+  if (topp1 === "tapioca") {
+    drawTapioca();
+  } else if (topp1 === "grassJelly") {
+    drawGrassJelly();
+  } else if (topp1 === "lychee") {
+    drawLycheeJelly();
+  } else if (topp1 === "redBean") {
+    drawRedBean();
+  } else if (topp1 === "milkFoam") {
+    drawMilkFoam();
+  }
+
+  if (topp2 === "tapioca") {
+    drawTapioca();
+  } else if (topp2 === "grassJelly") {
+    drawGrassJelly();
+  } else if (topp2 === "lychee") {
+    drawLycheeJelly();
+  } else if (topp2 === "redBean") {
+    drawRedBean();
+  } else if (topp2 === "milkFoam") {
+    drawMilkFoam();
+  }
+
+}
 
 
 // testing
