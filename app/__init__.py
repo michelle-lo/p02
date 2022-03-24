@@ -146,8 +146,8 @@ def counter():
 	order_print = order_db.print_orders() #for debugging
 
 	latest_order = order_db.latest_order()
-	current_balance = round(db.fetch_balance(session["user_id"]), 2)
-	return render_template("counter.html", current_balance=current_balance) #loads counter page
+	# current_balance = round(db.fetch_balance(session["user_id"]), 2)
+	return render_template("counter.html") #loads counter page
 
 
 @app.route("/counter_load", methods=['GET', 'POST'])

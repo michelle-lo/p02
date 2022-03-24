@@ -29,16 +29,16 @@ var ctx4 = c4.getContext("2d");
 var ctx5 = c5.getContext("2d");
 var ctx6 = c6.getContext("2d");
 
-
-// drink visiblility
-var drawDrinkOff = () => {
-  document.getElementById("drink").style.visibility = "hidden";
-
-};
-
-var drawDrinkOn = () => {
-  document.getElementById("drink").style.visibility = "visible";
-};
+//
+// // drink visiblility
+// var drawDrinkOff = () => {
+//   document.getElementById("drink").style.visibility = "hidden";
+//
+// };
+//
+// var drawDrinkOn = () => {
+//   document.getElementById("drink").style.visibility = "visible";
+// };
 
 // cup
 let img0 = document.createElement("img");
