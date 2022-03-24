@@ -36,7 +36,7 @@ $(function() {
     .always(function(){
       total_balance -= 1.0;
       console.log("new balance: " + total_balance);
-      $("#balance").text("Balance: $" + (Math.round(total_balance * 100) / 100) + "0");
+      $("#balance").text("Balance: $" + (Math.round(total_balance * 100) / 100));
 
     });
 
@@ -58,9 +58,9 @@ $(function() {
 
     })
     .always(function(){
-        // update_balance();
-        // console.log("hello");
-
+      total_balance -= 1.0;
+      console.log("new balance: " + total_balance);
+      $("#balance").text("Balance: $" + (Math.round(total_balance * 100) / 100) + "0");
     });
   });
 });
@@ -79,6 +79,11 @@ $(function() {
       url : '/shop_process'
 
     })
+    .always(function(){
+      total_balance -= 1.0;
+      console.log("new balance: " + total_balance);
+      $("#balance").text("Balance: $" + (Math.round(total_balance * 100) / 100) + "0");
+    });
     return false;
   });
 });
@@ -97,6 +102,12 @@ $(function() {
       url : '/shop_process'
 
     })
+    .always(function(){
+      total_balance -= 1.0;
+      console.log("new balance: " + total_balance);
+      $("#balance").text("Balance: $" + (Math.round(total_balance * 100) / 100) + "0");
+
+    });
     return false;
   });
 });
@@ -115,6 +126,12 @@ $(function() {
       url : '/shop_process'
 
     })
+    .always(function(){
+      total_balance -= 0.2;
+      console.log("new balance: " + total_balance);
+      $("#balance").text("Balance: $" + (Math.round(total_balance * 100) / 100) + "0");
+
+    });
     return false;
   });
 });
@@ -133,6 +150,12 @@ $(function() {
       url : '/shop_process'
 
     })
+    .always(function(){
+      total_balance -= 0.2;
+      console.log("new balance: " + total_balance);
+      $("#balance").text("Balance: $" + (Math.round(total_balance * 100) / 100) + "0");
+
+    });
     return false;
   });
 });
@@ -151,6 +174,12 @@ $(function() {
       url : '/shop_process'
 
     })
+    .always(function(){
+      total_balance -= 0.2;
+      console.log("new balance: " + total_balance);
+      $("#balance").text("Balance: $" + (Math.round(total_balance * 100) / 100) + "0");
+
+    });
     return false;
   });
 });
@@ -169,6 +198,12 @@ $(function() {
       url : '/shop_process'
 
     })
+    .always(function(){
+      total_balance -= 0.2;
+      console.log("new balance: " + total_balance);
+      $("#balance").text("Balance: $" + (Math.round(total_balance * 100) / 100) + "0");
+
+    });
     return false;
   });
 });
@@ -187,6 +222,12 @@ $(function() {
       url : '/shop_process'
 
     })
+    .always(function(){
+      total_balance -= 0.2;
+      console.log("new balance: " + total_balance);
+      $("#balance").text("Balance: $" + (Math.round(total_balance * 100) / 100) + "0");
+
+    });
     return false;
   });
 });
