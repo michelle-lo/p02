@@ -221,13 +221,16 @@ def process():
 		for tea in tea_list:
 			if (item == tea):
 				# type = "tea"
-				balance_updated = db.update_balance(session["user_id"], -1.00)
+				balance = db.fetch_balance(session["user_id"])
+				if balance >= 1.00:
+					balance_updated = db.update_balance(session["user_id"], -1.00)
 				print("balance: " + str(db.fetch_balance(session["user_id"])))
 
 		for topping in topping_list:
 			if (item == topping):
 				# type = "topping"
-				balance_updated = db.update_balance(session["user_id"], -0.20)
+				if balance >= 0.20:
+					balance_updated = db.update_balance(session["user_id"], -0.20)
 				print("balance: " + str(db.fetch_balance(session["user_id"])))
 
 	return "hello"
