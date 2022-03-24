@@ -224,10 +224,10 @@ def game_over(user_id):
 
     username = fetch_username(user_id)
     inventory = fetch_inventory(username)
-    drinks = 0
+    teas = 0
     for i in range(4):
         if inventory[i]["inventory"] != "0":
-            drinks = 100
+            teas = 100
             break
 
     toppings = 0
@@ -235,10 +235,23 @@ def game_over(user_id):
         if inventory[i]["inventory"] != "0":
             toppings = 100
             break
-    print(drinks)
-    print(toppings)
+    #print(drinks)
+    #print(toppings)
 
-    if (drinks == 0 and balance < 1) or (toppings == 0 and balance < 0.25):
+    if (teas == 0 and balance < 1) or (toppings == 0 and balance < 0.25):
         return True
     return False
 #print(game_over(1))
+
+
+def remove_user(user_id):
+    db = sqlite3.connect(DB_FILE)
+    c = db.cursor()
+
+    c.execute("DELETE FROM users WHERE id = ?", (user_id,))
+
+    db.commit()
+    db.close()
+
+    return True
+#print(remove_user(1))
