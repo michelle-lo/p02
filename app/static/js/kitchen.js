@@ -249,11 +249,19 @@ $(document).ready(function(data) {
     tea = data.tea;
     topp1 = data.topp1;
     topp2 = data.topp2;
+    status = data.completed;
     console.log(tea);
     console.log(topp1);
     console.log(topp2);
-
-    load_save(tea, topp1, topp2);
+    if (status === "true"){
+      ctx4.clearRect(0, 0, c4.clientWidth, c4.clientHeight);
+    // ctx2.drawImage(img0, 0, 0);}
+      ctx3.clearRect(0, 0, c3.clientWidth, c3.clientHeight);
+    // ctx3.drawImage(img0, 0, 0);}
+    }
+    else{
+      load_save(tea, topp1, topp2);
+    }
 
 
   });

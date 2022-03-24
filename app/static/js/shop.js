@@ -52,8 +52,12 @@ $(function() {
 
     })
     .always(function(){
-      total_balance -= 1.0;
-      total_milkTeaInven += 1;
+      if (total_balance >= 1.0) {
+        total_balance -= 1.0;
+        total_milkTeaInven += 1;
+      } else {
+        alert("Insufficient funds");
+      }
       console.log("new balance: " + total_balance);
       console.log("milk tea inventory: " + total_milkTeaInven);
       $("#balance").text("Balance: $" + (Math.round(total_balance * 100) / 100));
@@ -79,8 +83,12 @@ $(function() {
 
     })
     .always(function(){
-      total_balance -= 1.0;
-      total_greenTeaInven += 1;
+      if (total_balance >= 1.0) {
+        total_balance -= 1.0;
+        total_greenTeaInven += 1;
+      } else {
+        alert("Insufficient funds");
+      }
       console.log("new balance: " + total_balance);
       $("#balance").text("Balance: $" + (Math.round(total_balance * 100) / 100));
       $("#greenTeaInven").text(total_greenTeaInven);
@@ -103,8 +111,12 @@ $(function() {
 
     })
     .always(function(){
-      total_balance -= 1.0;
-      total_taroTeaInven += 1;
+      if (total_balance >= 1.0) {
+        total_balance -= 1.0;
+        total_taroTeaInven += 1;
+      } else {
+        alert("Insufficient funds");
+      }
       console.log("new balance: " + total_balance);
       $("#balance").text("Balance: $" + (Math.round(total_balance * 100) / 100));
       $("#taroTeaInven").text(total_taroTeaInven);
@@ -128,8 +140,12 @@ $(function() {
 
     })
     .always(function(){
-      total_balance -= 1.0;
-      total_oolongTeaInven += 1;
+      if (total_balance >= 1.0) {
+        total_balance -= 1.0;
+        total_oolongTeaInven += 1;
+      } else {
+        alert("Insufficient funds");
+      }
       console.log("new balance: " + total_balance);
       $("#balance").text("Balance: $" + (Math.round(total_balance * 100) / 100));
       $("#oolongTeaInven").text(total_oolongTeaInven);
@@ -153,8 +169,12 @@ $(function() {
 
     })
     .always(function(){
-      total_balance -= 0.2;
-      total_tapiocaInven += 1;
+      if (total_balance >= 0.2) {
+        total_balance -= 0.2;
+        total_tapiocaInven += 1;
+      } else {
+        alert("Insufficient funds");
+      }
       console.log("new balance: " + total_balance);
       console.log("new tapioca: " + total_tapiocaInven);
       $("#balance").text("Balance: $" + (Math.round(total_balance * 100) / 100));
@@ -180,8 +200,12 @@ $(function() {
 
     })
     .always(function(){
-      total_balance -= 0.2;
-      total_grassJellyInven += 1;
+      if (total_balance >= 0.2) {
+        total_balance -= 0.2;
+        total_grassJellyInven += 1;
+      } else {
+        alert("Insufficient funds");
+      }
       console.log("new balance: " + total_balance);
       $("#balance").text("Balance: $" + (Math.round(total_balance * 100) / 100));
       $("#grassJellyInven").text(total_grassJellyInven);
@@ -206,8 +230,12 @@ $(function() {
 
     })
     .always(function(){
-      total_balance -= 0.2;
-      total_lycheeJellyInven += 1;
+      if (total_balance >= 0.2) {
+        total_balance -= 0.2;
+        total_lycheeJellyInven += 1;
+      } else {
+        alert("Insufficient funds");
+      }
       console.log("new balance: " + total_balance);
       $("#balance").text("Balance: $" + (Math.round(total_balance * 100) / 100));
       $("#lycheeJellyInven").text(total_lycheeJellyInven);
@@ -232,8 +260,12 @@ $(function() {
 
     })
     .always(function(){
-      total_balance -= 0.2;
-      total_redBeanInven += 1;
+      if (total_balance >= 0.2) {
+        total_balance -= 0.2;
+        total_redBeanInven += 1;
+      } else {
+        alert("Insufficient funds");
+      }
       console.log("new balance: " + total_balance);
       $("#balance").text("Balance: $" + (Math.round(total_balance * 100) / 100));
       $("#redBeanInven").text(total_redBeanInven);
@@ -258,8 +290,12 @@ $(function() {
 
     })
     .always(function(){
-      total_balance -= 0.2;
-      total_milkFoamInven += 1;
+      if (total_balance >= 0.2) {
+        total_balance -= 0.2;
+        total_milkFoamInven += 1;
+      } else {
+        alert("Insufficient funds");
+      }
       console.log("new balance: " + total_balance);
       $("#balance").text("Balance: $" + (Math.round(total_balance * 100) / 100));
       $("#milkFoamInven").text(total_milkFoamInven);
