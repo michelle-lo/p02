@@ -161,7 +161,7 @@ def display_order():
 @app.route("/shop", methods=['GET', 'POST'])
 def shop():
 	#print(db.fetch_inventory(session["user"]))
-	current_balance = db.fetch_balance(session["user_id"])
+	current_balance = round(db.fetch_balance(session["user_id"]), 2)
 	if request.method == "GET":
 		return render_template("shop.html", inv=db.fetch_inventory(session["user"]), balance=current_balance)
 	elif request.method == "POST":
@@ -170,6 +170,12 @@ def shop():
 @app.route("/shop_process", methods=['POST'])
 def process():
 	# print(db.fetch_itemInventory(session["user"], "green"))
+	tea_list = ["milkTea", "greenTea", "taro", "oolongTea"]
+	topping_list = ["tapioca", "grassJelly", "lycheeJelly", "redBean", "milkFoam"]
+
+	# tea_list = ["milk tea", "green tea", "taro", "oolong tea"]
+	# topping_list = ["tapioca", "grass jelly", "lychee jelly", "red bean", "milk foam"]
+
 	if request.method == "POST":
 		item = request.get_json(force=True)["item"]
 		print(item)
@@ -179,6 +185,38 @@ def process():
 		elif (item == "greenTea"):
 			success = db.add_inventory(session["user"], "green")
 			print(str(item) + " inventory: " + str(db.fetch_itemInventory(session["user"], "green")))
+		elif (item == "taro"):
+			success = db.add_inventory(session["user"], "taro")
+			print(str(item) + " inventory: " + str(db.fetch_itemInventory(session["user"], "taro")))
+		elif (item == "oolongTea"):
+			success = db.add_inventory(session["user"], "oolong")
+			print(str(item) + " inventory: " + str(db.fetch_itemInventory(session["user"], "oolong")))
+		elif (item == "tapioca"):
+			success = db.add_inventory(session["user"], "tapioca")
+			print(str(item) + " inventory: " + str(db.fetch_itemInventory(session["user"], "tapioca")))
+		elif (item == "grassJelly"):
+			success = db.add_inventory(session["user"], "grass jelly")
+			print(str(item) + " inventory: " + str(db.fetch_itemInventory(session["user"], "grass jelly")))
+		elif (item == "lycheeJelly"):
+			success = db.add_inventory(session["user"], "lychee jelly")
+			print(str(item) + " inventory: " + str(db.fetch_itemInventory(session["user"], "lychee jelly")))
+		elif (item == "redBean"):
+			success = db.add_inventory(session["user"], "red bean")
+			print(str(item) + " inventory: " + str(db.fetch_itemInventory(session["user"], "red bean")))
+		elif (item == "milkFoam"):
+			success = db.add_inventory(session["user"], "milk foam")
+			print(str(item) + " inventory: " + str(db.fetch_itemInventory(session["user"], "milk foam")))
+
+		for tea in tea_list:
+			if (item == tea):
+				balance_updated = db.update_balance(session["user_id"], -1.00)
+				print("balance: " + str(db.fetch_balance(session["user_id"])))
+
+		for topping in topping_list:
+			if (item == topping):
+				balance_updated = db.update_balance(session["user_id"], -0.20)
+				print("balance: " + str(db.fetch_balance(session["user_id"])))
+
 
 	return "hello"
 

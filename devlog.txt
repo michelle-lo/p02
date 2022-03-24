@@ -160,3 +160,6 @@ Changed out kitchen restart/save buttons for static buttons; restart/save button
 
 rachelX -- 2022-03-23 22:09
 Order is now checked against the user's drink. Selling works properly!
+
+michelleL -- 2022-03-23 23:10
+Shop works! Inventory and balance now update upon pressing the corresponding button on /shop
