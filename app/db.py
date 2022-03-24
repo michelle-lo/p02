@@ -166,6 +166,7 @@ def createInventory(username, c):
     for i in range(5):
         c.execute("INSERT INTO " + uName + "(item, inventory) VALUES(?, ?)", (topping_list[i], starter_amt))
 
+
 def fetch_itemInventory(username, item):
     db = sqlite3.connect(DB_FILE)
     c = db.cursor()
@@ -181,6 +182,7 @@ def fetch_itemInventory(username, item):
 
     return 0
 
+
 def add_inventory(username, item):
     db = sqlite3.connect(DB_FILE)
     c = db.cursor()
@@ -192,6 +194,7 @@ def add_inventory(username, item):
     db.commit()
     db.close()
     return True
+
 
 def fetch_inventory(username):
     db = sqlite3.connect(DB_FILE)
@@ -212,3 +215,25 @@ def fetch_inventory(username):
     db.close()
     return inv
 #print(fetch_inventory("r"))
+
+
+def game_over(user_id):
+    """
+    Game over when the user can't make any print_orders.
+    This is when they can't afford anymore toppings or teas.
+    """
+    balance = fetch_balance(user_id)
+
+    username = fetch_username(user_id)
+    inventory = fetch_inventory(username)
+    drinks = 0
+    for i in range(4):
+        drinks += tea_list[i]
+
+    toppings = 0
+    for i in range(5):
+        toppings += topping_list[i]
+
+    if (drinks == 0 and balance < 1) or (toppings == 0 and balance < 0.25):
+        return True
+    return False
