@@ -37,6 +37,7 @@ $(function() {
       total_balance -= 1.0;
       console.log("new balance: " + total_balance);
       $("#balance").text("Balance: $" + (Math.round(total_balance * 100) / 100));
+      // $("#milkTeaInven").text("" + 1);
 
     });
 

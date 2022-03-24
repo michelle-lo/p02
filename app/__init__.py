@@ -107,7 +107,7 @@ def profile():
 	username = db.fetch_username(session["user_id"])
 	balance = db.fetch_balance(session["user_id"])
 	drinks = db.fetch_drinks(session["user_id"])
-	return render_template("profile.html", username=username, drinks=drinks, balance=balance)
+	return render_template("profile.html", username=username, drinks=drinks, balance=round(balance, 2))
 
 
 @app.route("/about")
@@ -148,6 +148,9 @@ def counter():
 def display_order():
 	latest_order = order_db.latest_order()
 	new_customer = order_db.fetch_customer()
+	print(saved_drink["tea"])
+	print(saved_drink["topp1"])
+	print(saved_drink["topp2"])
 	json = jsonify({
 		"order" : latest_order,
 		"customer" : new_customer,
@@ -164,7 +167,7 @@ def shop():
 	current_balance = round(db.fetch_balance(session["user_id"]), 2)
 	print(db.fetch_itemInventory(session["user"], "milk"))
 	if request.method == "GET":
-		return render_template("shop.html", milkTeaInven=db.fetch_itemInventory(session["user"], "milk"), greenTeaInven=db.fetch_itemInventory(session["user"], "green"), taroTeaInven=db.fetch_itemInventory(session["user"], "taro"), oolongTeaInven=db.fetch_itemInventory(session["user"], "oolong"), tapiocaInven=db.fetch_itemInventory(session["user"], "tapioca"), grassJellyInven=db.fetch_itemInventory(session["user"], "grass jelly"), lycheeJellyInven =db.fetch_itemInventory(session["user"], "lychee jelly"), redBeanInven=db.fetch_itemInventory(session["user"], "red bean"), milkFoamInven=db.fetch_itemInventory(session["user"], "milk foam"), balance=current_balance)
+		return render_template("shop.html", milkTeaInven=db.fetch_itemInventory(session["user"], "milk tea"), greenTeaInven=db.fetch_itemInventory(session["user"], "green tea"), taroTeaInven=db.fetch_itemInventory(session["user"], "taro"), oolongTeaInven=db.fetch_itemInventory(session["user"], "oolong tea"), tapiocaInven=db.fetch_itemInventory(session["user"], "tapioca"), grassJellyInven=db.fetch_itemInventory(session["user"], "grass jelly"), lycheeJellyInven =db.fetch_itemInventory(session["user"], "lychee jelly"), redBeanInven=db.fetch_itemInventory(session["user"], "red bean"), milkFoamInven=db.fetch_itemInventory(session["user"], "milk foam"), balance=current_balance)
 	elif request.method == "POST":
 		return render_template("shop.html", milkTeaInven=db.fetch_itemInventory(session["user"], "milk"), greenTeaInven=db.fetch_itemInventory(session["user"], "green"), taroTeaInven=db.fetch_itemInventory(session["user"], "taro"), oolongTeaInven=db.fetch_itemInventory(session["user"], "oolong"), tapiocaInven=db.fetch_itemInventory(session["user"], "tapioca"), grassJellyInven=db.fetch_itemInventory(session["user"], "grass jelly"), lycheeJellyInven =db.fetch_itemInventory(session["user"], "lychee jelly"),  balance=current_balance)
 
@@ -252,11 +255,15 @@ def save_drink():
 
 @app.route("/load_kit_save", methods=['GET', 'POST'])
 def load_save():
+
 	json = jsonify({
 		"tea" : saved_drink["tea"],
 		"topp1" : saved_drink["topp1"],
 		"topp2" : saved_drink["topp2"],
 	})
+	print("load kit save: " + saved_drink["tea"])
+	print("load kit save: " + saved_drink["topp1"])
+	print("load kit save: " + saved_drink["topp2"])
 	return json
 
 @app.route("/process", methods=['GET', 'POST'])
