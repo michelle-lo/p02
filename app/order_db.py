@@ -110,6 +110,20 @@ def latest_order():
     latest_order = c.fetchone()
     return latest_order
 
+#[tea, topping1, topping2]
+def latest_order_v2():
+    db = sqlite3.connect(DB_FILE)
+    c = db.cursor()
+    c.execute("""
+        SELECT tea, topping1, topping2
+        FROM orders
+        ORDER BY id DESC
+        LIMIT 1
+    """)
+    order = c.fetchone()
+    return order
+print(latest_order_v2())
+
 #updates the latest entry
 def update_status():
     db = sqlite3.connect(DB_FILE)

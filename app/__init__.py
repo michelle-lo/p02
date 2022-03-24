@@ -195,7 +195,9 @@ def load_save():
 @app.route("/process", methods=['GET', 'POST'])
 def process_sale():
 	#checking if the order is correct
-	order = order_db.latest_order()
+	order = order_db.latest_order_v2()
+	print(order[0])
+	print(saved_drink["tea"])
 	if saved_drink["tea"] == order[0]:
 		if (saved_drink["topp1"] == order[1] or saved_drink["topp1"] == order[2]) and (saved_drink["topp2"] == order[1] or saved_drink["topp2"] == order[2]):
 			#updating balance
@@ -219,7 +221,8 @@ def process_sale():
 				"customer" : new_customer
 			})
 			order_print = order_db.print_orders()
-	return json
+			return json
+	return ""
 
 
 if __name__ == "__main__": #false if this file imported as module
