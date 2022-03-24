@@ -247,11 +247,12 @@ def update_balance():
 		"greenTea" : inventory[1].get("inventory"),
 		"taroTea" : inventory[2].get("inventory"),
 		"oolongTea" : inventory[3].get("inventory"),
-		"milkFoam" : inventory[4].get("inventory"),
-		"tapioca" : inventory[5].get("inventory"),
-		"grassJelly" : inventory[6].get("inventory"),
-		"lycheeJelly" : inventory[7].get("inventory"),
-		"redBean" : inventory[8].get("inventory")
+		# "milkFoam" : inventory[4].get("inventory"),
+		"tapioca" : inventory[4].get("inventory"),
+		"grassJelly" : inventory[5].get("inventory"),
+		"lycheeJelly" : inventory[6].get("inventory"),
+		"redBean" : inventory[7].get("inventory"),
+		"milkFoam" : inventory[8].get("inventory"),
 	})
 	return json
 
