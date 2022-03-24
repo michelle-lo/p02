@@ -285,7 +285,7 @@ var draw = (e) => {
     }
     else if (mouseY >= 300 && mouseY <= 340 && mouseX <= 130 && mouseX >= 50){
       drawTaroTea();
-      update_inventory("taro tea")
+      update_inventory("taro")
       teaSet = true;
     }
     else if (mouseY >= 300 && mouseY <= 340 && mouseX <= 225 && mouseX >= 150){
