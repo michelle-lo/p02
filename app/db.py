@@ -226,12 +226,19 @@ def game_over(user_id):
     inventory = fetch_inventory(username)
     drinks = 0
     for i in range(4):
-        drinks += tea_list[i]
+        if inventory[i]["inventory"] != "0":
+            drinks = 100
+            break
 
     toppings = 0
     for i in range(5):
-        toppings += topping_list[i]
+        if inventory[i]["inventory"] != "0":
+            toppings = 100
+            break
+    print(drinks)
+    print(toppings)
 
     if (drinks == 0 and balance < 1) or (toppings == 0 and balance < 0.25):
         return True
     return False
+#print(game_over(1))
