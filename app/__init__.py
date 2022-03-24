@@ -224,7 +224,8 @@ def process():
 
 @app.route("/shop_balance", methods=['GET', 'POST'])
 def update_balance():
-	balance = round(db.fetch_balance(session["user_id"]), 2)
+	# balance = round(db.fetch_balance(session["user_id"]), 2)
+	balance = db.fetch_balance(session["user_id"])
 	print("shop balance from /shop balance: " + str(balance))
 	json = jsonify({
 		"balance" : balance

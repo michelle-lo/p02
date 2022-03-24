@@ -6,6 +6,19 @@
 tea_list = ["milkTea", "greenTea", "taro", "oolongTea"]
 topping_list = ["tapioca", "grassJelly", "lycheeJelly", "redBean", "milkFoam"]
 
+var total_balance;
+
+$(document).ready(function(data) {
+  $.getJSON('/shop_balance', function(data) { //send data back to python file
+
+  })
+  .done(function(data){
+    total_balance = data.balance;
+    console.log(total_balance);
+  });
+
+})
+
 
 $(function() {
   $('a#milkTea').bind('click', function() {
@@ -21,8 +34,9 @@ $(function() {
 
     })
     .always(function(){
-        update_balance();
-        console.log("hello");
+      total_balance -= 1.0;
+      console.log("new balance: " + total_balance);
+      $("#balance").text("Balance: $" + (Math.round(total_balance * 100) / 100) + "0");
 
     });
 
@@ -43,7 +57,11 @@ $(function() {
       url : '/shop_process'
 
     })
-    return false;
+    .always(function(){
+        // update_balance();
+        // console.log("hello");
+
+    });
   });
 });
 
@@ -174,16 +192,15 @@ $(function() {
 });
 
 
-var update_balance = () => {
-  $(function() {
-    $("button").bind('click', function() {
-      $.getJSON('/shop_balance', function(data) { //send data back to python file
-        //do nothing
-      })
-      .done(function(data){
-
-          $("#balance").text("Balance: $" + data.balance + "0");
-      });
-    });
-  });
-}
+// var update_balance = () => {
+//   $(function() {
+//     $("button").bind('click', function() {
+//       $.getJSON('/shop_balance', function(data) { //send data back to python file
+//
+//       })
+//       .done(function(data){
+//           $("#balance").text("Balance: $" + data.balance + "0");
+//       });
+//     });
+//   });
+// }
