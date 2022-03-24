@@ -4,9 +4,9 @@
 jQuery is a JavaScript library that handles a bunch of cool events for HTML
 elements without having to refresh the page. This library is especially useful
 for sending data to a server or JSON file and processing it through JavaScript
-to constantly save and update the current page. jQuery functions can be
-placed within and outside of JavaScript functions to utilize when each action
-should happen.
+to constantly save and update the current page with variables listed in the JSON
+file. jQuery functions can be placed within and outside of JavaScript functions
+to utilize when each action should happen.
 
 ### Estimated Time Cost: 20 minutes
 
