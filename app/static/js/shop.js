@@ -6,22 +6,26 @@
 tea_list = ["milkTea", "greenTea", "taro", "oolongTea"]
 topping_list = ["tapioca", "grassJelly", "lycheeJelly", "redBean", "milkFoam"]
 
-//milk tea
 
 $(function() {
   $('a#milkTea').bind('click', function() {
     $.ajax({
       data : JSON.stringify({
-        "item" : "milkTea",
+        "item" : "milkTea"
       }),
 
       contentType: "application/json",
       dataType : 'application/json',
       type : 'POST',
-      url : '/shop_process'
+      url : '/shop_process',
 
     })
-    return false;
+    .always(function(){
+        update_balance();
+        console.log("hello");
+
+    });
+
   });
 });
 
@@ -168,3 +172,18 @@ $(function() {
     return false;
   });
 });
+
+
+var update_balance = () => {
+  $(function() {
+    $("button").bind('click', function() {
+      $.getJSON('/shop_balance', function(data) { //send data back to python file
+        //do nothing
+      })
+      .done(function(data){
+
+          $("#balance").text("Balance: $" + data.balance + "0");
+      });
+    });
+  });
+}

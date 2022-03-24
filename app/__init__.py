@@ -11,7 +11,7 @@ app = Flask(__name__)
 app.secret_key = "boba"
 
 saved_drink = {"tea":"null", "topp1":"null", "topp2":"null"}
-
+type = ""
 
 def logged_in():
 	"""
@@ -167,6 +167,7 @@ def shop():
 	elif request.method == "POST":
 		return render_template("shop.html", inv=db.fetch_inventory(session["user"]), balance=current_balance)
 
+
 @app.route("/shop_process", methods=['POST'])
 def process():
 	# print(db.fetch_itemInventory(session["user"], "green"))
@@ -209,16 +210,26 @@ def process():
 
 		for tea in tea_list:
 			if (item == tea):
+				# type = "tea"
 				balance_updated = db.update_balance(session["user_id"], -1.00)
 				print("balance: " + str(db.fetch_balance(session["user_id"])))
 
 		for topping in topping_list:
 			if (item == topping):
+				# type = "topping"
 				balance_updated = db.update_balance(session["user_id"], -0.20)
 				print("balance: " + str(db.fetch_balance(session["user_id"])))
 
-
 	return "hello"
+
+@app.route("/shop_balance", methods=['GET', 'POST'])
+def update_balance():
+	balance = round(db.fetch_balance(session["user_id"]), 2)
+	print("shop balance from /shop balance: " + str(balance))
+	json = jsonify({
+		"balance" : balance
+	})
+	return json
 
 @app.route("/kitchen", methods=['GET', 'POST'])
 def kitchen():
