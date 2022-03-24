@@ -57,16 +57,43 @@ img1.addEventListener("load", () => {
 let img4 = document.createElement("img");
 img4.src = '../static/img/counter_foreground.png';
 
-img4.addEventListener("load", () => {
-  ctx4.drawImage(img4, 0, 0)
-});
-
 let img3 = document.createElement("img");
 img3.src = '../static/assets/customer0.png';
 
 //ticket
 let img5 = document.createElement("img");
 img5.src = '../static/img/ticket.png';
+
+//loading teas
+let img6 = document.createElement("img");
+img6.src = '../static/assets/tea_milk.png';
+
+let img7 = document.createElement("img");
+img7.src = '../static/assets/tea_green.png';
+
+let img8 = document.createElement("img");
+img8.src = '../static/assets/tea_taro.png';
+
+let img9 = document.createElement("img");
+img9.src =  '../static/assets/tea_oolong.png';
+
+//loading toppings
+
+let img10 = document.createElement("img");
+img10.src = '../static/assets/topping_lychee.png';
+
+let img11 = document.createElement("img");
+img11.src = '../static/assets/topping_tapioca.png';
+
+let img12 = document.createElement("img");
+img12.src = '../static/assets/topping_redbean.png';
+
+let img13 = document.createElement("img");
+img13.src = '../static/assets/topping_milkfoam.png';
+
+let img14 = document.createElement("img");
+img14.src = '../static/assets/topping_grassjelly.png';
+
 
 img5.addEventListener("load", () => {
   ctx5.drawImage(img5, 0, 0)
@@ -81,6 +108,24 @@ var drawCustomer = () => {
   });
 }
 
+var drawTea = () => {
+  img6.addEventListener("load", () => {
+    ctx2.drawImage(img6, 0, 0);
+  });
+}
+
+var drawTopp1 = () => {
+  img10.addEventListener("load", () => {
+    ctx2.drawImage(img10, 0, 0);
+  });
+}
+
+var drawTopp2 = () => {
+  img11.addEventListener("load", () => {
+    ctx2.drawImage(img11, 0, 0);
+  });
+}
+
 var order_ticket;
 var customer_id;
 //jquery for updating balance and order with sell button
@@ -92,17 +137,61 @@ $(document).ready(function(data) {
   .done(function(data){
       order_ticket = data.order;
       customer_id = data.customer;
+
+      saved_tea = data.savedTea;
+      saved_topp1 = data.savedTopp1;
+      saved_topp2 = data.savedTopp2;
+
       if (customer_id === "customer0") {
         img3.src = img3.src = '../static/assets/customer0.png';
       } else {
         img3.src = img3.src = '../static/assets/customer1.png';
       }
+//tea
+      if (saved_tea === "milk"){
+        img6.src = img6.src = '../static/assets/tea_milk.png';
+      } else if (saved_tea === "green") {
+        img6.src = img6.src = '../static/assets/tea_green.png';
+      } else if (saved_tea === "taro") {
+        img6.src = img6.src = '../static/assets/tea_taro.png';
+      } else {
+        img6.src = img6.src = '../static/assets/tea_oolong.png';
+      }
+//topp1
+      if (saved_topp1 === "lychee"){
+        img10.src = img10.src = '../static/assets/topping_lychee.png';
+      } else if (saved_topp1 === "tapioca"){
+        img10.src = img10.src = '../static/assets/topping_tapioca.png';
+      } else if (saved_topp1 == "redBean"){
+        img10.src = img10.src = '../static/assets/topping_redbean.png';
+      } else if (saved_topp1 == "milkFoam"){
+        img10.src = img10.src = '../static/assets/topping_milkfoam.png';
+      } else {
+        img10.src = img10.src = '../static/assets/topping_grassjelly.png';
+      }
+//topp2
+      if (saved_topp2 === "lychee"){
+        img11.src = img11.src = '../static/assets/topping_lychee.png';
+      } else if (saved_topp2 === "tapioca"){
+        img11.src = img11.src = '../static/assets/topping_tapioca.png';
+      } else if (saved_topp2 == "redBean"){
+        img11.src = img11.src = '../static/assets/topping_redbean.png';
+      } else if (saved_topp2 == "milkFoam"){
+        img11.src = img11.src = '../static/assets/topping_milkfoam.png';
+      } else {
+        img11.src = img11.src = '../static/assets/topping_grassjelly.png';
+      }
+
       clear();
+      drawTea();
       drawCustomer();
       drawText();
+
+
       // console.log(data.order);
       // console.log(data.customer);
 
+//data.savedTea
   });
   return false;
 });

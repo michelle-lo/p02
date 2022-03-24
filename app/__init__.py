@@ -150,7 +150,10 @@ def display_order():
 	new_customer = order_db.fetch_customer()
 	json = jsonify({
 		"order" : latest_order,
-		"customer" : new_customer
+		"customer" : new_customer,
+		"savedTea" : saved_drink["tea"],
+		"savedTopp1" : saved_drink["topp1"],
+		"savedTopp2" : saved_drink["topp2"]
 	})
 	return json
 
@@ -160,9 +163,9 @@ def shop():
 	#print(db.fetch_inventory(session["user"]))
 	current_balance = db.fetch_balance(session["user_id"])
 	if request.method == "GET":
-		return render_template("shop.html", inv=db.fetch_inventory(session["user"]), shop=db.fetch_shop(), balance=current_balance)
+		return render_template("shop.html", inv=db.fetch_inventory(session["user"]), balance=current_balance)
 	elif request.method == "POST":
-		return render_template("shop.html", inv=db.fetch_inventory(session["user"]), shop=db.fetch_shop(), balance=current_balance)
+		return render_template("shop.html", inv=db.fetch_inventory(session["user"]), balance=current_balance)
 
 
 @app.route("/kitchen", methods=['GET', 'POST'])
