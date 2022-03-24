@@ -54,18 +54,7 @@ function drawMilkTea(){
      ctx3.drawImage(img3, 0, 0);
      addTea("milk_tea");
 
-     // // $(function() {
-     //   // $('a#sellBtn').bind('click', function() {
-     //     $.getJSON('/cooking', function(data) { //send data back to python file })
-     //     .done(function(data){
-     //         // $("#balance").text("Balance: " + data.balance); //updates balance div element with the data sent from init file
-     //         // $("#order").text(data.order);
-     //         // order_ticket = data.order;
-     //         // customer_id = data.customer;
-     //     });
-     //     // return false;
-     //   });
-     // });
+
 }
 
 let img4 = document.createElement("img");
@@ -319,28 +308,32 @@ var draw = (e) => {
           (mouseY <= 390 && mouseY >= 355 && mouseX <= 390 && mouseX >= 290) ||
           (mouseY <= 270 && mouseY >= 230 && mouseX <= 585 && mouseX >= 485))
         alert("You have already chosen two toppings! \nRestart your drink to choose a different combination of toppings.")
-    }}
+    }}}
 
     // if click on save button
+    $("#topping").click(function(e){
+      var mouseX = e.offsetX
+      var mouseY = e.offsetY
+      console.log("mouseclick registered at ", mouseX, mouseY);
     if (mouseY <= 515 && mouseY >= 470 && mouseX <= 150 && mouseX >= 20){
       // saveDrink();
-      $("#topping").click(function(e){
-        var mouseX = e.offsetX
-        var mouseY = e.offsetY
-        console.log("mouseclick registered at ", mouseX, mouseY);
+      // $("#topping").click(function(e){
+        // var mouseX = e.offsetX
+        // var mouseY = e.offsetY
+        // console.log("mouseclick registered at ", mouseX, mouseY);
 
-        if (mouseY <= 515 && mouseY >= 470 && mouseX <= 150 && mouseX >= 20){
+        // if (mouseY <= 515 && mouseY >= 470 && mouseX <= 150 && mouseX >= 20){
           saveDrink();
           console.log("saved");
-        }
-      })
-    }
+        // }
+      }
+    // };
 
     // if click on restart button
     if (mouseY <= 515 && mouseY >= 470 && mouseX <= 940 && mouseX >= 820){
       clearDrink();
       console.log("drink cleared");
-    }}
+    }})
   console.log(Object.values(drink));
 
 
