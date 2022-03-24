@@ -25,6 +25,17 @@ var ctx3 = c3.getContext("2d");
 var ctx4 = c4.getContext("2d");
 
 
+var total_balance;
+var total_milkTeaInven;
+var total_greenTeaInven;
+var total_taroTeaInven;
+var total_oolongTeaInven;
+var total_tapiocaInven;
+var total_grassJellyInven;
+var total_lycheeJellyInven;
+var total_redBeanInven;
+var total_milkFoamInven;
+
 // // creates background images for counter on canvas
 let img0 = document.createElement("img");
 img0.src = '../static/assets/cup.png';
@@ -195,7 +206,39 @@ function update_inventory(item){
     // });
   // });
 }
+//
+// var total_balance;
+// var total_milkTeaInven;
+// var total_greenTeaInven;
+// var total_taroTeaInven;
+// var total_oolongTeaInven;
+// var total_tapiocaInven;
+// var total_grassJellyInven;
+// var total_lycheeJellyInven;
+// var total_redBeanInven;
+// var total_milkFoamInven;
 
+function fetch_inventoryData(){
+  $.getJSON('/shop_balance', function(data) { //send data back to python file
+    //do nothing
+  })
+  .done(function(data){
+    // console.log(data.milkTea);
+    // total_balance = data.balance;
+    total_milkTeaInven = data.milkTea;
+    total_greenTeaInven = data.greenTea;
+    total_taroTeaInven = data.taroTea;
+    total_oolongTeaInven = data.oolongTea;
+    total_tapiocaInven = data.tapioca;
+    total_grassJellyInven = data.grassJelly;
+    total_lycheeJellyInven = data.lycheeJelly;
+    total_redBeanInven = data.redBean;
+    total_milkFoamInven = data.milkFoam;
+    console.log(total_milkTeaInven);
+
+  });
+  return false;
+}
 
 $(document).ready(function(data) {
   $.getJSON('/load_kit_save', function(data) { //send data back to python file
@@ -262,36 +305,52 @@ var load_save = (tea, topp1, topp2) => {
 
 
 // testing
-
+fetch_inventoryData();
 var draw = (e) => {
-
+  fetch_inventoryData();
+  console.log(total_milkTeaInven)
   var mouseX = e.offsetX
   var mouseY = e.offsetY
   console.log("mouseclick registered at ", mouseX, mouseY);
 
-  // TEAS
-
   // if tea is not set yet
   if (teaSet === false) {
     if (mouseY <= 390 && mouseY >= 350 && mouseX <= 120 && mouseX >= 40){
-      drawMilkTea();
-      update_inventory("milk tea")
-      teaSet = true;
+      console.log(total_milkTeaInven);
+      if (total_milkTeaInven >= 1) {
+        drawMilkTea();
+        update_inventory("milk tea");
+        teaSet = true;
+      } else {
+        alert("Insufficient " + "Milk Tea");
+      }
     }
     else if (mouseY <= 390 && mouseY >= 350 && mouseX <= 215 && mouseX >= 140){
-      drawGreenTea();
-      update_inventory("green tea")
-      teaSet = true;
+      if (total_greenTeaInven >= 1) {
+        drawGreenTea();
+        update_inventory("green tea")
+        teaSet = true;
+      } else {
+        alert("Insufficient " + "Green Tea");
+      }
     }
     else if (mouseY >= 300 && mouseY <= 340 && mouseX <= 130 && mouseX >= 50){
-      drawTaroTea();
-      update_inventory("taro")
-      teaSet = true;
+      if (total_taroTeaInven >= 1) {
+        drawTaroTea();
+        update_inventory("taro")
+        teaSet = true;
+      } else {
+        alert("Insufficient " + "Taro Tea");
+      }
     }
     else if (mouseY >= 300 && mouseY <= 340 && mouseX <= 225 && mouseX >= 150){
-      update_inventory("oolong tea")
-      drawOolongTea();
-      teaSet = true;
+      if (total_oolongTeaInven >= 1) {
+        update_inventory("oolong tea")
+        drawOolongTea();
+        teaSet = true;
+      } else {
+        alert("Insufficient " + "Oolong Tea");
+      }
     }
     // stops user trying to choose a topping before a tea (ex: milk foam floating in midair)
     else if ((mouseY <= 285 && mouseY >= 200 && mouseX <= 280 && mouseX >= 210) ||
@@ -315,29 +374,49 @@ var draw = (e) => {
     // if only zero or one topping is set
     if (toppSet === 0 || toppSet === 1){
       if (mouseY <= 285 && mouseY >= 200 && mouseX <= 280 && mouseX >= 210){
-        drawMilkFoam();
-        update_inventory("milk foam")
-        toppSet += 1;
+        if (total_milkFoamInven >= 1) {
+          drawMilkFoam();
+          update_inventory("milk foam")
+          toppSet += 1;
+        } else {
+          alert("Insufficient " + "Milk Foam");
+        }
       }
       else if (mouseY <= 270 && mouseY >= 230 && mouseX <= 440 && mouseX >= 340){
-        drawLycheeJelly();
-        update_inventory("lychee jelly")
-        toppSet += 1;
+        if (total_lycheeJellyInven >= 1) {
+          drawLycheeJelly();
+          update_inventory("lychee jelly")
+          toppSet += 1;
+        } else {
+          alert("Insufficient " + "Lychee Jelly");
+        }
       }
       else if (mouseY <= 330 && mouseY >= 290 && mouseX <= 415 && mouseX >= 315){
-        drawGrassJelly();
-        update_inventory("grass jelly")
-        toppSet += 1;
+        if (total_grassJellyInven >= 1) {
+          drawGrassJelly();
+          update_inventory("grass jelly")
+          toppSet += 1;
+        } else {
+          alert("Insufficient " + "Grass Jelly");
+        }
       }
       else if (mouseY <= 390 && mouseY >= 355 && mouseX <= 390 && mouseX >= 290){
-        drawTapioca();
-        update_inventory("tapioca")
-        toppSet += 1;
+        if (total_tapiocaInven >= 1) {
+          drawTapioca();
+          update_inventory("tapioca")
+          toppSet += 1;
+        } else {
+          alert("Insufficient " + "Tapioca");
+        }
       }
       else if (mouseY <= 270 && mouseY >= 230 && mouseX <= 585 && mouseX >= 485){
-        drawRedBean();
-        update_inventory("red bean")
-        toppSet += 1;
+        if (total_redBeanInven >= 1) {
+          drawRedBean();
+          update_inventory("red bean")
+          toppSet += 1;
+        } else {
+          alert("Insufficient " + "Red Bean");
+        }
       }
     }
     // stops alert from showing if you click outside hitbox
