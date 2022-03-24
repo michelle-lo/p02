@@ -172,9 +172,9 @@ def fetch_itemInventory(username, item):
     item_inventory = 0
     total_inventory = fetch_inventory(username)
     for row in total_inventory:
-        print(row)
+        # print(row)
         if (row.get("item") == item):
-            print("item found: " + item)
+            # print("item found: " + item)
             item_inventory = row.get("inventory")
             # print("item found: " + item)
             return item_inventory

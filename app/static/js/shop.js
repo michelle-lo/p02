@@ -7,6 +7,15 @@ tea_list = ["milkTea", "greenTea", "taro", "oolongTea"]
 topping_list = ["tapioca", "grassJelly", "lycheeJelly", "redBean", "milkFoam"]
 
 var total_balance;
+var total_milkTeaInven;
+var total_greenTeaInven;
+var total_taroTeaInven;
+var total_oolongTeaInven;
+var total_tapiocaInven;
+var total_grassJellyInven;
+var total_lycheeJellyInven;
+var total_redBeanInven;
+var total_milkFoamInven;
 
 $(document).ready(function(data) {
   $.getJSON('/shop_balance', function(data) { //send data back to python file
@@ -14,7 +23,16 @@ $(document).ready(function(data) {
   })
   .done(function(data){
     total_balance = data.balance;
-    console.log(total_balance);
+    total_milkTeaInven = data.milkTea;
+    total_greenTeaInven = data.greenTea;
+    total_taroTeaInven = data.taroTea;
+    total_oolongTeaInven = data.oolongTea;
+    total_tapiocaInven = data.tapioca;
+    total_grassJellyInven = data.grassJelly;
+    total_lycheeJellyInven = data.lycheeJelly;
+    total_redBeanInven = data.redBean;
+    total_milkFoamInven = data.milkFoam;
+
   });
 
 })
@@ -35,9 +53,11 @@ $(function() {
     })
     .always(function(){
       total_balance -= 1.0;
+      total_milkTeaInven += 1;
       console.log("new balance: " + total_balance);
+      console.log("milk tea inventory: " + total_milkTeaInven);
       $("#balance").text("Balance: $" + (Math.round(total_balance * 100) / 100));
-      // $("#milkTeaInven").text("" + 1);
+      $("#milkTeaInven").text(total_milkTeaInven);
 
     });
 
@@ -60,8 +80,10 @@ $(function() {
     })
     .always(function(){
       total_balance -= 1.0;
+      total_greenTeaInven += 1;
       console.log("new balance: " + total_balance);
-      $("#balance").text("Balance: $" + (Math.round(total_balance * 100) / 100) + "0");
+      $("#balance").text("Balance: $" + (Math.round(total_balance * 100) / 100));
+      $("#greenTeaInven").text(total_greenTeaInven);
     });
   });
 });
@@ -82,8 +104,10 @@ $(function() {
     })
     .always(function(){
       total_balance -= 1.0;
+      total_taroTeaInven += 1;
       console.log("new balance: " + total_balance);
-      $("#balance").text("Balance: $" + (Math.round(total_balance * 100) / 100) + "0");
+      $("#balance").text("Balance: $" + (Math.round(total_balance * 100) / 100));
+      $("#taroTeaInven").text(total_taroTeaInven);
     });
     return false;
   });
@@ -105,9 +129,10 @@ $(function() {
     })
     .always(function(){
       total_balance -= 1.0;
+      total_oolongTeaInven += 1;
       console.log("new balance: " + total_balance);
-      $("#balance").text("Balance: $" + (Math.round(total_balance * 100) / 100) + "0");
-
+      $("#balance").text("Balance: $" + (Math.round(total_balance * 100) / 100));
+      $("#oolongTeaInven").text(total_oolongTeaInven);
     });
     return false;
   });
@@ -129,8 +154,11 @@ $(function() {
     })
     .always(function(){
       total_balance -= 0.2;
+      total_tapiocaInven += 1;
       console.log("new balance: " + total_balance);
-      $("#balance").text("Balance: $" + (Math.round(total_balance * 100) / 100) + "0");
+      console.log("new tapioca: " + total_tapiocaInven);
+      $("#balance").text("Balance: $" + (Math.round(total_balance * 100) / 100));
+      $("#tapiocaInven").text(total_tapiocaInven);
 
     });
     return false;
@@ -153,8 +181,10 @@ $(function() {
     })
     .always(function(){
       total_balance -= 0.2;
+      total_grassJellyInven += 1;
       console.log("new balance: " + total_balance);
-      $("#balance").text("Balance: $" + (Math.round(total_balance * 100) / 100) + "0");
+      $("#balance").text("Balance: $" + (Math.round(total_balance * 100) / 100));
+      $("#grassJellyInven").text(total_grassJellyInven);
 
     });
     return false;
@@ -177,8 +207,10 @@ $(function() {
     })
     .always(function(){
       total_balance -= 0.2;
+      total_lycheeJellyInven += 1;
       console.log("new balance: " + total_balance);
-      $("#balance").text("Balance: $" + (Math.round(total_balance * 100) / 100) + "0");
+      $("#balance").text("Balance: $" + (Math.round(total_balance * 100) / 100));
+      $("#lycheeJellyInven").text(total_lycheeJellyInven);
 
     });
     return false;
@@ -201,8 +233,10 @@ $(function() {
     })
     .always(function(){
       total_balance -= 0.2;
+      total_redBeanInven += 1;
       console.log("new balance: " + total_balance);
-      $("#balance").text("Balance: $" + (Math.round(total_balance * 100) / 100) + "0");
+      $("#balance").text("Balance: $" + (Math.round(total_balance * 100) / 100));
+      $("#redBeanInven").text(total_redBeanInven);
 
     });
     return false;
@@ -225,8 +259,10 @@ $(function() {
     })
     .always(function(){
       total_balance -= 0.2;
+      total_milkFoamInven += 1;
       console.log("new balance: " + total_balance);
-      $("#balance").text("Balance: $" + (Math.round(total_balance * 100) / 100) + "0");
+      $("#balance").text("Balance: $" + (Math.round(total_balance * 100) / 100));
+      $("#milkFoamInven").text(total_milkFoamInven);
 
     });
     return false;
