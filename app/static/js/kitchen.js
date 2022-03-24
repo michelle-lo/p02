@@ -140,30 +140,32 @@ function clearDrink(){
     toppSet = 0;
 }
 
-//jquery and ajax for saving drink
-$(function() {
-  $('a#saveBtn').bind('click', function() {
-    console.log(drink.topp2);
-    console.log(JSON.stringify(drink));
-    drink_json = JSON.stringify(drink);
-    $.ajax({
+function saveDrink(){
+  //jquery and ajax for saving drink
+  $(function() {
+    // $('a#saveBtn').bind('click', function() {
+      console.log(drink.topp2);
+      console.log(JSON.stringify(drink));
+      drink_json = JSON.stringify(drink);
+      $.ajax({
 
-      data : JSON.stringify({
-        "tea" : drink.tea,
-        "topp1" : drink.topp1,
-        "topp2" : drink.topp2
-      }),
-      contentType: "application/json",
-      dataType : 'application/json',
-      type : 'POST',
-      url : '/save_drink'
+        data : JSON.stringify({
+          "tea" : drink.tea,
+          "topp1" : drink.topp1,
+          "topp2" : drink.topp2
+        }),
+        contentType: "application/json",
+        dataType : 'application/json',
+        type : 'POST',
+        url : '/save_drink'
 
-    })
-    .done(function(data){
+      })
+      .done(function(data){
 
+      });
     });
-  });
-});
+  // });
+}
 
 $(document).ready(function(data) {
   $.getJSON('/load_kit_save', function(data) { //send data back to python file
@@ -184,6 +186,7 @@ $(document).ready(function(data) {
   });
   return false;
 });
+
 
 var load_save = (tea, topp1, topp2) => {
   if (tea === "taro") {
@@ -302,7 +305,24 @@ var draw = (e) => {
           (mouseY <= 270 && mouseY >= 230 && mouseX <= 585 && mouseX >= 485))
         alert("You have already chosen two toppings! \nRestart your drink to choose a different combination of toppings.")
     }
-  // }
+
+    // if click on save button
+    if (mouseY <= 515 && mouseY >= 80 && mouseX <= 150 && mouseX >= 20){
+      // saveDrink();
+      $("topping").click(function(e){
+        var mouseX = e.offsetX
+        var mouseY = e.offsetY
+        console.log("mouseclick registered at ", mouseX, mouseY);
+
+        if (mouseY <= 515 && mouseY >= 80 && mouseX <= 150 && mouseX >= 20){
+          saveDrink();
+        }
+      })
+    }
+
+    if (mouseY <= 515 && mouseY >= 80 && mouseX <= 940 && mouseX >= 820){
+      clearDrink();
+    }
   console.log(Object.values(drink));
 
 
