@@ -175,3 +175,6 @@ Added howto guide to using jQuery and AJAX
 
 annabelZ -- 2022-03-24 03:37
 Can't overlap teas/toppings anymore when loading a previously saved drink
+
+annabelZ -- 2022-03-24 4:40
+Drink now empties if a successful order passes (counter.js, lines 212-214)

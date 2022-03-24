@@ -289,7 +289,8 @@ def process_sale():
 			json = jsonify({
 				"balance" : new_balance,
 				"order" : latest_order,
-				"customer" : new_customer
+				"customer" : new_customer,
+				"completed": "true",
 			})
 			order_print = order_db.print_orders()
 			return json

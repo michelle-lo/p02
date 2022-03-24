@@ -152,7 +152,6 @@ $(document).ready(function(data) {
       if (saved_topp1 === "lychee_jelly"){
         img10.src = img10.src = '../static/assets/topping_lychee.png';
       } else if (saved_topp1 === "tapioca"){
-        console.log("tapioca");
         img10.src = img10.src = '../static/assets/topping_tapioca.png';
       } else if (saved_topp1 === "red_bean"){
         img10.src = img10.src = '../static/assets/topping_redbean.png';
@@ -164,14 +163,19 @@ $(document).ready(function(data) {
 //topp2
       if (saved_topp2 === "lychee_jelly"){
         img11.src = img11.src = '../static/assets/topping_lychee.png';
+        toppSet = 2;
       } else if (saved_topp2 === "tapioca"){
         img11.src = img11.src = '../static/assets/topping_tapioca.png';
+        toppSet = 2;
       } else if (saved_topp2 === "red_bean"){
         img11.src = img11.src = '../static/assets/topping_redbean.png';
+        toppSet = 2;
       } else if (saved_topp2 === "milk_foam"){
         img11.src = img11.src = '../static/assets/topping_milkfoam.png';
+        toppSet = 2;
       } else if (saved_topp1 === "grass_jelly") {
         img11.src = img11.src = '../static/assets/topping_grassjelly.png';
+        toppSet = 2;
       }
 
 
@@ -203,10 +207,13 @@ $(function() {
         $("#order").text(data.order);
         order_ticket = data.order;
         customer_id = data.customer;
-    });
-    return false;
+        status = data.completed;
+    // });
+    if (status === "true"){
+      ctx2.clearRect(0, 0, c2.clientWidth, c2.clientHeight);
+      ctx2.drawImage(img0, 0, 0);}
   });
-});
+});})
 
 var clearText = (e) => {
     ctx6.clearRect(0, 0, c6.clientWidth, c6.clientHeight);
