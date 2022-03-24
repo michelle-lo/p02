@@ -151,3 +151,6 @@ Save function improved, will not load save onto kitchen when the page is reloade
 
 annabelZ -- 2022-03-23 20:29
 Fixed layering issue where the customer img shows up in front of the counter instead of behind
+
+rachelX -- 2022-03-23 20:31
+Shop page displays everything.

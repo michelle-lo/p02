@@ -72,13 +72,13 @@ P02: Four Toppings Boba Shop
               </tr>
             </thead>
             <tbody>
-              {% for thing in inv %}
+              {% for thing in shop %}
                 <tr>
                   <td>{{thing.item}}</td>
                   <td>
                     <div class="input-group">
                       <form method="POST" action="/shop">
-                        <input name={{thing.item}} type="submit" value="${{thing.price}}" class="btn btn-secondary"></input>
+                        <input name={{thing.item}} type="submit" value="${{thing.price}}0" class="btn btn-secondary"></input>
                       </form>
                     </div>
                   </td>

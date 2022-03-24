@@ -160,9 +160,9 @@ def shop():
 	#print(db.fetch_inventory(session["user"]))
 	current_balance = db.fetch_balance(session["user_id"])
 	if request.method == "GET":
-		return render_template("shop.html", inv=db.fetch_inventory(session["user"]), balance=current_balance)
+		return render_template("shop.html", inv=db.fetch_inventory(session["user"]), shop=db.fetch_shop(), balance=current_balance)
 	elif request.method == "POST":
-		return render_template("shop.html", inv=db.fetch_inventory(session["user"]), balance=current_balance)
+		return render_template("shop.html", inv=db.fetch_inventory(session["user"]), shop=db.fetch_shop(), balance=current_balance)
 
 
 @app.route("/kitchen", methods=['GET', 'POST'])
@@ -194,27 +194,31 @@ def load_save():
 
 @app.route("/process", methods=['GET', 'POST'])
 def process_sale():
-	#updating balance
-	new_amount = order_db.fetch_price() #fetches price of latest drink (if not already closed)
-	balance_updated = db.update_balance(session["user_id"], new_amount)
-	print("balance: " + str(db.fetch_balance(session["user_id"])))
+	#checking if the order is correct
+	order = order_db.latest_order()
+	if saved_drink["tea"] == order[0]:
+		if (saved_drink["topp1"] == order[1] or saved_drink["topp1"] == order[2]) and (saved_drink["topp2"] == order[1] or saved_drink["topp2"] == order[2]):
+			#updating balance
+			new_amount = order_db.fetch_price() #fetches price of latest drink (if not already closed)
+			balance_updated = db.update_balance(session["user_id"], new_amount)
+			print("balance: " + str(db.fetch_balance(session["user_id"])))
 
-	#updating sales database and creates new order
-	success = order_db.update_status()
-	drinks_update = db.update_drinks(session["user_id"])
-	if (order_db.latest_order()[6] == 1):
-		create_order = order_db.create_order()
+			#updating sales database and creates new order
+			success = order_db.update_status()
+			drinks_update = db.update_drinks(session["user_id"])
+			if (order_db.latest_order()[6] == 1):
+				create_order = order_db.create_order()
 
-	#sending data to counter.js
-	new_balance = db.fetch_balance(session["user_id"])
-	latest_order = order_db.latest_order()
-	new_customer = order_db.fetch_customer()
-	json = jsonify({
-		"balance" : new_balance,
-		"order" : latest_order,
-		"customer" : new_customer
-	})
-	order_print = order_db.print_orders()
+			#sending data to counter.js
+			new_balance = db.fetch_balance(session["user_id"])
+			latest_order = order_db.latest_order()
+			new_customer = order_db.fetch_customer()
+			json = jsonify({
+				"balance" : new_balance,
+				"order" : latest_order,
+				"customer" : new_customer
+			})
+			order_print = order_db.print_orders()
 	return json
 
 
