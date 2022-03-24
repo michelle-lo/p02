@@ -185,17 +185,17 @@ def process():
 		item = request.get_json(force=True)["item"]
 		print(item)
 		if (item == "milkTea"):
-			success = db.add_inventory(session["user"], "milk")
-			print(str(item) + " inventory: " + str(db.fetch_itemInventory(session["user"], "milk")))
+			success = db.add_inventory(session["user"], "milk tea")
+			print(str(item) + " inventory: " + str(db.fetch_itemInventory(session["user"], "milk tea")))
 		elif (item == "greenTea"):
-			success = db.add_inventory(session["user"], "green")
-			print(str(item) + " inventory: " + str(db.fetch_itemInventory(session["user"], "green")))
+			success = db.add_inventory(session["user"], "green tea")
+			print(str(item) + " inventory: " + str(db.fetch_itemInventory(session["user"], "green tea")))
 		elif (item == "taro"):
 			success = db.add_inventory(session["user"], "taro")
 			print(str(item) + " inventory: " + str(db.fetch_itemInventory(session["user"], "taro")))
 		elif (item == "oolongTea"):
-			success = db.add_inventory(session["user"], "oolong")
-			print(str(item) + " inventory: " + str(db.fetch_itemInventory(session["user"], "oolong")))
+			success = db.add_inventory(session["user"], "oolong tea")
+			print(str(item) + " inventory: " + str(db.fetch_itemInventory(session["user"], "oolong tea")))
 		elif (item == "tapioca"):
 			success = db.add_inventory(session["user"], "tapioca")
 			print(str(item) + " inventory: " + str(db.fetch_itemInventory(session["user"], "tapioca")))
@@ -229,19 +229,8 @@ def process():
 @app.route("/shop_balance", methods=['GET', 'POST'])
 def update_balance():
 	balance = round(db.fetch_balance(session["user_id"]), 2)
-	# print("shop balance from /shop balance: " + str(balance))
 	inventory = db.fetch_inventory(session["user"])
-	# print(inventory)
 	print("tapioca: " + str(inventory[4].get("inventory")))
-	# [{'item': 'milk', 'inventory': 180},
-	# {'item': 'green', 'inventory': 62},
-	# {'item': 'taro', 'inventory': 27},
-	# {'item': 'oolong', 'inventory': 17},
-	# {'item': 'milk foam', 'inventory': 18},
-	# {'item': 'tapioca', 'inventory': 27},
-	# {'item': 'grass jelly', 'inventory': 10},
-	# {'item': 'lychee jelly', 'inventory': 11},
-	# {'item': 'red bean', 'inventory': 12}]
 
 	json = jsonify({
 		"balance" : balance,
