@@ -165,10 +165,11 @@ def display_order():
 def shop():
 	#print(db.fetch_inventory(session["user"]))
 	current_balance = round(db.fetch_balance(session["user_id"]), 2)
+	print(db.fetch_itemInventory(session["user"], "milk"))
 	if request.method == "GET":
-		return render_template("shop.html", inv=db.fetch_inventory(session["user"]), balance=current_balance)
+		return render_template("shop.html", milkTeaInven=db.fetch_itemInventory(session["user"], "milk"), greenTeaInven=db.fetch_itemInventory(session["user"], "green"), taroTeaInven=db.fetch_itemInventory(session["user"], "taro"), oolongTeaInven=db.fetch_itemInventory(session["user"], "oolong"), tapiocaInven=db.fetch_itemInventory(session["user"], "tapioca"), grassJellyInven=db.fetch_itemInventory(session["user"], "grass jelly"), lycheeJellyInven =db.fetch_itemInventory(session["user"], "lychee jelly"), redBeanInven=db.fetch_itemInventory(session["user"], "red bean"), milkFoamInven=db.fetch_itemInventory(session["user"], "milk foam"), balance=current_balance)
 	elif request.method == "POST":
-		return render_template("shop.html", inv=db.fetch_inventory(session["user"]), balance=current_balance)
+		return render_template("shop.html", milkTeaInven=db.fetch_itemInventory(session["user"], "milk"), greenTeaInven=db.fetch_itemInventory(session["user"], "green"), taroTeaInven=db.fetch_itemInventory(session["user"], "taro"), oolongTeaInven=db.fetch_itemInventory(session["user"], "oolong"), tapiocaInven=db.fetch_itemInventory(session["user"], "tapioca"), grassJellyInven=db.fetch_itemInventory(session["user"], "grass jelly"), lycheeJellyInven =db.fetch_itemInventory(session["user"], "lychee jelly"),  balance=current_balance)
 
 
 @app.route("/shop_process", methods=['POST'])
@@ -227,8 +228,7 @@ def process():
 
 @app.route("/shop_balance", methods=['GET', 'POST'])
 def update_balance():
-	# balance = round(db.fetch_balance(session["user_id"]), 2)
-	balance = db.fetch_balance(session["user_id"])
+	balance = round(db.fetch_balance(session["user_id"]), 2)
 	print("shop balance from /shop balance: " + str(balance))
 	json = jsonify({
 		"balance" : balance
