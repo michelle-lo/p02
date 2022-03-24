@@ -69,8 +69,8 @@ def create_order():
 
     id = order_count() + 1 #first order = 1
 
-    teas = ["green tea", "milk tea", "taro", "oolong tea"]
-    toppings = ["milk foam", "boba", "grass jelly", "lychee jelly", "red bean", 'null']
+    teas = ["green_tea", "milk_tea", "taro", "oolong_tea"]
+    toppings = ["milk_foam", "tapioca", "grass_jelly", "lychee_jelly", "red_bean", 'null']
     customers = ["customer0", "customer1", "customer2"]
 
     tea = teas[random.randint(0, len(teas) - 1)]
@@ -109,6 +109,20 @@ def latest_order():
     """)
     latest_order = c.fetchone()
     return latest_order
+
+#[tea, topping1, topping2]
+def latest_order_v2():
+    db = sqlite3.connect(DB_FILE)
+    c = db.cursor()
+    c.execute("""
+        SELECT tea, topping1, topping2
+        FROM orders
+        ORDER BY id DESC
+        LIMIT 1
+    """)
+    order = c.fetchone()
+    return order
+#print(latest_order_v2())
 
 #updates the latest entry
 def update_status():

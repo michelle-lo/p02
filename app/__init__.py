@@ -150,7 +150,10 @@ def display_order():
 	new_customer = order_db.fetch_customer()
 	json = jsonify({
 		"order" : latest_order,
-		"customer" : new_customer
+		"customer" : new_customer,
+		"savedTea" : saved_drink["tea"],
+		"savedTopp1" : saved_drink["topp1"],
+		"savedTopp2" : saved_drink["topp2"]
 	})
 	return json
 
@@ -160,9 +163,9 @@ def shop():
 	#print(db.fetch_inventory(session["user"]))
 	current_balance = db.fetch_balance(session["user_id"])
 	if request.method == "GET":
-		return render_template("shop.html", inv=db.fetch_inventory(session["user"]), shop=db.fetch_shop(), balance=current_balance)
+		return render_template("shop.html", inv=db.fetch_inventory(session["user"]), balance=current_balance)
 	elif request.method == "POST":
-		return render_template("shop.html", inv=db.fetch_inventory(session["user"]), shop=db.fetch_shop(), balance=current_balance)
+		return render_template("shop.html", inv=db.fetch_inventory(session["user"]), balance=current_balance)
 
 @app.route("/shop_process", methods=['POST'])
 def process():
@@ -209,9 +212,15 @@ def load_save():
 @app.route("/process", methods=['GET', 'POST'])
 def process_sale():
 	#checking if the order is correct
-	order = order_db.latest_order()
-	if saved_drink["tea"] == order[0]:
-		if (saved_drink["topp1"] == order[1] or saved_drink["topp1"] == order[2]) and (saved_drink["topp2"] == order[1] or saved_drink["topp2"] == order[2]):
+	order = order_db.latest_order_v2()
+	if saved_drink["topp1"] == None:
+		saved_drink["topp1"] == "null"
+	if saved_drink["topp2"] == None:
+		saved_drink["topp2"] == "null"
+	print(order)
+	print(saved_drink)
+	if saved_drink["tea"] in order[0]:
+		if (saved_drink["topp1"] in order[1] or saved_drink["topp1"] in order[2]) and (saved_drink["topp2"] in order[1] or saved_drink["topp2"] in order[2]):
 			#updating balance
 			new_amount = order_db.fetch_price() #fetches price of latest drink (if not already closed)
 			balance_updated = db.update_balance(session["user_id"], new_amount)
@@ -233,7 +242,8 @@ def process_sale():
 				"customer" : new_customer
 			})
 			order_print = order_db.print_orders()
-	return json
+			return json
+	return ""
 
 
 if __name__ == "__main__": #false if this file imported as module
