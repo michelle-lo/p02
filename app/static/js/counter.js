@@ -14,10 +14,12 @@ var c5 = document.getElementById('ticket');
 var c6 = document.getElementById('text');
 
 
+
 var requestID;
 var drinkOnB = document.getElementById('drinkOn');
 var drinkOffB = document.getElementById('drinkOff');
 var sellBtn = document.getElementById('sellBtn');
+
 
 // '''prepare to interact with canvas in 2D'''
 var ctx1 = c1.getContext("2d");
@@ -26,6 +28,7 @@ var ctx3 = c3.getContext("2d");
 var ctx4 = c4.getContext("2d");
 var ctx5 = c5.getContext("2d");
 var ctx6 = c6.getContext("2d");
+
 
 // drink visiblility
 var drawDrinkOff = () => {
@@ -143,8 +146,11 @@ $(document).ready(function(data) {
       customer_id = data.customer;
 
       saved_tea = data.savedTea;
+      console.log(saved_tea);
       saved_topp1 = data.savedTopp1;
+      console.log(saved_topp1);
       saved_topp2 = data.savedTopp2;
+      console.log(saved_topp2);
 
       if (customer_id === "customer0") {
         img3.src = img3.src = '../static/assets/customer0.png';
@@ -158,8 +164,11 @@ $(document).ready(function(data) {
         img6.src = img6.src = '../static/assets/tea_green.png';
       } else if (saved_tea === "taro") {
         img6.src = img6.src = '../static/assets/tea_taro.png';
-      } else {
+      } else if (saved_tea === "oolong") {
         img6.src = img6.src = '../static/assets/tea_oolong.png';
+      } else {
+        ctx2.clearRect(0, 0, c2.width, c2.height);
+        ctx2.drawImage(img0, 0, 0);
       }
 //topp1
       if (saved_topp1 === "lychee_jelly"){
@@ -188,6 +197,8 @@ $(document).ready(function(data) {
 
       clear();
       drawTea();
+      drawTopp1();
+      drawTopp2();
       drawCustomer();
       drawText();
 
