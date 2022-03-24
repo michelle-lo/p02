@@ -98,18 +98,18 @@ var drawTea = () => {
   });
 }
 
-var drawTopp1 = () => {
-  img10.addEventListener("load", () => {
-    console.log()
-    ctx2.drawImage(img10, 0, 0);
-  });
-}
-
-var drawTopp2 = () => {
-  img11.addEventListener("load", () => {
-    ctx2.drawImage(img11, 0, 0);
-  });
-}
+// var drawTopp1 = () => {
+//   img10.addEventListener("load", () => {
+//     console.log()
+//     ctx2.drawImage(img10, 0, 0);
+//   });
+// }
+//
+// var drawTopp2 = () => {
+//   img11.addEventListener("load", () => {
+//     ctx2.drawImage(img11, 0, 0);
+//   });
+// }
 
 var order_ticket;
 var customer_id;
@@ -191,6 +191,19 @@ $(document).ready(function(data) {
   });
   return false;
 });
+
+var drawTopp1 = () => {
+  img10.addEventListener("load", () => {
+    console.log()
+    ctx2.drawImage(img10, 0, 0);
+  });
+}
+
+var drawTopp2 = () => {
+  img11.addEventListener("load", () => {
+    ctx2.drawImage(img11, 0, 0);
+  });
+}
 
 //jquery for updating balance and order with sell button
 $(function() {

@@ -148,6 +148,9 @@ def counter():
 def display_order():
 	latest_order = order_db.latest_order()
 	new_customer = order_db.fetch_customer()
+	print(saved_drink["tea"])
+	print(saved_drink["topp1"])
+	print(saved_drink["topp2"])
 	json = jsonify({
 		"order" : latest_order,
 		"customer" : new_customer,
@@ -252,11 +255,15 @@ def save_drink():
 
 @app.route("/load_kit_save", methods=['GET', 'POST'])
 def load_save():
+
 	json = jsonify({
 		"tea" : saved_drink["tea"],
 		"topp1" : saved_drink["topp1"],
 		"topp2" : saved_drink["topp2"],
 	})
+	print("load kit save: " + saved_drink["tea"])
+	print("load kit save: " + saved_drink["topp1"])
+	print("load kit save: " + saved_drink["topp2"])
 	return json
 
 @app.route("/process", methods=['GET', 'POST'])

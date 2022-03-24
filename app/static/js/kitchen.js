@@ -212,8 +212,10 @@ var load_save = (tea, topp1, topp2) => {
     drawOolongTea();teaSet = true;
   } else if (tea === "green_tea") {
     drawGreenTea();teaSet = true;
-  }
+  } else {
 
+  }
+  console.log("topp1 " + topp1);
   if (topp1 === "tapioca") {
     drawTapioca();toppSet = 1;
   } else if (topp1 === "grass_jelly") {
@@ -224,8 +226,10 @@ var load_save = (tea, topp1, topp2) => {
     drawRedBean();toppSet = 1;
   } else if (topp1 === "milk_foam") {
     drawMilkFoam();toppSet = 1;
-  }
+  } else {
 
+  }
+  console.log("topp2 " + topp2);
   if (topp2 === "tapioca") {
     drawTapioca();toppSet = 2;
   } else if (topp2 === "grass_jelly") {
