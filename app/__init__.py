@@ -237,7 +237,7 @@ def update_balance():
 
 @app.route("/kitchen", methods=['GET', 'POST'])
 def kitchen():
-	return render_template("kitchen.html")
+	return render_template("kitchen.html", current_order=latest_order)
 
 @app.route("/save_drink", methods=['POST'])
 def save_drink():
