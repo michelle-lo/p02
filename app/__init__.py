@@ -12,6 +12,10 @@ app.secret_key = "boba"
 
 saved_drink = {"tea":"null", "topp1":"null", "topp2":"null"}
 
+type = ""
+status = "not completed"
+
+
 def logged_in():
 	"""
 	Returns True if the user is in session.
@@ -270,11 +274,17 @@ def save_drink():
 
 @app.route("/load_kit_save", methods=['GET', 'POST'])
 def load_save():
-
+	global status
+	if status == "completed":
+		x = "true"
+		print("status is complete")
+	else:
+		x = "false"
 	json = jsonify({
 		"tea" : saved_drink["tea"],
 		"topp1" : saved_drink["topp1"],
 		"topp2" : saved_drink["topp2"],
+		"completed": x,
 	})
 	# # print("load kit save: " + saved_drink["tea"])
 	# print("load kit save: " + saved_drink["topp1"])
@@ -292,7 +302,9 @@ def update_inventory():
 
 @app.route("/process", methods=['GET', 'POST'])
 def process_sale():
+	global status
 	#checking if the order is correct
+	status = "not completed"
 	order = order_db.latest_order_v2()
 	if saved_drink["topp1"] == None:
 		saved_drink["topp1"] = "null"
@@ -323,6 +335,7 @@ def process_sale():
 				"customer" : new_customer,
 				"completed": "true",
 			})
+			status = "completed"
 			order_print = order_db.print_orders()
 			return json
 	return ""
