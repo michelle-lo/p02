@@ -170,6 +170,33 @@ function saveDrink(){
   // });
 }
 
+function update_inventory(item){
+  //jquery and ajax for saving drink
+  // $(function() {
+    // $('a#saveBtn').bind('click', function() {
+      console.log(item);
+      // console.log(JSON.stringify(drink));
+      // drink_json = JSON.stringify(drink);
+
+      $.ajax({
+
+        data : JSON.stringify({
+          "item" : item,
+        }),
+        contentType: "application/json",
+        dataType : 'application/json',
+        type : 'POST',
+        url : '/update_kit_inventory'
+
+      })
+      .done(function(data){
+
+      });
+    // });
+  // });
+}
+
+
 $(document).ready(function(data) {
   $.getJSON('/load_kit_save', function(data) { //send data back to python file
     //do nothing
@@ -248,17 +275,21 @@ var draw = (e) => {
   if (teaSet === false) {
     if (mouseY <= 390 && mouseY >= 350 && mouseX <= 120 && mouseX >= 40){
       drawMilkTea();
+      update_inventory("milk tea")
       teaSet = true;
     }
     else if (mouseY <= 390 && mouseY >= 350 && mouseX <= 215 && mouseX >= 140){
       drawGreenTea();
+      update_inventory("green tea")
       teaSet = true;
     }
     else if (mouseY >= 300 && mouseY <= 340 && mouseX <= 130 && mouseX >= 50){
       drawTaroTea();
+      update_inventory("taro tea")
       teaSet = true;
     }
     else if (mouseY >= 300 && mouseY <= 340 && mouseX <= 225 && mouseX >= 150){
+      update_inventory("oolong tea")
       drawOolongTea();
       teaSet = true;
     }
@@ -285,22 +316,27 @@ var draw = (e) => {
     if (toppSet === 0 || toppSet === 1){
       if (mouseY <= 285 && mouseY >= 200 && mouseX <= 280 && mouseX >= 210){
         drawMilkFoam();
+        update_inventory("milk foam")
         toppSet += 1;
       }
       else if (mouseY <= 270 && mouseY >= 230 && mouseX <= 440 && mouseX >= 340){
         drawLycheeJelly();
+        update_inventory("lychee jelly")
         toppSet += 1;
       }
       else if (mouseY <= 330 && mouseY >= 290 && mouseX <= 415 && mouseX >= 315){
         drawGrassJelly();
+        update_inventory("grass jelly")
         toppSet += 1;
       }
       else if (mouseY <= 390 && mouseY >= 355 && mouseX <= 390 && mouseX >= 290){
         drawTapioca();
+        update_inventory("tapioca")
         toppSet += 1;
       }
       else if (mouseY <= 270 && mouseY >= 230 && mouseX <= 585 && mouseX >= 485){
         drawRedBean();
+        update_inventory("red bean")
         toppSet += 1;
       }
     }
