@@ -40,23 +40,39 @@ $('a#sellBtn').bind('click', function() {
 The `#` indicates that you are referring to an element with an id (in this case, id="sellBtn").
 `'click'` indicates the action you want that element to react on (in this case, clicking on the element).
 
-3.
+3. Lets say you want to send data back to the python file to save into a database or edit an HTML element. We'll use JSON to pass variables to and from our python file
+```
+$.getJSON('/process', function(data)) {})
+```
+`'/process'` references to the Flask app route you route to that has all your python functions (our '/process' pushes the current order and creates a new order for the user to fulfill)
 
+4. After '/process' finishes changing the variables you needed to change on-screen, you need to tell jQuery to run the actual updating when it's done
+```
+.done(function(data){
+    $("#balance").text("Balance: " + data.balance); //updates balance div element with the data sent from init file
+    $("#order").text(data.order);
+    order_ticket = data.order;
+    customer_id = data.customer;
+});
+```
+In `data.[variable]`, the variable is referenced in the JSON file that is created when '/process' is run from `__init__.py`.
 
-  $.getJSON('/process', function(data) { //send data back to python file
-    //do nothing
-  })
-  .done(function(data){
-      $("#balance").text("Balance: " + data.balance); //updates balance div element with the data sent from init file
-      $("#order").text(data.order);
-      order_ticket = data.order;
-      customer_id = data.customer;
+5. Close all your statements with correct `;` after each complete line
+
+6. The end result should be:
+```
+$(function() {
+  $('a#sellBtn').bind('click', function() {
+    $.getJSON('/process', function(data) {})
+    .done(function(data){
+        $("#balance").text("Balance: " + data.balance);
+        $("#order").text(data.order);
+        order_ticket = data.order;
+        customer_id = data.customer;
+    });
   });
-  return false;
 });
-});
-
-
+```
 
 ### Resources
 * https://jquery.com/
