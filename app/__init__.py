@@ -139,7 +139,7 @@ def counter():
 		return redirect("/login")
 	if db.game_over(session["user_id"]):
 		db.remove_user(session["user_id"])
-		redirect("/logout")
+		return redirect("/logout")
 	order_print = order_db.print_orders() #for debugging
 
 	latest_order = order_db.latest_order()
