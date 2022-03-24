@@ -89,5 +89,5 @@ $(function() {
 Accurate as of (last update): 2022-03-23
 
 #### Contributors:
-Annabel Zhang, pd2
+Annabel Zhang, pd2  
 Michelle Lo, pd2
