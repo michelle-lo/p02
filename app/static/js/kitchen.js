@@ -13,7 +13,7 @@ var c3 = document.getElementById('tea');
 var c4 = document.getElementById('topping');
 
 // drink variable
-var drink = {tea:null, topp1:null, topp2:null};
+var drink = {"tea":null, "topp1":null, "topp2":null};
 var teaSet = false;
 var toppSet = 0;
 
@@ -53,6 +53,19 @@ function drawMilkTea(){
 //   // img3.addEventListener("load", () => {
      ctx3.drawImage(img3, 0, 0);
      addTea("milk_tea");
+
+     // // $(function() {
+     //   // $('a#sellBtn').bind('click', function() {
+     //     $.getJSON('/cooking', function(data) { //send data back to python file })
+     //     .done(function(data){
+     //         // $("#balance").text("Balance: " + data.balance); //updates balance div element with the data sent from init file
+     //         // $("#order").text(data.order);
+     //         // order_ticket = data.order;
+     //         // customer_id = data.customer;
+     //     });
+     //     // return false;
+     //   });
+     // });
 }
 
 let img4 = document.createElement("img");
@@ -87,7 +100,7 @@ function addTopp(topping){
   if (drink["topp1"] === null){
     drink["topp1"] = topping;}
   else{
-    drink["topp2"] = topping}
+    drink["topp2"] = topping;}
   }
 
 
@@ -132,17 +145,18 @@ function drawGrassJelly(){
 }
 
 function clearDrink(){
+  console.log("clearing drink");
     ctx3.clearRect(0, 0, c3.width, c3.height);
     ctx4.clearRect(0, 0, c3.width, c3.height);
     // ctx3.drawImage(img0, 0, 0)
-    drink = {tea:null, topp1:null, topp2:null};
+    drink = {'tea':null, 'topp1':null, 'topp2':null};
     teaSet = false;
     toppSet = 0;
 }
 
 function saveDrink(){
   //jquery and ajax for saving drink
-  $(function() {
+  // $(function() {
     // $('a#saveBtn').bind('click', function() {
       console.log(drink.topp2);
       console.log(JSON.stringify(drink));
@@ -152,7 +166,7 @@ function saveDrink(){
         data : JSON.stringify({
           "tea" : drink.tea,
           "topp1" : drink.topp1,
-          "topp2" : drink.topp2
+          "topp2" : drink.topp2,
         }),
         contentType: "application/json",
         dataType : 'application/json',
@@ -163,7 +177,7 @@ function saveDrink(){
       .done(function(data){
 
       });
-    });
+    // });
   // });
 }
 
@@ -304,66 +318,29 @@ var draw = (e) => {
           (mouseY <= 390 && mouseY >= 355 && mouseX <= 390 && mouseX >= 290) ||
           (mouseY <= 270 && mouseY >= 230 && mouseX <= 585 && mouseX >= 485))
         alert("You have already chosen two toppings! \nRestart your drink to choose a different combination of toppings.")
-    }
+    }}
 
     // if click on save button
-    if (mouseY <= 515 && mouseY >= 80 && mouseX <= 150 && mouseX >= 20){
+    if (mouseY <= 515 && mouseY >= 470 && mouseX <= 150 && mouseX >= 20){
       // saveDrink();
-      $("topping").click(function(e){
+      $("#topping").click(function(e){
         var mouseX = e.offsetX
         var mouseY = e.offsetY
         console.log("mouseclick registered at ", mouseX, mouseY);
 
-        if (mouseY <= 515 && mouseY >= 80 && mouseX <= 150 && mouseX >= 20){
+        if (mouseY <= 515 && mouseY >= 470 && mouseX <= 150 && mouseX >= 20){
           saveDrink();
+          console.log("saved");
         }
       })
     }
 
-    if (mouseY <= 515 && mouseY >= 80 && mouseX <= 940 && mouseX >= 820){
+    // if click on restart button
+    if (mouseY <= 515 && mouseY >= 470 && mouseX <= 940 && mouseX >= 820){
       clearDrink();
-    }
+      console.log("drink cleared");
+    }}
   console.log(Object.values(drink));
 
 
-  // toppingss
-  // if (toppSet === 0 || toppSet === 1){
-  //   if (mouseY <= 285 && mouseY >= 200 && mouseX <= 280 && mouseX >= 210){
-  //     drawMilkFoam();
-  //     toppSet += 1;
-  //   }
-  //   else if (mouseY <= 270 && mouseY >= 230 && mouseX <= 440 && mouseX >= 340){
-  //     drawLycheeJelly();
-  //     toppSet += 1;
-  //   }
-  //   else if (mouseY <= 330 && mouseY >= 290 && mouseX <= 415 && mouseX >= 315){
-  //     drawGrassJelly();
-  //     toppSet += 1;
-  //   }
-  //   else if (mouseY <= 390 && mouseY >= 355 && mouseX <= 390 && mouseX >= 290){
-  //     drawTapioca();
-  //     toppSet += 1;
-  //   }
-  //   else if (mouseY <= 270 && mouseY >= 230 && mouseX <= 585 && mouseX >= 485){
-  //     drawRedBean();
-  //     toppSet += 1;
-  //   }
-  // }
-  // else if (toppSet === 2){
-  //   if ((mouseY <= 285 && mouseY >= 200 && mouseX <= 280 && mouseX >= 210) ||
-  //       (mouseY <= 270 && mouseY >= 230 && mouseX <= 440 && mouseX >= 340) ||
-  //       (mouseY <= 330 && mouseY >= 290 && mouseX <= 415 && mouseX >= 315) ||
-  //       (mouseY <= 390 && mouseY >= 355 && mouseX <= 390 && mouseX >= 290) ||
-  //       (mouseY <= 270 && mouseY >= 230 && mouseX <= 585 && mouseX >= 485))
-  //     alert("You have already chosen two toppings! \nRestart your drink to choose a different combination of toppings.")
-  // }
-
-
-}}
-
-
-
 c4.addEventListener("click", draw);
-// counterB.addEventListener("click", drawCounter);
-// kitchenB.addEventListener("click", drawKitchen);
-// milkTea.addEventListener("click", drawMilkTea);
