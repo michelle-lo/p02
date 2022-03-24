@@ -237,7 +237,9 @@ def update_balance():
 
 @app.route("/kitchen", methods=['GET', 'POST'])
 def kitchen():
-	return render_template("kitchen.html", current_order=latest_order)
+	latest_order = order_db.latest_order_v2()
+	order = [latest_order[0], latest_order[1], latest_order[2]]
+	return render_template("kitchen.html", order=order, price=latest_order[3])
 
 @app.route("/save_drink", methods=['POST'])
 def save_drink():
