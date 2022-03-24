@@ -222,7 +222,14 @@ var clearText = (e) => {
 
 var drawText = () => {
   var order_id = order_ticket[0];
-  var tea = order_ticket[1];
+  var tea = ""
+  for (let i = 0; i < order_ticket[1].length; i++) {
+    if (order_ticket[1].charAt(i) == '_') {
+      tea += " ";
+    } else {
+      tea += order_ticket[1].charAt(i);
+    }
+  }
   var topping1 = order_ticket[2];
   var topping2 = order_ticket[3];
   var price = order_ticket[4];
