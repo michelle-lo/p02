@@ -199,10 +199,14 @@ def load_save():
 def process_sale():
 	#checking if the order is correct
 	order = order_db.latest_order_v2()
-	print(order[0])
-	print(saved_drink["tea"])
-	if saved_drink["tea"] == order[0]:
-		if (saved_drink["topp1"] == order[1] or saved_drink["topp1"] == order[2]) and (saved_drink["topp2"] == order[1] or saved_drink["topp2"] == order[2]):
+	if saved_drink["topp1"] == None:
+		saved_drink["topp1"] == "null"
+	if saved_drink["topp2"] == None:
+		saved_drink["topp2"] == "null"
+	print(order)
+	print(saved_drink)
+	if saved_drink["tea"] in order[0]:
+		if (saved_drink["topp1"] in order[1] or saved_drink["topp1"] in order[2]) and (saved_drink["topp2"] in order[1] or saved_drink["topp2"] in order[2]):
 			#updating balance
 			new_amount = order_db.fetch_price() #fetches price of latest drink (if not already closed)
 			balance_updated = db.update_balance(session["user_id"], new_amount)
