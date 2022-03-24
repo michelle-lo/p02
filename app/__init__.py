@@ -11,7 +11,6 @@ app = Flask(__name__)
 app.secret_key = "boba"
 
 saved_drink = {"tea":"null", "topp1":"null", "topp2":"null"}
-type = ""
 
 def logged_in():
 	"""

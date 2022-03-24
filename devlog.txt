@@ -187,3 +187,7 @@ Drink now empties if a successful order passes (counter.js, lines 212-214)
 
 tinaN -- 2022-03-24 4:45
 Pushed to display the order in kitchen canvas
+
+michelleL -- 2022-03-24 07:46
+Inventory depletion when using ingredients. 
+Minor formatting changes.

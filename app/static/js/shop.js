@@ -268,17 +268,3 @@ $(function() {
     return false;
   });
 });
-
-
-// var update_balance = () => {
-//   $(function() {
-//     $("button").bind('click', function() {
-//       $.getJSON('/shop_balance', function(data) { //send data back to python file
-//
-//       })
-//       .done(function(data){
-//           $("#balance").text("Balance: $" + data.balance + "0");
-//       });
-//     });
-//   });
-// }
