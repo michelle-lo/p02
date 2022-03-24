@@ -151,9 +151,9 @@ def counter():
 def display_order():
 	latest_order = order_db.latest_order()
 	new_customer = order_db.fetch_customer()
-	print(saved_drink["tea"])
-	print(saved_drink["topp1"])
-	print(saved_drink["topp2"])
+	# print(saved_drink["tea"])
+	# print(saved_drink["topp1"])
+	# print(saved_drink["topp2"])
 	json = jsonify({
 		"order" : latest_order,
 		"customer" : new_customer,
@@ -186,7 +186,7 @@ def process():
 
 	if request.method == "POST":
 		item = request.get_json(force=True)["item"]
-		print(item)
+		# print(item)
 		if (item == "milkTea"):
 			success = db.add_inventory(session["user"], "milk tea")
 			print(str(item) + " inventory: " + str(db.fetch_itemInventory(session["user"], "milk tea")))
@@ -233,7 +233,7 @@ def process():
 def update_balance():
 	balance = round(db.fetch_balance(session["user_id"]), 2)
 	inventory = db.fetch_inventory(session["user"])
-	print("tapioca: " + str(inventory[4].get("inventory")))
+	# print("tapioca: " + str(inventory[4].get("inventory")))
 
 	json = jsonify({
 		"balance" : balance,
@@ -259,7 +259,7 @@ def kitchen():
 def save_drink():
 	if request.method == "POST":
 		drink_order = request.get_json(force=True)
-		print(drink_order["tea"])
+		# print(drink_order["tea"])
 		saved_drink["tea"] = drink_order["tea"]
 		saved_drink["topp1"] = drink_order["topp1"]
 		saved_drink["topp2"] = drink_order["topp2"]
@@ -277,10 +277,19 @@ def load_save():
 		"topp1" : saved_drink["topp1"],
 		"topp2" : saved_drink["topp2"],
 	})
-	print("load kit save: " + saved_drink["tea"])
-	print("load kit save: " + saved_drink["topp1"])
-	print("load kit save: " + saved_drink["topp2"])
+	# # print("load kit save: " + saved_drink["tea"])
+	# print("load kit save: " + saved_drink["topp1"])
+	# print("load kit save: " + saved_drink["topp2"])
 	return json
+
+@app.route("/update_kit_inventory", methods=['GET', 'POST'])
+def update_inventory():
+	if request.method == "POST":
+		item = request.get_json(force=True)["item"]
+		print("update_kit_inventory: " + item)
+		inven_updated = db.subtract_inventory(session["user"], item)
+		print("update_kit_inventory: " + str(db.fetch_itemInventory(session["user"], item)))
+		return ""
 
 @app.route("/process", methods=['GET', 'POST'])
 def process_sale():

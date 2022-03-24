@@ -193,6 +193,18 @@ def add_inventory(username, item):
     db.close()
     return True
 
+def subtract_inventory(username, item):
+    db = sqlite3.connect(DB_FILE)
+    c = db.cursor()
+    uName = username + "inv"
+    quantity = fetch_itemInventory(username, item)
+    quantity -= 1
+    query = "UPDATE " + uName + " SET inventory = ? WHERE item = ?"
+    c.execute(query, (quantity, item,))
+    db.commit()
+    db.close()
+    return True
+
 
 def fetch_inventory(username):
     db = sqlite3.connect(DB_FILE)
