@@ -107,7 +107,7 @@ def profile():
 	username = db.fetch_username(session["user_id"])
 	balance = db.fetch_balance(session["user_id"])
 	drinks = db.fetch_drinks(session["user_id"])
-	return render_template("profile.html", username=username, drinks=drinks, balance=balance)
+	return render_template("profile.html", username=username, drinks=drinks, balance=round(balance, 2))
 
 
 @app.route("/about")
@@ -259,7 +259,9 @@ def update_balance():
 
 @app.route("/kitchen", methods=['GET', 'POST'])
 def kitchen():
-	return render_template("kitchen.html")
+	latest_order = order_db.latest_order_v2()
+	order = [latest_order[0], latest_order[1], latest_order[2]]
+	return render_template("kitchen.html", order=order, price=latest_order[3])
 
 @app.route("/save_drink", methods=['POST'])
 def save_drink():
@@ -293,13 +295,13 @@ def process_sale():
 	#checking if the order is correct
 	order = order_db.latest_order_v2()
 	if saved_drink["topp1"] == None:
-		saved_drink["topp1"] == "null"
+		saved_drink["topp1"] = "null"
 	if saved_drink["topp2"] == None:
-		saved_drink["topp2"] == "null"
-	print(order)
-	print(saved_drink)
-	if saved_drink["tea"] in order[0]:
-		if (saved_drink["topp1"] in order[1] or saved_drink["topp1"] in order[2]) and (saved_drink["topp2"] in order[1] or saved_drink["topp2"] in order[2]):
+		saved_drink["topp2"] = "null"
+	# print(saved_drink)
+	# print(order)
+	if saved_drink["tea"] == order[0]:
+		if (saved_drink["topp1"] == order[1] or saved_drink["topp1"] == order[2]) and (saved_drink["topp2"] == order[1] or saved_drink["topp2"] == order[2]):
 			#updating balance
 			new_amount = order_db.fetch_price() #fetches price of latest drink (if not already closed)
 			balance_updated = db.update_balance(session["user_id"], new_amount)
@@ -318,7 +320,8 @@ def process_sale():
 			json = jsonify({
 				"balance" : new_balance,
 				"order" : latest_order,
-				"customer" : new_customer
+				"customer" : new_customer,
+				"completed": "true",
 			})
 			order_print = order_db.print_orders()
 			return json

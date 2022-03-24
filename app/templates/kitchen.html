@@ -50,6 +50,15 @@ P02: Four Toppings Boba Shop
       <canvas width="960" height="540" id="kitchen"></canvas>
     </div>
 
+    <br><br>
+    <center>
+      <p style="font-size: 20px;"><b>
+      {% for item in order %}
+        {{item}},
+      {% endfor %}
+      {{price}}
+      </b></p>
+    </center>
 
   <!-- <div style = "z-index: 6; position:absolute; left: 73vw; top: 76vh;">
     <button onclick="clearDrink()" class="btn btn-danger" id = "clearDrink">Restart Drink</button>

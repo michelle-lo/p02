@@ -110,12 +110,12 @@ def latest_order():
     latest_order = c.fetchone()
     return latest_order
 
-#[tea, topping1, topping2]
+#[tea, topping1, topping2, price]
 def latest_order_v2():
     db = sqlite3.connect(DB_FILE)
     c = db.cursor()
     c.execute("""
-        SELECT tea, topping1, topping2
+        SELECT tea, topping1, topping2, price
         FROM orders
         ORDER BY id DESC
         LIMIT 1
