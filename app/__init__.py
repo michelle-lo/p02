@@ -107,7 +107,7 @@ def profile():
 	username = db.fetch_username(session["user_id"])
 	balance = db.fetch_balance(session["user_id"])
 	drinks = db.fetch_drinks(session["user_id"])
-	return render_template("profile.html", username=username, drinks=drinks, balance=balance)
+	return render_template("profile.html", username=username, drinks=drinks, balance=round(balance, 2))
 
 
 @app.route("/about")
