@@ -65,7 +65,6 @@ img4.addEventListener("load", () => {
 });
 
 let img3 = document.createElement("img");
-img3.src = '../static/assets/customer0.png';
 
 //ticket
 let img5 = document.createElement("img");
@@ -115,7 +114,6 @@ var order_ticket;
 var customer_id;
 //jquery for updating balance and order with sell button
 $(document).ready(function(data) {
-  console.log("asdfasdf");
   $.getJSON('/counter_load', function(data) { //send data back to python file
     //do nothing
   })
@@ -132,8 +130,10 @@ $(document).ready(function(data) {
 
       if (customer_id === "customer0") {
         img3.src = img3.src = '../static/assets/customer0.png';
-      } else {
+      } else if (customer_id === "customer1"){
         img3.src = img3.src = '../static/assets/customer1.png';
+      } else {
+        img3.src = img3.src = '../static/assets/customer2.png';
       }
 //tea
       if (saved_tea === "milk_tea"){
@@ -216,8 +216,7 @@ $(function() {
       //do nothing
     })
     .done(function(data){
-        $("#balance").text("Balance: " + data.balance); //updates balance div element with the data sent from init file
-        $("#order").text(data.order);
+        $("#balance").text("Balance: $" + data.balance); //updates balance div element with the data sent from init file
         order_ticket = data.order;
         customer_id = data.customer;
         status = data.completed;

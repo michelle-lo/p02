@@ -140,8 +140,8 @@ def counter():
 	order_print = order_db.print_orders() #for debugging
 
 	latest_order = order_db.latest_order()
-	current_balance = db.fetch_balance(session["user_id"])
-	return render_template("counter.html", current_balance=current_balance, current_order=latest_order) #loads counter page
+	current_balance = round(db.fetch_balance(session["user_id"]), 2)
+	return render_template("counter.html", current_balance=current_balance) #loads counter page
 
 
 @app.route("/counter_load", methods=['GET', 'POST'])
@@ -314,7 +314,7 @@ def process_sale():
 				create_order = order_db.create_order()
 
 			#sending data to counter.js
-			new_balance = db.fetch_balance(session["user_id"])
+			new_balance = round(db.fetch_balance(session["user_id"]), 2)
 			latest_order = order_db.latest_order()
 			new_customer = order_db.fetch_customer()
 			json = jsonify({
