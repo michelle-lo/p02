@@ -164,6 +164,20 @@ def shop():
 	elif request.method == "POST":
 		return render_template("shop.html", inv=db.fetch_inventory(session["user"]), shop=db.fetch_shop(), balance=current_balance)
 
+@app.route("/shop_process", methods=['POST'])
+def process():
+	# print(db.fetch_itemInventory(session["user"], "green"))
+	if request.method == "POST":
+		item = request.get_json(force=True)["item"]
+		print(item)
+		if (item == "milkTea"):
+			success = db.add_inventory(session["user"], "milk")
+			print(str(item) + " inventory: " + str(db.fetch_itemInventory(session["user"], "milk")))
+		elif (item == "greenTea"):
+			success = db.add_inventory(session["user"], "green")
+			print(str(item) + " inventory: " + str(db.fetch_itemInventory(session["user"], "green")))
+
+	return "hello"
 
 @app.route("/kitchen", methods=['GET', 'POST'])
 def kitchen():

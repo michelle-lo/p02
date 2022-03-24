@@ -72,18 +72,20 @@ P02: Four Toppings Boba Shop
               </tr>
             </thead>
             <tbody>
-              {% for thing in shop %}
-                <tr>
-                  <td>{{thing.item}}</td>
-                  <td>
-                    <div class="input-group">
-                      <form method="POST" action="/shop">
-                        <input name={{thing.item}} type="submit" value="${{thing.price}}0" class="btn btn-secondary"></input>
-                      </form>
-                    </div>
-                  </td>
-                </tr>
-              {% endfor %}
+              <!-- tea_list = ["milk tea", "green tea", "taro", "oolong tea"]
+              topping_list = ["tapioca", "grass jelly", "lychee jelly", "red bean", "milk foam"] -->
+              <tr>
+                <td>Milk Tea</td>
+                <td>
+                  <a href=# id=milkTea><button class="btn btn-secondary">$1.00</button></a>
+                </td>
+              </tr>
+              <tr>
+                <td>Green Tea</td>
+                <td>
+                  <a href=# id=greenTea><button class="btn btn-secondary">$1.00</button></a>
+                </td>
+              </tr
             </tbody>
           </table>
         </div>
@@ -96,7 +98,7 @@ P02: Four Toppings Boba Shop
     canvas { position: absolute; border: 1px solid black }
 
   </style>
-
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
   <script src="../static/js/shop.js"></script>
 
 </html>

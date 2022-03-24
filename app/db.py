@@ -166,6 +166,29 @@ def createInventory(username, c):
     for i in range(5):
         c.execute("INSERT INTO " + uName + "(item, inventory) VALUES(?, ?)", (topping_list[i], starter_amt))
 
+def fetch_itemInventory(username, item):
+    db = sqlite3.connect(DB_FILE)
+    c = db.cursor()
+    item_inventory = 0
+    total_inventory = fetch_inventory(username)
+    for row in total_inventory:
+        if (row.get("item") == item):
+            item_inventory = row.get("inventory")
+            return item_inventory
+
+    return 0
+
+def add_inventory(username, item):
+    db = sqlite3.connect(DB_FILE)
+    c = db.cursor()
+    uName = username + "inv"
+    quantity = fetch_itemInventory(username, item)
+    quantity += 1
+    query = "UPDATE " + uName + " SET inventory = ? WHERE item = ?"
+    c.execute(query, (quantity, item,))
+    db.commit()
+    db.close()
+    return True
 
 def fetch_inventory(username):
     db = sqlite3.connect(DB_FILE)

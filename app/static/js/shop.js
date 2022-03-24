@@ -3,18 +3,38 @@
 // P02: Four Toppings Boba Shop
 // 2022-03-09
 
-// '''access canvas and buttons via DOM'''
-//Different canvas layers
-var c = document.getElementById('canvas');
+//milk tea
+$(function() {
+  $('a#milkTea').bind('click', function() {
+    $.ajax({
+      data : JSON.stringify({
+        "item" : "milkTea",
+      }),
 
-// '''prepare to interact with canvas in 2D'''
-var ctx = c.getContext("2d");
+      contentType: "application/json",
+      dataType : 'application/json',
+      type : 'POST',
+      url : '/shop_process'
 
-// background image for shop
-let img = document.createElement("img");
-img.src = "https://ichef.bbci.co.uk/news/976/cpsprodpb/0ED2/production/_118149730_mediaitem118148499.jpg";
+    })
+    return false;
+  });
+});
 
-//loads image
-img.addEventListener("load", () => {
-  ctx.drawImage(img, 0, 0);
+//green tea
+$(function() {
+  $('a#greenTea').bind('click', function() {
+    $.ajax({
+      data : JSON.stringify({
+        "item" : "greenTea",
+      }),
+
+      contentType: "application/json",
+      dataType : 'application/json',
+      type : 'POST',
+      url : '/shop_process'
+
+    })
+    return false;
+  });
 });
