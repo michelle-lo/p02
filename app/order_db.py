@@ -69,8 +69,8 @@ def create_order():
 
     id = order_count() + 1 #first order = 1
 
-    teas = ["green tea", "milk tea", "taro", "oolong tea"]
-    toppings = ["milk foam", "boba", "grass jelly", "lychee jelly", "red bean", 'null']
+    teas = ["green_tea", "milk_tea", "taro", "oolong_tea"]
+    toppings = ["milk_foam", "tapioca", "grass_jelly", "lychee_jelly", "red_bean", 'null']
     customers = ["customer0", "customer1", "customer2"]
 
     tea = teas[random.randint(0, len(teas) - 1)]
@@ -122,7 +122,7 @@ def latest_order_v2():
     """)
     order = c.fetchone()
     return order
-print(latest_order_v2())
+#print(latest_order_v2())
 
 #updates the latest entry
 def update_status():

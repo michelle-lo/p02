@@ -148,9 +148,9 @@ $(document).ready(function(data) {
         img3.src = img3.src = '../static/assets/customer1.png';
       }
 //tea
-      if (saved_tea === "milk"){
+      if (saved_tea === "milk_tea"){
         img6.src = img6.src = '../static/assets/tea_milk.png';
-      } else if (saved_tea === "green") {
+      } else if (saved_tea === "green_tea") {
         img6.src = img6.src = '../static/assets/tea_green.png';
       } else if (saved_tea === "taro") {
         img6.src = img6.src = '../static/assets/tea_taro.png';
@@ -158,25 +158,25 @@ $(document).ready(function(data) {
         img6.src = img6.src = '../static/assets/tea_oolong.png';
       }
 //topp1
-      if (saved_topp1 === "lychee"){
+      if (saved_topp1 === "lychee_jelly"){
         img10.src = img10.src = '../static/assets/topping_lychee.png';
       } else if (saved_topp1 === "tapioca"){
         img10.src = img10.src = '../static/assets/topping_tapioca.png';
-      } else if (saved_topp1 == "redBean"){
+      } else if (saved_topp1 == "red_bean"){
         img10.src = img10.src = '../static/assets/topping_redbean.png';
-      } else if (saved_topp1 == "milkFoam"){
+      } else if (saved_topp1 == "milk_foam"){
         img10.src = img10.src = '../static/assets/topping_milkfoam.png';
       } else {
         img10.src = img10.src = '../static/assets/topping_grassjelly.png';
       }
 //topp2
-      if (saved_topp2 === "lychee"){
+      if (saved_topp2 === "lychee_jelly"){
         img11.src = img11.src = '../static/assets/topping_lychee.png';
       } else if (saved_topp2 === "tapioca"){
         img11.src = img11.src = '../static/assets/topping_tapioca.png';
-      } else if (saved_topp2 == "redBean"){
+      } else if (saved_topp2 == "red_bean"){
         img11.src = img11.src = '../static/assets/topping_redbean.png';
-      } else if (saved_topp2 == "milkFoam"){
+      } else if (saved_topp2 == "milk_foam"){
         img11.src = img11.src = '../static/assets/topping_milkfoam.png';
       } else {
         img11.src = img11.src = '../static/assets/topping_grassjelly.png';

@@ -156,4 +156,7 @@ rachelX -- 2022-03-23 20:31
 Shop page displays everything.
 
 annabelZ -- 2022-03-23 21:45
-Changed out kitchen restart/save buttons for static buttons
+Changed out kitchen restart/save buttons for static buttons; restart/save buttons now work
+
+rachelX -- 2022-03-23 22:09
+Order is now checked against the user's drink. Selling works properly!

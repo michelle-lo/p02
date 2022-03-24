@@ -52,7 +52,7 @@ img3.src = '../static/assets/tea_milk.png';
 function drawMilkTea(){
 //   // img3.addEventListener("load", () => {
      ctx3.drawImage(img3, 0, 0);
-     addTea("milk");
+     addTea("milk_tea");
 }
 
 let img4 = document.createElement("img");
@@ -60,7 +60,7 @@ img4.src = '../static/assets/tea_green.png';
 
 function drawGreenTea(){
     ctx3.drawImage(img4, 0, 0);
-    addTea("green");
+    addTea("green_tea");
     // console.log(Object.values(drink));
 }
 
@@ -77,7 +77,7 @@ img6.src =  '../static/assets/tea_oolong.png';
 
 function drawOolongTea(){
     ctx3.drawImage(img6, 0, 0);
-    addTea("oolong");
+    addTea("oolong_tea");
 }
 
 
@@ -96,7 +96,7 @@ img7.src = '../static/assets/topping_lychee.png'
 
 function drawLycheeJelly(){
     ctx4.drawImage(img7, 0, 0);
-    addTopp("lychee");
+    addTopp("lychee_jelly");
 }
 
 let img8 = document.createElement("img");
@@ -112,7 +112,7 @@ img9.src = '../static/assets/topping_redbean.png'
 
 function drawRedBean(){
     ctx4.drawImage(img9, 0, 0);
-    addTopp("redBean");
+    addTopp("red_bean");
 }
 
 let img10 = document.createElement("img");
@@ -120,7 +120,7 @@ img10.src = '../static/assets/topping_milkfoam.png'
 
 function drawMilkFoam(){
     ctx4.drawImage(img10, 0, 0);
-    addTopp("milkFoam");
+    addTopp("milk_foam");
 }
 
 let img11 = document.createElement("img");
@@ -128,7 +128,7 @@ img11.src = '../static/assets/topping_grassjelly.png'
 
 function drawGrassJelly(){
     ctx4.drawImage(img11, 0, 0);
-    addTopp("grassJelly");
+    addTopp("grass_jelly");
 }
 
 function clearDrink(){
@@ -191,35 +191,35 @@ $(document).ready(function(data) {
 var load_save = (tea, topp1, topp2) => {
   if (tea === "taro") {
     drawTaroTea();
-  } else if (tea === "milk") {
+  } else if (tea === "milk_tea") {
     drawMilkTea();
-  } else if (tea === "oolong") {
+  } else if (tea === "oolong_tea") {
     drawOolongTea();
-  } else if (tea === "green") {
+  } else if (tea === "green_tea") {
     drawGreenTea();
   }
 
   if (topp1 === "tapioca") {
     drawTapioca();
-  } else if (topp1 === "grassJelly") {
+  } else if (topp1 === "grass_jelly") {
     drawGrassJelly();
-  } else if (topp1 === "lychee") {
+  } else if (topp1 === "lychee_jelly") {
     drawLycheeJelly();
-  } else if (topp1 === "redBean") {
+  } else if (topp1 === "red_bean") {
     drawRedBean();
-  } else if (topp1 === "milkFoam") {
+  } else if (topp1 === "milk_foam") {
     drawMilkFoam();
   }
 
   if (topp2 === "tapioca") {
     drawTapioca();
-  } else if (topp2 === "grassJelly") {
+  } else if (topp2 === "grass_jelly") {
     drawGrassJelly();
-  } else if (topp2 === "lychee") {
+  } else if (topp2 === "lychee_jelly") {
     drawLycheeJelly();
-  } else if (topp2 === "redBean") {
+  } else if (topp2 === "red_bean") {
     drawRedBean();
-  } else if (topp2 === "milkFoam") {
+  } else if (topp2 === "milk_foam") {
     drawMilkFoam();
   }
 
