@@ -171,4 +171,7 @@ michelleL -- 2022-03-23 23:10
 Shop works! Inventory and balance now update upon pressing the corresponding button on /shop
 
 annabelZ -- 2022-03-24 00:29
-Added howto guide to using jQuery and AJAX 
+Added howto guide to using jQuery and AJAX
+
+annabelZ -- 2022-03-24 03:37
+Can't overlap teas/toppings anymore when loading a previously saved drink

@@ -205,36 +205,37 @@ $(document).ready(function(data) {
 var load_save = (tea, topp1, topp2) => {
   if (tea === "taro") {
     drawTaroTea();
+    teaSet = true;
   } else if (tea === "milk_tea") {
-    drawMilkTea();
+    drawMilkTea();teaSet = true;
   } else if (tea === "oolong_tea") {
-    drawOolongTea();
+    drawOolongTea();teaSet = true;
   } else if (tea === "green_tea") {
-    drawGreenTea();
+    drawGreenTea();teaSet = true;
   }
 
   if (topp1 === "tapioca") {
-    drawTapioca();
+    drawTapioca();toppSet = 1;
   } else if (topp1 === "grass_jelly") {
-    drawGrassJelly();
+    drawGrassJelly();toppSet = 1;
   } else if (topp1 === "lychee_jelly") {
-    drawLycheeJelly();
+    drawLycheeJelly();toppSet = 1;
   } else if (topp1 === "red_bean") {
-    drawRedBean();
+    drawRedBean();toppSet = 1;
   } else if (topp1 === "milk_foam") {
-    drawMilkFoam();
+    drawMilkFoam();toppSet = 1;
   }
 
   if (topp2 === "tapioca") {
-    drawTapioca();
+    drawTapioca();toppSet = 2;
   } else if (topp2 === "grass_jelly") {
-    drawGrassJelly();
+    drawGrassJelly();toppSet = 2;
   } else if (topp2 === "lychee_jelly") {
-    drawLycheeJelly();
+    drawLycheeJelly();toppSet = 2;
   } else if (topp2 === "red_bean") {
-    drawRedBean();
+    drawRedBean();toppSet = 2;
   } else if (topp2 === "milk_foam") {
-    drawMilkFoam();
+    drawMilkFoam();toppSet = 2;
   }
 
 }
