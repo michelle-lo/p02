@@ -57,6 +57,10 @@ img1.addEventListener("load", () => {
 let img4 = document.createElement("img");
 img4.src = '../static/img/counter_foreground.png';
 
+img4.addEventListener("load", () => {
+  ctx4.drawImage(img4, 0, 0)
+});
+
 let img3 = document.createElement("img");
 img3.src = '../static/assets/customer0.png';
 
