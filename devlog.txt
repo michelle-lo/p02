@@ -149,7 +149,7 @@ Restart button now works, and toppings cannot be chosen if there is not a tea ch
 tinaN -- 2022-03-23 19:31
 Edited about page to look more presentable
 
-tinaN -- 2022-03-23 
+tinaN -- 2022-03-23
 The saved drink now appears at the counter stage, but only the tea is functional for now and the kitchen drink does not appear. If the drink is cleared, the counter drink will show as the previous drink and not be cleared.
 
 michelleL -- 2022-03-23 19:54
@@ -169,3 +169,6 @@ Order is now checked against the user's drink. Selling works properly!
 
 michelleL -- 2022-03-23 23:10
 Shop works! Inventory and balance now update upon pressing the corresponding button on /shop
+
+annabelZ -- 2022-03-24 00:29
+Added howto guide to using jQuery and AJAX 
