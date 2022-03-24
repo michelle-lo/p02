@@ -8,6 +8,10 @@ to constantly save and update the current page with variables listed in the JSON
 file. jQuery functions can be placed within and outside of JavaScript functions
 to utilize when each action should happen.
 
+AJAX is another JavaScript library that allows you to asynchronously update pages without having to reload the page. It will allow you to send data to a web server to be used in your python files as well as receive data from the web server.
+
+The below tutorial demonstrates a basic program in which, upon clicking a button, the javascipt will receive a JSON object from the provided flask url.
+
 ### Estimated Time Cost: 20 minutes
 
 ### Prerequisites:
@@ -46,7 +50,7 @@ $.getJSON('/process', function(data)) {})
 ```
 `'/process'` references to the Flask app route you route to that has all your python functions (our '/process' pushes the current order and creates a new order for the user to fulfill)
 
-4. After '/process' finishes changing the variables you needed to change on-screen, you need to tell jQuery to run the actual updating when it's done
+4. After '/process' finishes changing the variables you needed to change on-screen, you need to tell jQuery to run the actual updating when it's done using .done.
 ```
 .done(function(data){
     $("#balance").text("Balance: " + data.balance); //updates balance div element with the data sent from init file
@@ -86,3 +90,4 @@ Accurate as of (last update): 2022-03-23
 
 #### Contributors:
 Annabel Zhang, pd2
+Michelle Lo, pd2
