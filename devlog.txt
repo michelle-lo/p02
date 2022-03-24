@@ -173,8 +173,17 @@ Shop works! Inventory and balance now update upon pressing the corresponding but
 annabelZ -- 2022-03-24 00:29
 Added howto guide to using jQuery and AJAX
 
+tinaN -- 2022-03-24 03:12
+Updated shop page so that the inventory is displayed in a table 
+
 annabelZ -- 2022-03-24 03:37
 Can't overlap teas/toppings anymore when loading a previously saved drink
 
+tinaN -- 2022-03-24 03:56
+Added rounding to the profile balance 
+
 annabelZ -- 2022-03-24 4:40
 Drink now empties if a successful order passes (counter.js, lines 212-214)
+
+tinaN -- 2022-03-24 4:45
+Pushed to display the order in kitchen canvas
