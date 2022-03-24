@@ -154,3 +154,6 @@ Fixed layering issue where the customer img shows up in front of the counter ins
 
 rachelX -- 2022-03-23 20:31
 Shop page displays everything.
+
+rachelX -- 2022-03-23 22:09
+Order is now checked against the user's drink. Selling works properly!
