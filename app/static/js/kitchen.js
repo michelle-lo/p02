@@ -302,7 +302,15 @@ var draw = (e) => {
           (mouseY <= 270 && mouseY >= 230 && mouseX <= 585 && mouseX >= 485))
         alert("You have already chosen two toppings! \nRestart your drink to choose a different combination of toppings.")
     }
-  // }
+
+    // if click on save button
+    if (mouseY <= 515 && mouseY >= 80 && mouseX <= 150 && mouseX >= 20){
+      saveDrink();
+    }
+
+    if (mouseY <= 515 && mouseY >= 80 && mouseX <= 940 && mouseX >= 820){
+      clearDrink();
+    }
   console.log(Object.values(drink));
 
 
