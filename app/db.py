@@ -17,6 +17,19 @@ cur.execute("""
         balance FLOAT,
         total INTEGER)""") #total drinks
 
+cur.execute("""
+    CREATE TABLE IF NOT EXISTS shop(
+        item TEXT,
+        price FLOAT)""")
+tea_list = ["milk tea", "green tea", "taro", "oolong tea"]
+topping_list = ["tapioca", "grass jelly", "lychee jelly", "red bean", "milk foam"]
+tea_price = 1.00
+topping_price = 0.20
+for i in range(4):
+    cur.execute("INSERT INTO shop(item, price) VALUES(?, ?)", (tea_list[i], tea_price))
+for i in range(5):
+    cur.execute("INSERT INTO shop(item, price) VALUES(?, ?)", (topping_list[i], topping_price))
+
 db.commit()
 db.close()
 
@@ -124,26 +137,23 @@ def update_drinks(user_id):
     return True
 
 
-tea_list = ["milk tea", "green tea", "taro", "oolong tea"]
-topping_list = ["tapioca", "grass jelly", "lychee jelly", "red bean", "milk foam"]
-#TODO: List for image pictures and price
-
-
-def createShop():
+def fetch_shop():
     db = sqlite3.connect(DB_FILE)
     c = db.cursor()
-    c.execute("CREATE TABLE IF NOT EXISTS shop(item TEXT, price FLOAT)")
-    tea_price = 3.00
-    topp_price = 0.50
-    #tea
-    # tea_list = ["milk", "green", "taro", "oolong"]
-    # topping_list = ["milk foam", "tapioca", "grass jelly", "lychee jelly", "red bean"]
-    for i in range(4):
-        c.execute("INSERT INTO shop (item TEXT, price FLOAT) VALUES(?, ?)", (tea_list[i], tea_price))
-    for i in range(5):
-        c.execute("INSERT INTO shop (item TEXT, price FLOAT) VALUES(?, ?)", (topping_list[i], topping_price))
-    db.commit()
+
+    c.execute("SELECT * FROM shop")
+
+    shop_data = c.fetchall()
+
+    shop = []
+    for item, price in shop_data:
+        thing = {}
+        thing["item"] = item
+        thing["price"] = price
+        shop.append(thing)
+
     db.close()
+    return shop
 
 
 def createInventory(username, c):

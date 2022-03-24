@@ -148,3 +148,6 @@ Restart button now works, and toppings cannot be chosen if there is not a tea ch
 
 michelleL -- 2022-03-23 19:54
 Save function improved, will not load save onto kitchen when the page is reloaded.
+
+rachelX -- 2022-03-23 20:31
+Shop page displays everything.
