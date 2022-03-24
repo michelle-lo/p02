@@ -146,6 +146,12 @@ Save button for kitchen -- init file can receive the order details upon clicking
 annabelZ -- 2022-03-23 19:07
 Restart button now works, and toppings cannot be chosen if there is not a tea chosen yet
 
+tinaN -- 2022-03-23 19:31
+Edited about page to look more presentable
+
+tinaN -- 2022-03-23 
+The saved drink now appears at the counter stage, but only the tea is functional for now and the kitchen drink does not appear. If the drink is cleared, the counter drink will show as the previous drink and not be cleared.
+
 michelleL -- 2022-03-23 19:54
 Save function improved, will not load save onto kitchen when the page is reloaded.
 
