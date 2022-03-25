@@ -120,22 +120,6 @@ def about():
 	return render_template("about.html")
 
 
-@app.route("/game", methods=['GET', 'POST'])
-def game(): #redirects user to the chosen area
-	if request.method == "POST":
-		if request.form["stage"] == "Counter":
-			print("Switching to Counter stage...")
-			return redirect("/counter")
-		elif request.form["stage"] == "Kitchen":
-			print("Switching to Kitchen stage...")
-			return redirect("/kitchen")
-		elif request.form["stage"] == "Shop":
-			print("Switching to Shop stage...")
-			return redirect("/shop")
-	else:
-		return redirect("/counter")
-
-
 @app.route("/counter", methods=['GET', 'POST'])
 def counter():
 	if not logged_in():
@@ -154,7 +138,7 @@ def counter():
 def display_order():
 	latest_order = order_db.latest_order()
 	new_customer = order_db.fetch_customer()
-	
+
 	print(saved_drink["tea"])
 	print(saved_drink["topp1"])
 	print(saved_drink["topp2"])
@@ -170,6 +154,8 @@ def display_order():
 
 @app.route("/shop", methods=['GET', 'POST'])
 def shop():
+	if not logged_in():
+		return redirect("/login")
 	#print(db.fetch_inventory(session["user"]))
 	current_balance = round(db.fetch_balance(session["user_id"]), 2)
 	print("tapioca inven: " + str(db.fetch_itemInventory(session["user"], "tapioca")))
@@ -259,6 +245,8 @@ def update_balance():
 
 @app.route("/kitchen", methods=['GET', 'POST'])
 def kitchen():
+	if not logged_in():
+		return redirect("/login")
 	latest_order = order_db.latest_order_v2()
 	order = [latest_order[0], latest_order[1], latest_order[2]]
 	return render_template("kitchen.html", order=order, price=latest_order[3])
