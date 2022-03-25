@@ -128,6 +128,8 @@ $(document).ready(function(data) {
       saved_topp2 = data.savedTopp2;
       console.log(saved_topp2);
 
+      clear();
+
       if (customer_id === "customer0") {
         img3.src = img3.src = '../static/assets/customer0.png';
       } else if (customer_id === "customer1"){
@@ -138,12 +140,16 @@ $(document).ready(function(data) {
 //tea
       if (saved_tea === "milk_tea"){
         img6.src = img6.src = '../static/assets/tea_milk.png';
+        drawTea();
       } else if (saved_tea === "green_tea") {
         img6.src = img6.src = '../static/assets/tea_green.png';
+        drawTea();
       } else if (saved_tea === "taro") {
         img6.src = img6.src = '../static/assets/tea_taro.png';
+        drawTea();
       } else if (saved_tea === "oolong_tea") {
         img6.src = img6.src = '../static/assets/tea_oolong.png';
+        drawTea();
       } else {
         ctx2.clearRect(0, 0, c2.width, c2.height);
         ctx2.drawImage(img0, 0, 0);
@@ -151,43 +157,44 @@ $(document).ready(function(data) {
 //topp1
       if (saved_topp1 === "lychee_jelly"){
         img10.src = img10.src = '../static/assets/topping_lychee.png';
+        drawTopp1();
       } else if (saved_topp1 === "tapioca"){
         img10.src = img10.src = '../static/assets/topping_tapioca.png';
+        drawTopp1();
       } else if (saved_topp1 === "red_bean"){
         img10.src = img10.src = '../static/assets/topping_redbean.png';
+        drawTopp1();
       } else if (saved_topp1 === "milk_foam"){
         img10.src = img10.src = '../static/assets/topping_milkfoam.png';
+        drawTopp1();
       } else if (saved_topp1 === "grass_jelly"){
         img10.src = img10.src = '../static/assets/topping_grassjelly.png';
+        drawTopp1();
       }
 //topp2
       if (saved_topp2 === "lychee_jelly"){
         img11.src = img11.src = '../static/assets/topping_lychee.png';
         toppSet = 2;
+        drawTopp2();
       } else if (saved_topp2 === "tapioca"){
         img11.src = img11.src = '../static/assets/topping_tapioca.png';
         toppSet = 2;
+        drawTopp2();
       } else if (saved_topp2 === "red_bean"){
         img11.src = img11.src = '../static/assets/topping_redbean.png';
         toppSet = 2;
+        drawTopp2();
       } else if (saved_topp2 === "milk_foam"){
         img11.src = img11.src = '../static/assets/topping_milkfoam.png';
         toppSet = 2;
+        drawTopp2();
       } else if (saved_topp1 === "grass_jelly") {
         img11.src = img11.src = '../static/assets/topping_grassjelly.png';
         toppSet = 2;
+        drawTopp2();
       }
-
-
-
-      clear();
-      drawTea();
-      drawTopp1();
-      drawTopp2();
       drawCustomer();
       drawText();
-
-
   });
   return false;
 });

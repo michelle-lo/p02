@@ -154,9 +154,10 @@ def counter():
 def display_order():
 	latest_order = order_db.latest_order()
 	new_customer = order_db.fetch_customer()
-	# print(saved_drink["tea"])
-	# print(saved_drink["topp1"])
-	# print(saved_drink["topp2"])
+	
+	print(saved_drink["tea"])
+	print(saved_drink["topp1"])
+	print(saved_drink["topp2"])
 	json = jsonify({
 		"order" : latest_order,
 		"customer" : new_customer,
@@ -341,6 +342,9 @@ def process_sale():
 			})
 			status = "completed"
 			order_print = order_db.print_orders()
+			saved_drink["tea"] = None
+			saved_drink["topp1"] = None
+			saved_drink["topp2"] = None
 			return json
 	return ""
 
