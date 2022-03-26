@@ -243,7 +243,7 @@ def game_over(user_id):
             break
 
     toppings = 0
-    for i in range(5):
+    for i in range(4,9):
         if inventory[i]["inventory"] != "0":
             toppings = 100
             break
